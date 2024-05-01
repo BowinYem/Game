@@ -13,11 +13,13 @@ int main(int argc, char* args[])
 	SDL_Renderer* TestRenderer = SDL_CreateRenderer(myWindow, -1, SDL_RENDERER_ACCELERATED);
 	SDL_SetRenderDrawColor(TestRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
 
-	SDL_Surface* TestSurface = IMG_Load("star.bmp");
+	// Loading a texture
+	SDL_Surface* TestSurface = IMG_Load("count.bmp");
+	SDL_SetColorKey(TestSurface, SDL_TRUE, SDL_MapRGB(TestSurface->format, 115, 251, 253));
 	SDL_Texture* TestTexture = SDL_CreateTextureFromSurface(TestRenderer, TestSurface);
 	SDL_FreeSurface(TestSurface);
 	TestSurface = nullptr;
-	SDL_Rect SrcRect = { 0, 0, 40, 40 };
+	SDL_Rect SrcRect = { 40, 0, 40, 40 };
 	SDL_Rect DestRect = { 300, 300, 40, 40 };
 
 	SDL_Event e;
@@ -48,7 +50,6 @@ int main(int argc, char* args[])
 		{
 			std::cout << "RIGHT arrow pressed" << std::endl;
 		}
-		
 	}
 
 	
