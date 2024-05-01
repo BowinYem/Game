@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_image.h>
+#include <iostream>
+
+bool quit = false;
 
 int main(int argc, char* args[])
 {
@@ -17,12 +20,42 @@ int main(int argc, char* args[])
 	SDL_Rect SrcRect = { 0, 0, 40, 40 };
 	SDL_Rect DestRect = { 300, 300, 40, 40 };
 
-	while (true)
+	SDL_Event e;
+	
+	while (!quit)
 	{
+		while(SDL_PollEvent(&e))
+		{ 
+			if (e.type == SDL_QUIT)
+			{
+				quit = true;
+			}
+		}
+
 		SDL_RenderClear(TestRenderer);
 		SDL_RenderCopy(TestRenderer, TestTexture, &SrcRect, &DestRect);
 		SDL_RenderPresent(TestRenderer);
+
+		const Uint8* KeyBoardState = nullptr;
+		KeyBoardState = SDL_GetKeyboardState(nullptr);
+
+		if (KeyBoardState[SDL_SCANCODE_LEFT])
+		{
+			std::cout << "LEFT arrow pressed" << std::endl;
+		}
+
+		if (KeyBoardState[SDL_SCANCODE_RIGHT])
+		{
+			std::cout << "RIGHT arrow pressed" << std::endl;
+		}
+		
 	}
+
+	
+
+
+
+	SDL_DestroyWindow(myWindow);
 	
 
 	return 0;
