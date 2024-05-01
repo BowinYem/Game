@@ -2,8 +2,23 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <iostream>
+#include <vector>
+
+
+static const char SPRITE_WIDTH = 40;
+static const char SPRITE_HEIGHT = 40;
 
 bool quit = false;
+std::vector<SDL_Rect> SheetRects(4);
+
+
+void loadSpriteSheed()
+{
+	SheetRects[0] = { 0, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
+	SheetRects[1] = { 40, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
+	SheetRects[2] = { 80, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
+	SheetRects[3] = { 120, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
+}
 
 int main(int argc, char* args[])
 {
@@ -19,7 +34,7 @@ int main(int argc, char* args[])
 	SDL_Texture* TestTexture = SDL_CreateTextureFromSurface(TestRenderer, TestSurface);
 	SDL_FreeSurface(TestSurface);
 	TestSurface = nullptr;
-	SDL_Rect SrcRect = { 40, 0, 40, 40 };
+	SDL_Rect SrcRect = { 120, 0, 40, 40 };
 	SDL_Rect DestRect = { 300, 300, 40, 40 };
 
 	SDL_Event e;
