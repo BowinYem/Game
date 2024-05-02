@@ -12,7 +12,7 @@ bool quit = false;
 std::vector<SDL_Rect> SheetRects(4);
 
 
-void loadSpriteSheed()
+void loadSpriteSheet()
 {
 	SheetRects[0] = { 0, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
 	SheetRects[1] = { 40, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
@@ -34,8 +34,10 @@ int main(int argc, char* args[])
 	SDL_Texture* TestTexture = SDL_CreateTextureFromSurface(TestRenderer, TestSurface);
 	SDL_FreeSurface(TestSurface);
 	TestSurface = nullptr;
+	loadSpriteSheet();
 	SDL_Rect SrcRect = { 120, 0, 40, 40 };
 	SDL_Rect DestRect = { 300, 300, 40, 40 };
+	SDL_Rect currentSprite = SheetRects[0];
 
 	SDL_Event e;
 	
@@ -49,30 +51,32 @@ int main(int argc, char* args[])
 			}
 		}
 
-		SDL_RenderClear(TestRenderer);
-		SDL_RenderCopy(TestRenderer, TestTexture, &SrcRect, &DestRect);
-		SDL_RenderPresent(TestRenderer);
-
 		const Uint8* KeyBoardState = nullptr;
 		KeyBoardState = SDL_GetKeyboardState(nullptr);
 
 		if (KeyBoardState[SDL_SCANCODE_LEFT])
 		{
-			std::cout << "LEFT arrow pressed" << std::endl;
+			currentSprite = SheetRects[0];
 		}
-
+		if (KeyBoardState[SDL_SCANCODE_UP])
+		{
+			currentSprite = SheetRects[1];
+		}
 		if (KeyBoardState[SDL_SCANCODE_RIGHT])
 		{
-			std::cout << "RIGHT arrow pressed" << std::endl;
+			currentSprite = SheetRects[2];
 		}
+		if (KeyBoardState[SDL_SCANCODE_DOWN])
+		{
+			currentSprite = SheetRects[3];
+		}
+
+		SDL_RenderClear(TestRenderer);
+		SDL_RenderCopy(TestRenderer, TestTexture, &currentSprite, &DestRect);
+		SDL_RenderPresent(TestRenderer);
 	}
-
-	
-
-
 
 	SDL_DestroyWindow(myWindow);
 	
-
 	return 0;
 }
