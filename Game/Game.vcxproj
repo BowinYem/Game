@@ -19,7 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="GameRenderer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="SpriteComponent.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Overview.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameRenderer.h" />
+    <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

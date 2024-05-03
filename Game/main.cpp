@@ -3,6 +3,8 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <vector>
+#include "SpriteComponent.h"
+#include "GameRenderer.h"
 
 
 static const char SPRITE_WIDTH = 30;
