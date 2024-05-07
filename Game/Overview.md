@@ -1,5 +1,5 @@
 TODO:
-- 
+- SpriteComponent - are sheetsize and spritesize constructor args necessary? 
 - Replace raw pointers
 - After implmeneting Entities that can hold a graphics component, play around with multiple resolutions 
 

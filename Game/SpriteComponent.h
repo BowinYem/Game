@@ -1,20 +1,26 @@
 #pragma once
 #include <SDL.h>
 #include <string>
+#include <vector>
 
+extern SDL_Renderer* GameRenderer; // Replace with some kind of general game system singleton?
+extern SDL_Window* GameWindow;	// Replace with some kind of general game system singleton?
 
 class SpriteComponent
 {
 public:
-	SpriteComponent(const std::string& FilePath, const SDL_Rect& SheetSize_, const SDL_Rect& SpriteSize_, Uint8 TotalSprites_ = 1);
+	SpriteComponent(const std::string& FilePath);
 
-	~SpriteComponent();
+	//~SpriteComponent();
 
 	void Update();
 	
 private:
+	void LoadSpriteRects();
+
+private:
+	std::vector<SDL_Rect> SpriteRects; 
 	SDL_Texture* SpriteSheet;
-	SDL_Rect SheetSize;
-	SDL_Rect SpriteSize;
+	SDL_Rect SpriteSourceRect;
 	Uint8 TotalSprites;
 };
