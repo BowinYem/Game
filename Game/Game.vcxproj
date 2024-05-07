@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GameRenderer.cpp" />
+    <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
@@ -27,7 +27,7 @@
     <None Include="Overview.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameRenderer.h" />
+    <ClInclude Include="GameEntity.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

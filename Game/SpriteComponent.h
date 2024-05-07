@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <string>
 #include <vector>
+#include "GameEntity.h"
 
 extern SDL_Renderer* GameRenderer; // Replace with some kind of general game system singleton?
 extern SDL_Window* GameWindow;	// Replace with some kind of general game system singleton?
@@ -13,7 +14,7 @@ public:
 
 	//~SpriteComponent();
 
-	void Update();
+	void Update(GameEntity* Entity);
 	
 private:
 	void LoadSpriteRects();

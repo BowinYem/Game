@@ -1,5 +1,4 @@
 #include "SpriteComponent.h"
-#include "GameRenderer.h"
 #include <SDL_image.h>
 
 
@@ -23,9 +22,9 @@ SpriteComponent::SpriteComponent(const std::string& FilePath)
 }
 
 // Every tick, copy the sprite onto the buffer
-void SpriteComponent::Update()
+void SpriteComponent::Update(GameEntity* Entity)
 {
     // coords 300/300 are temporary - we might get these from the entity class containing this component
-    SDL_Rect DestRect = { 300, 300, SpriteSourceRect.w, SpriteSourceRect.h };
+    SDL_Rect DestRect = { Entity->x, Entity->y, SpriteSourceRect.w, SpriteSourceRect.h };
     SDL_RenderCopy(GameRenderer, SpriteSheet, &SpriteSourceRect, &DestRect);
 }

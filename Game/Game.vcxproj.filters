@@ -21,7 +21,7 @@
     <ClCompile Include="SpriteComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GameRenderer.cpp">
+    <ClCompile Include="GameEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClInclude Include="SpriteComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameRenderer.h">
+    <ClInclude Include="GameEntity.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
