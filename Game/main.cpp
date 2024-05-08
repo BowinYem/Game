@@ -5,9 +5,7 @@
 #include <vector>
 #include "GameEntity.h"
 #include "SpriteComponent.h"
-
-SDL_Renderer* GameRenderer = nullptr;
-SDL_Window* GameWindow = nullptr;
+#include "GameSystems.h"
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
@@ -23,17 +21,23 @@ void loadSpriteSheet()
 	WallCycleFrames[2] = { 60, 0, SPRITE_WIDTH, SPRITE_HEIGHT };
 }
 
+
+GameEntity* CreateEntity()
+{
+	return new GameEntity(new SpriteComponent("star.bmp"));
+}
+
 int main(int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
 
-	GameWindow = SDL_CreateWindow("TestWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
-	GameRenderer = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC); // use bitwise OR operand to pass multiple flags 
-	SDL_SetRenderDrawColor(GameRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	GameSystems::GetGameSystems().GameSystems_Init();
+	SDL_Renderer* GameRenderer = GameSystems::GetGameSystems().GetRenderer();
 
-	// Loading a texture
-
-	SpriteComponent TestSprite("star.bmp");
+	// Create entities with a sprite component
+	std::vector<GameEntity*> Entities;
+	Entities.push_back(CreateEntity());
+	Entities.push_back(CreateEntity());
 
 	SDL_Event e;
 	
@@ -65,10 +69,20 @@ int main(int argc, char* args[])
 		}
 
 		SDL_RenderClear(GameRenderer);
+
+	
+		Entities[0]->x = 100;
+		Entities[0]->y = 100;
+		Entities[0]->Update();
+
+		Entities[1]->x = 300;
+		Entities[1]->y = 300;
+		Entities[1]->Update();
+
 		SDL_RenderPresent(GameRenderer);
 	}
 
-	SDL_DestroyWindow(GameWindow);
-	
 	return 0;
 }
+
+

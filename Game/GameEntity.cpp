@@ -1,4 +1,5 @@
 #include "GameEntity.h"
+#include "SpriteComponent.h"
 
 GameEntity::GameEntity(SpriteComponent* SpriteComp_) : SpriteComp(SpriteComp_)
 {
@@ -7,11 +8,10 @@ GameEntity::GameEntity(SpriteComponent* SpriteComp_) : SpriteComp(SpriteComp_)
 
 GameEntity::~GameEntity()
 {
-    // Make sure to delete/free the Sprite component
+    delete SpriteComp;
 }
 
 void GameEntity::Update()
 {
-    x = 300; y = 300;
     SpriteComp->Update(this);
 }

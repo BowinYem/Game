@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GameSystems.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="GameSystems.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

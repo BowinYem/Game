@@ -2,17 +2,15 @@
 #include <SDL.h>
 #include <string>
 #include <vector>
-#include "GameEntity.h"
 
-extern SDL_Renderer* GameRenderer; // Replace with some kind of general game system singleton?
-extern SDL_Window* GameWindow;	// Replace with some kind of general game system singleton?
+class GameEntity;
 
 class SpriteComponent
 {
 public:
 	SpriteComponent(const std::string& FilePath);
 
-	//~SpriteComponent();
+	~SpriteComponent();
 
 	void Update(GameEntity* Entity);
 	
@@ -24,4 +22,7 @@ private:
 	SDL_Texture* SpriteSheet;
 	SDL_Rect SpriteSourceRect;
 	Uint8 TotalSprites;
+
+	SDL_Renderer* GameRenderer;
+	SDL_Window* GameWindow;
 };

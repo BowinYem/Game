@@ -1,5 +1,6 @@
 #pragma once
-#include "SpriteComponent.h"
+
+class SpriteComponent;
 
 class GameEntity
 {
