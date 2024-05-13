@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 class SpriteComponent;
 
@@ -15,5 +16,6 @@ public:
     int y;
 
 private:
-    SpriteComponent* SpriteComp;
+    //SpriteComponent* SpriteComp;
+    std::unique_ptr<SpriteComponent> SpriteComp; 
 };

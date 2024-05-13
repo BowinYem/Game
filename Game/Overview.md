@@ -1,8 +1,8 @@
 TODO:
-- SpriteComponent - are sheetsize and spritesize constructor args necessary? 
 - Replace raw pointers
 - After implmeneting Entities that can hold a graphics component, play around with multiple resolutions 
-
+- Make capitalizations consistent
+- Why does specifying ~SpriteComponent() = default cause compilation errors?
 
 Graphics Overview:
 

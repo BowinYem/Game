@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameSystems.cpp" />
+    <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
@@ -30,6 +31,7 @@
   <ItemGroup>
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameSystems.h" />
+    <ClInclude Include="GameTexture.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

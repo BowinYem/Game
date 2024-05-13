@@ -3,6 +3,7 @@
 #include <SDL_image.h>
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "GameEntity.h"
 #include "SpriteComponent.h"
 #include "GameSystems.h"
@@ -22,9 +23,10 @@ void loadSpriteSheet()
 }
 
 
-GameEntity* CreateEntity()
+std::unique_ptr<GameEntity> CreateEntity()
 {
-	return new GameEntity(new SpriteComponent("star.bmp"));
+	//return new GameEntity(new SpriteComponent("star.bmp"));
+	return std::make_unique<GameEntity>(new SpriteComponent("star.bmp"));
 }
 
 int main(int argc, char* args[])
@@ -35,7 +37,7 @@ int main(int argc, char* args[])
 	SDL_Renderer* GameRenderer = GameSystems::GetGameSystems().GetRenderer();
 
 	// Create entities with a sprite component
-	std::vector<GameEntity*> Entities;
+	std::vector<std::unique_ptr<GameEntity>> Entities;
 	Entities.push_back(CreateEntity());
 	Entities.push_back(CreateEntity());
 

@@ -1,5 +1,7 @@
 #include "GameSystems.h"
 
+GameSystems GameSystems::Systems;
+
 bool GameSystems::GameSystems_Init()
 {
     bool InitSuccess = false;

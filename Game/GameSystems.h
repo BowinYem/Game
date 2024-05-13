@@ -5,7 +5,6 @@
 class GameSystems
 {
 public:
-
 	static GameSystems& GetGameSystems() { return Systems; }
 	inline SDL_Renderer* GetRenderer() { return GameRenderer;  }
 	inline SDL_Window* GetWindow() { return GameWindow;  }
