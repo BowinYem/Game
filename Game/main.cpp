@@ -25,8 +25,11 @@ void loadSpriteSheet()
 
 std::unique_ptr<GameEntity> CreateEntity()
 {
-	//return new GameEntity(new SpriteComponent("star.bmp"));
-	return std::make_unique<GameEntity>(new SpriteComponent("star.bmp"));
+	// Create components here
+	return std::make_unique<GameEntity>
+		(
+			std::make_unique<SpriteComponent>("star.bmp")
+		);
 }
 
 int main(int argc, char* args[])

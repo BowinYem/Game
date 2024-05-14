@@ -7,7 +7,7 @@ class GameEntity
 {
 public:
 
-    GameEntity(SpriteComponent* SpriteComp_);
+    GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_);
     ~GameEntity();
 
     void Update();
@@ -16,6 +16,5 @@ public:
     int y;
 
 private:
-    //SpriteComponent* SpriteComp;
     std::unique_ptr<SpriteComponent> SpriteComp; 
 };

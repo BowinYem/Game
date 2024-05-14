@@ -1,14 +1,14 @@
 #include "GameEntity.h"
 #include "SpriteComponent.h"
 
-GameEntity::GameEntity(SpriteComponent* SpriteComp_) : SpriteComp(SpriteComp_)
+GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_) : SpriteComp(std::move(SpriteComp_))
 {
-    
+    // Constructor body...   
 }
 
 GameEntity::~GameEntity()
 {
-    //delete SpriteComp;
+    // Destructor body...
 }
 
 void GameEntity::Update()

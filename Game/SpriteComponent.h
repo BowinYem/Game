@@ -18,14 +18,14 @@ public:
 	void Update(const GameEntity& Entity);
 	
 private:
-	void LoadSpriteRects();
+	// void LoadSpriteRects(); // Implement animation on next iteration...
 
 
 public:
 
 
 private:
-	std::vector<SDL_Rect> SpriteRects;
+	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...
 	std::unique_ptr<GameTexture> SpriteSheet;
 	SDL_Rect SpriteSourceRect;
 	uint8_t TotalSprites;
