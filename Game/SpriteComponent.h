@@ -20,10 +20,14 @@ public:
 private:
 	void LoadSpriteRects();
 
+
+public:
+
+
 private:
 	std::vector<SDL_Rect> SpriteRects;
 	std::unique_ptr<GameTexture> SpriteSheet;
 	SDL_Rect SpriteSourceRect;
-	Uint8 TotalSprites;
+	uint8_t TotalSprites;
 };
 

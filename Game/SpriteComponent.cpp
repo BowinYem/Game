@@ -1,16 +1,6 @@
 #include "SpriteComponent.h"
 #include "GameEntity.h"
-#include "GameSystems.h"
 #include "GameTexture.h"
-#include <SDL_image.h>
-
-
-static const Uint8 CHROMA_KEY_COLOR_R = 0;
-static const Uint8 CHROMA_KEY_COLOR_G = 255;
-static const Uint8 CHROMA_KEY_COLOR_B = 255;
-
-static const Uint8 SPRITE_SHEET_SRC_X = 0;
-static const Uint8 SPRITE_SHEET_SRC_Y = 0;
 
 SpriteComponent::SpriteComponent(const std::string& FilePath) 
 {
