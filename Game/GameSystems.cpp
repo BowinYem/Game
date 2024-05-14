@@ -1,6 +1,24 @@
 #include "GameSystems.h"
 
-GameSystems GameSystems::Systems;
+bool GameSystems::quit = false;
+SDL_Renderer* GameSystems::GameRenderer = nullptr;
+SDL_Window* GameSystems::GameWindow = nullptr;
+const uint8_t* GameSystems::keyboardState = nullptr;
+
+
+void GameSystems::ReadInput()
+{
+    SDL_Event event;
+    while(SDL_PollEvent(&event))
+    { 
+        if (event.type == SDL_QUIT)
+        {
+            quit = true;
+        }
+    }
+
+    keyboardState = SDL_GetKeyboardState(nullptr);
+}
 
 bool GameSystems::GameSystems_Init()
 {

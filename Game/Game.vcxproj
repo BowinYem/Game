@@ -22,6 +22,8 @@
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameSystems.cpp" />
     <ClCompile Include="GameTexture.cpp" />
+    <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
@@ -32,6 +34,8 @@
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameSystems.h" />
     <ClInclude Include="GameTexture.h" />
+    <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

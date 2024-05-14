@@ -8,7 +8,7 @@ static const Uint8 CHROMA_KEY_COLOR_B = 255;
 
 GameTexture::GameTexture(const std::string& FilePath)
 {
-    auto GameRenderer = GameSystems::GetGameSystems().GetRenderer();
+    auto GameRenderer = GameSystems::GetRenderer();
 
     SDL_Surface* LoadSurface = IMG_Load(FilePath.c_str());
     SDL_SetColorKey(LoadSurface, SDL_TRUE, SDL_MapRGB(LoadSurface->format, CHROMA_KEY_COLOR_R, CHROMA_KEY_COLOR_G, CHROMA_KEY_COLOR_B));
@@ -29,6 +29,6 @@ GameTexture::~GameTexture()
 
 bool GameTexture::RenderCopy(const SDL_Rect& SrcRect, const SDL_Rect& DestRect)
 {
-    auto Renderer = GameSystems::GetGameSystems().GetRenderer();
+    auto Renderer = GameSystems::GetRenderer();
     return SDL_RenderCopy(Renderer, Texture, &SrcRect, &DestRect);
 }

@@ -1,11 +1,13 @@
 #pragma once
+
 #include <SDL.h>
 #include <SDL_image.h>
-#include <iostream>
 #include <vector>
 #include <memory>
+
 #include "GameEntity.h"
 #include "SpriteComponent.h"
+#include "PlayerInputComponent.h"
 #include "GameSystems.h"
 
 static const char SPRITE_WIDTH = 30;
@@ -23,12 +25,23 @@ void loadSpriteSheet()
 }
 
 
+std::unique_ptr<GameEntity> CreatePlayerEntity()
+{
+	// Create components here
+	return std::make_unique<GameEntity>
+		(
+			std::make_unique<SpriteComponent>("star.bmp"),
+			std::make_unique<PlayerInputComponent>()
+		);
+}
+
 std::unique_ptr<GameEntity> CreateEntity()
 {
 	// Create components here
 	return std::make_unique<GameEntity>
 		(
-			std::make_unique<SpriteComponent>("star.bmp")
+			std::make_unique<SpriteComponent>("star.bmp"),
+			nullptr
 		);
 }
 
@@ -36,46 +49,22 @@ int main(int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_VIDEO);
 
-	GameSystems::GetGameSystems().GameSystems_Init();
-	SDL_Renderer* GameRenderer = GameSystems::GetGameSystems().GetRenderer();
+	GameSystems::GameSystems_Init();
+	SDL_Renderer* GameRenderer = GameSystems::GetRenderer();
 
 	// Create entities with a sprite component
 	std::vector<std::unique_ptr<GameEntity>> Entities;
+	Entities.push_back(CreatePlayerEntity());
 	Entities.push_back(CreateEntity());
-	Entities.push_back(CreateEntity());
-
-	SDL_Event e;
 	
 	int currentFrame = 0;
 
-	while (!quit)
+	while (!GameSystems::quit)
 	{
-		while(SDL_PollEvent(&e))
-		{ 
-			if (e.type == SDL_QUIT)
-			{
-				quit = true;
-			}
-		}
-
-		const Uint8* KeyBoardState = nullptr;
-		KeyBoardState = SDL_GetKeyboardState(nullptr);
-
-		//if (KeyBoardState[SDL_SCANCODE_LEFT])
-		//{
-
-		//}
+		GameSystems::ReadInput();
 	
-		//currentSprite = WallCycleFrames[currentFrame / (TOTAL_WALK_CYCLE_FRAMES * 3)];
-		++currentFrame;
-		if((currentFrame / (TOTAL_WALK_CYCLE_FRAMES * 3)) >= TOTAL_WALK_CYCLE_FRAMES)
-		{
-			currentFrame = 0;
-		}
-
 		SDL_RenderClear(GameRenderer);
 
-	
 		Entities[0]->x = 100;
 		Entities[0]->y = 100;
 		Entities[0]->Update();

@@ -1,7 +1,8 @@
 #include "GameEntity.h"
 #include "SpriteComponent.h"
+#include "InputComponent.h"
 
-GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_) : SpriteComp(std::move(SpriteComp_))
+GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_) : SpriteComp(std::move(SpriteComp_)), InputComp(std::move(InputComp_))
 {
     // Constructor body...   
 }
@@ -14,4 +15,7 @@ GameEntity::~GameEntity()
 void GameEntity::Update()
 {
     SpriteComp->Update(*this);
+
+    if(InputComp)
+        { InputComp->Update(); }
 }
