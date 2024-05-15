@@ -27,7 +27,7 @@ public:
 private:
 	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...
 	std::unique_ptr<GameTexture> SpriteSheet;
-	SDL_Rect SpriteSourceRect;
+	SDL_Rect srcRect;
 	uint8_t TotalSprites;
 };
 

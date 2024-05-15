@@ -18,6 +18,26 @@ TODO:
 - Why does specifying ~SpriteComponent() = default cause compilation errors?
 
 
+GameRenderer
+===================
+class GameRenderer
+{
+public:
+    GameRenderer();
+    ~GameRenderer();
+
+    GameRendererClear();
+    GameRendererCopy(const GameTexture& texture);
+    GameRendererPresent();
+
+private:
+    SDL_Renderer* renderer 
+};
+
+
+
+
+
 Input Overview:
 =============================
 

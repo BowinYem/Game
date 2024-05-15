@@ -6,9 +6,11 @@
 #include <memory>
 
 #include "GameEntity.h"
+#include "GameSystems.h"
+#include "GameRenderer.h"
+
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
-#include "GameSystems.h"
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
@@ -50,7 +52,7 @@ int main(int argc, char* args[])
 	SDL_Init(SDL_INIT_VIDEO);
 
 	GameSystems::GameSystems_Init();
-	SDL_Renderer* GameRenderer = GameSystems::GetRenderer();
+	//SDL_Renderer* GameRenderer = GameSystems::GetRenderer();
 
 	// Create entities with a sprite component
 	std::vector<std::unique_ptr<GameEntity>> Entities;
@@ -63,7 +65,7 @@ int main(int argc, char* args[])
 	{
 		GameSystems::ReadInput();
 	
-		SDL_RenderClear(GameRenderer);
+		GameSystems::GetRenderer()->GameRendererClear();
 
 		Entities[0]->x = 100;
 		Entities[0]->y = 100;
@@ -73,7 +75,7 @@ int main(int argc, char* args[])
 		Entities[1]->y = 300;
 		Entities[1]->Update();
 
-		SDL_RenderPresent(GameRenderer);
+		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
 	return 0;

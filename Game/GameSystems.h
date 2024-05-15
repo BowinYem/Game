@@ -1,10 +1,13 @@
 #pragma once
 #include <SDL.h>
+#include <memory>
+
+class GameRenderer;
 
 class GameSystems
 {
 public:
-	static inline SDL_Renderer* GetRenderer() { return GameRenderer;  }
+	static inline std::shared_ptr<GameRenderer> GetRenderer() { return renderer;  }
 	static inline SDL_Window* GetWindow() { return GameWindow;  }
 	static void ReadInput();
 	static bool GameSystems_Init();
@@ -15,7 +18,7 @@ public:
 	static const uint8_t* keyboardState;
 
 private:
-	static SDL_Renderer* GameRenderer;
+	static std::shared_ptr<GameRenderer> renderer;
 	static SDL_Window* GameWindow;
 };
 

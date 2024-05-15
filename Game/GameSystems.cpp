@@ -1,10 +1,10 @@
 #include "GameSystems.h"
+#include "GameRenderer.h"
 
 bool GameSystems::quit = false;
-SDL_Renderer* GameSystems::GameRenderer = nullptr;
+std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 SDL_Window* GameSystems::GameWindow = nullptr;
 const uint8_t* GameSystems::keyboardState = nullptr;
-
 
 void GameSystems::ReadInput()
 {
@@ -22,15 +22,16 @@ void GameSystems::ReadInput()
 
 bool GameSystems::GameSystems_Init()
 {
-    bool InitSuccess = false;
+    bool InitSuccess = true;
 
     if(GameWindow = SDL_CreateWindow("TestWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0))
-        {InitSuccess = true;}
+        {InitSuccess = false;}
 
-	if(GameRenderer = SDL_CreateRenderer(GameWindow, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC))
-        {InitSuccess = true;}
 
-    SDL_SetRenderDrawColor(GameRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+    // call make_unique for GameRenderer here - make sure to initialize window first
+    renderer = std::make_shared<GameRenderer>();
+    if(!renderer)
+        { InitSuccess = false; }    
 
     return InitSuccess;
 }

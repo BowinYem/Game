@@ -1,5 +1,6 @@
 #include "GameTexture.h"
 #include "GameSystems.h"
+#include "GameRenderer.h"
 #include <SDL_image.h>
 
 static const Uint8 CHROMA_KEY_COLOR_R = 0;
@@ -12,7 +13,7 @@ GameTexture::GameTexture(const std::string& FilePath)
 
     SDL_Surface* LoadSurface = IMG_Load(FilePath.c_str());
     SDL_SetColorKey(LoadSurface, SDL_TRUE, SDL_MapRGB(LoadSurface->format, CHROMA_KEY_COLOR_R, CHROMA_KEY_COLOR_G, CHROMA_KEY_COLOR_B));
-    Texture = SDL_CreateTextureFromSurface(GameRenderer, LoadSurface);
+    texture = SDL_CreateTextureFromSurface(GameSystems::GetRenderer()->renderer, LoadSurface);
     width = LoadSurface->w;
     height = LoadSurface->h;
 
@@ -23,12 +24,7 @@ GameTexture::GameTexture(const std::string& FilePath)
 
 GameTexture::~GameTexture()
 {
-    SDL_DestroyTexture(Texture);
-    Texture = nullptr;
+    SDL_DestroyTexture(texture);
+    texture = nullptr;
 }
 
-bool GameTexture::RenderCopy(const SDL_Rect& SrcRect, const SDL_Rect& DestRect)
-{
-    auto Renderer = GameSystems::GetRenderer();
-    return SDL_RenderCopy(Renderer, Texture, &SrcRect, &DestRect);
-}

@@ -1,11 +1,13 @@
 #include "SpriteComponent.h"
 #include "GameEntity.h"
 #include "GameTexture.h"
+#include "GameSystems.h"
+#include "GameRenderer.h"
 
 SpriteComponent::SpriteComponent(const std::string& FilePath) 
 {
     SpriteSheet = std::make_unique<GameTexture>(FilePath);
-    SpriteSourceRect = {0, 0, SpriteSheet->width, SpriteSheet->height};
+    srcRect = {0, 0, SpriteSheet->width, SpriteSheet->height};
 }
 
 SpriteComponent::~SpriteComponent()
@@ -16,7 +18,7 @@ SpriteComponent::~SpriteComponent()
 // Every tick, copy the sprite onto the buffer
 void SpriteComponent::Update(const GameEntity& Entity)
 {
-    SDL_Rect DestRect = { Entity.x, Entity.y, SpriteSourceRect.w, SpriteSourceRect.h };
-    SpriteSheet->RenderCopy(SpriteSourceRect, DestRect);
+    SDL_Rect destRect = { Entity.x, Entity.y, srcRect.w, srcRect.h };
+    GameSystems::GetRenderer()->GameRendererCopy(*SpriteSheet, srcRect, destRect);
 }
 
