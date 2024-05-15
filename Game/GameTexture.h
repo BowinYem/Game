@@ -19,6 +19,6 @@ public:
     uint16_t height;
 
 private:
-    SDL_Texture* texture;
+    SDL_Texture* textureSDLPtr;
 };
 

@@ -13,7 +13,7 @@ GameTexture::GameTexture(const std::string& FilePath)
 
     SDL_Surface* LoadSurface = IMG_Load(FilePath.c_str());
     SDL_SetColorKey(LoadSurface, SDL_TRUE, SDL_MapRGB(LoadSurface->format, CHROMA_KEY_COLOR_R, CHROMA_KEY_COLOR_G, CHROMA_KEY_COLOR_B));
-    texture = SDL_CreateTextureFromSurface(GameSystems::GetRenderer()->renderer, LoadSurface);
+    textureSDLPtr = SDL_CreateTextureFromSurface(GameSystems::GetRenderer()->rendererSDLPtr, LoadSurface);
     width = LoadSurface->w;
     height = LoadSurface->h;
 
@@ -24,7 +24,7 @@ GameTexture::GameTexture(const std::string& FilePath)
 
 GameTexture::~GameTexture()
 {
-    SDL_DestroyTexture(texture);
-    texture = nullptr;
+    SDL_DestroyTexture(textureSDLPtr);
+    textureSDLPtr = nullptr;
 }
 

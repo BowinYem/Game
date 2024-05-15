@@ -19,5 +19,5 @@ public:
     void GameRendererPresent();
 
 private:
-    SDL_Renderer* renderer;
+    SDL_Renderer* rendererSDLPtr;
 };

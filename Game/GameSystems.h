@@ -2,13 +2,15 @@
 #include <SDL.h>
 #include <memory>
 
+// Forward declrations
 class GameRenderer;
+class GameWindow;
 
 class GameSystems
 {
 public:
 	static inline std::shared_ptr<GameRenderer> GetRenderer() { return renderer;  }
-	static inline SDL_Window* GetWindow() { return GameWindow;  }
+	static inline std::shared_ptr<GameWindow> GetWindow() { return window;  }
 	static void ReadInput();
 	static bool GameSystems_Init();
 	static bool GameSystems_Close();
@@ -19,6 +21,6 @@ public:
 
 private:
 	static std::shared_ptr<GameRenderer> renderer;
-	static SDL_Window* GameWindow;
+	static std::shared_ptr<GameWindow> window;
 };
 

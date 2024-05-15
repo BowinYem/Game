@@ -3,6 +3,9 @@
 
 class GameWindow
 {
+
+friend class GameRenderer;
+
 public:
 	GameWindow();
 	~GameWindow();
