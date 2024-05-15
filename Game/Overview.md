@@ -5,9 +5,8 @@ TODO:
         - PlayerInputComponent
         - a null one
     
-
 - Replace raw pointers
-    - Leave SDL_Window and SDL_Renderer raw pointers alone for now...
+    - Create some wrapper class to encapsulate the keyboard state?
     
 - After implementing some basic physics, play around with multiple resolutions 
     -	SDL_SetWindowFullscreen(GameSystems::GetGameSystems().GetWindow(), SDL_WINDOW_FULLSCREEN);
@@ -16,26 +15,6 @@ TODO:
 - Make capitalizations consistent
 
 - Why does specifying ~SpriteComponent() = default cause compilation errors?
-
-
-GameRenderer
-===================
-class GameRenderer
-{
-public:
-    GameRenderer();
-    ~GameRenderer();
-
-    GameRendererClear();
-    GameRendererCopy(const GameTexture& texture);
-    GameRendererPresent();
-
-private:
-    SDL_Renderer* renderer 
-};
-
-
-
 
 
 Input Overview:

@@ -1,9 +1,12 @@
 #pragma once
 
+// Forward declarations
+class GameEntity;
+
 class InputComponent
 {
 public:
 	~InputComponent();
 	
-	virtual void Update() = 0;
+	virtual void Update(GameEntity& entity) = 0;
 };

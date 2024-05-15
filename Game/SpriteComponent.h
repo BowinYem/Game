@@ -15,7 +15,7 @@ public:
 	
 	~SpriteComponent();
 
-	void Update(const GameEntity& Entity);
+	void Update(GameEntity& Entity);
 	
 private:
 	// void LoadSpriteRects(); // Implement animation on next iteration...
