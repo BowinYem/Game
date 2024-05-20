@@ -1,9 +1,6 @@
 TODO:
 
-- Create three different kinds of input components:
-    - InputComponent - overarching interface:
-        - PlayerInputComponent
-        - a null one
+- How to do 
     
 - Replace raw pointers
     - Create some wrapper class to encapsulate the keyboard state?

@@ -15,7 +15,7 @@ public:
     ~GameRenderer();
 
     bool GameRendererClear();
-    bool GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect);
+    bool GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect, const double rotation);
     void GameRendererPresent();
 
 private:

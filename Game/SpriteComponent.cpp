@@ -19,6 +19,6 @@ SpriteComponent::~SpriteComponent()
 void SpriteComponent::Update(GameEntity& Entity)
 {
     SDL_Rect destRect = { Entity.x, Entity.y, srcRect.w, srcRect.h };
-    GameSystems::GetRenderer()->GameRendererCopy(*SpriteSheet, srcRect, destRect);
+    GameSystems::GetRenderer()->GameRendererCopy(*SpriteSheet, srcRect, destRect, Entity.rotation);
 }
 

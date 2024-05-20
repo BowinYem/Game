@@ -19,9 +19,9 @@ bool GameRenderer::GameRendererClear()
     return !(SDL_RenderClear(rendererSDLPtr));
 }
 
- bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect)
+ bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect, const double rotation)
  {
-    return !(SDL_RenderCopy(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destRect));
+    return !(SDL_RenderCopyEx(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destRect, rotation, nullptr, SDL_FLIP_NONE));
  }
 
 void GameRenderer::GameRendererPresent()

@@ -17,8 +17,13 @@ void GameEntity::Update()
     if(InputComp)
         { InputComp->Update(*this); }
 
-    // Temporary physics code - move this to a phyiscs component later 
-    x += xVelocity;    
+    ///////////Temporary physics code - move this to a phyiscs component later /////////////// 
+
+    x += xVelocity;  
+    y += yVelocity;
+    rotation += rotationVelocity;
+
+    /////////////////////////
 
      SpriteComp->Update(*this);
 }

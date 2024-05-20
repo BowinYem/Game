@@ -1,3 +1,5 @@
+// InputComponent is an interface for input components
+
 #pragma once
 
 // Forward declarations

@@ -16,9 +16,6 @@ static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
 static const char TOTAL_WALK_CYCLE_FRAMES = 3;
 
-
-
-
 std::unique_ptr<GameEntity> CreatePlayerEntity()
 {
 	// Create components here
@@ -32,11 +29,17 @@ std::unique_ptr<GameEntity> CreatePlayerEntity()
 std::unique_ptr<GameEntity> CreateEntity()
 {
 	// Create components here
-	return std::make_unique<GameEntity>
+	auto newEntity = std::make_unique<GameEntity>
 		(
 			std::make_unique<SpriteComponent>("star.bmp"),
 			nullptr
 		);
+	
+	// This kind of entity just rotates in place at this specific spot
+	newEntity->rotationVelocity = 5.f;
+	newEntity->x = 300;
+	newEntity->y = 300;
+	return newEntity;
 }
 
 int main(int argc, char* args[])
@@ -50,12 +53,6 @@ int main(int argc, char* args[])
 	Entities.push_back(CreatePlayerEntity());
 	Entities.push_back(CreateEntity());
 	
-	Entities[0]->x = 100;
-	Entities[0]->y = 100;
-
-	Entities[1]->x = 300;
-	Entities[1]->y = 300;
-
 	while (!GameSystems::quit)
 	{
 		GameSystems::ReadInput();
