@@ -21,10 +21,18 @@ bool GameRenderer::GameRendererClear()
 
  bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect, const double rotation)
  {
-    return !(SDL_RenderCopyEx(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destRect, rotation, nullptr, SDL_FLIP_NONE));
+    SDL_FRect destFRect = {destRect.x, destRect.y, destRect.h, destRect.w};
+    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destFRect, rotation, nullptr, SDL_FLIP_NONE));
  }
 
 void GameRenderer::GameRendererPresent()
 {
+    SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
     SDL_RenderPresent(rendererSDLPtr);
+}
+
+bool GameRenderer::GameRendererDrawLine(const SDL_FPoint& originPoint, const SDL_FPoint& destPoint)
+{
+    SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0x00, 0x00, 0xFF);
+    return SDL_RenderDrawLineF(rendererSDLPtr, originPoint.x, originPoint.y, destPoint.x, destPoint.y);
 }

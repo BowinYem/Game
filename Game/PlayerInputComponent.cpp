@@ -1,6 +1,7 @@
 #include "PlayerInputComponent.h"
 #include "GameSystems.h"
 #include "GameEntity.h"
+#include "GameRenderer.h" // REMOVE THIS 
 
 #include <iostream>
 #include <math.h>
@@ -8,22 +9,32 @@
 constexpr double PI = 3.14159265358979323846;
 
 // Helper functions
-void Normalize(const SDL_Point& point)
+SDL_FPoint Normalize(const SDL_FPoint& point)
 {
-    double magnitude = sqrt(pow(point.x, 2) + pow(point.y, 2));
-    double x2 = (point.x / magnitude);
-    double y2 = (point.y / magnitude);
+    float magnitude = sqrt(pow(point.x, 2) + pow(point.y, 2));
+    float x2 = (point.x / magnitude);
+    float y2 = (point.y / magnitude);
+    return {x2, y2};
 }
 
-void RotateVector(const SDL_Point& point, double angle)
+SDL_FPoint RotateVector(const SDL_FPoint& point, double angle)
 {
-    double radians = angle * (PI / 180);
-    double cosVal = cos(radians);
-    double sinVal = sin(radians);
-    double x = (cosVal * point.x) - (sinVal * point.y);
-    double y = (cosVal * point.x) + (sinVal * point.y);
+    float radians = angle * (PI / 180);
+    float cosVal = cos(radians);
+    float sinVal = sin(radians);
+    float x = (cosVal * point.x) - (sinVal * point.y);
+    float y = (cosVal * point.x) + (sinVal * point.y);
+    return {x, y};
 }
 
+SDL_FPoint CalculateVelocity(const SDL_FPoint& point, float rotation)     // needs to be class memeber?
+{
+    // Rotate current posiotn
+    // normalize 
+
+    auto rotatedPoint = RotateVector(point, rotation);
+    return Normalize(rotatedPoint);
+}
 
 PlayerInputComponent::PlayerInputComponent()
 {
@@ -40,7 +51,7 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Do basic input handling here for now
     auto keyboardState = GameSystems::keyboardState;
 
-    // X movement
+    // Rotation
     if (keyboardState[SDL_SCANCODE_LEFT])
     {
         entity.rotationVelocity = -1;
@@ -54,7 +65,7 @@ void PlayerInputComponent::Update(GameEntity& entity)
         entity.rotationVelocity = 0;
     }
 
-    // Y movement
+    // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
         entity.yVelocity = -5;
@@ -68,8 +79,13 @@ void PlayerInputComponent::Update(GameEntity& entity)
         entity.yVelocity = 0;
     }
 
-    RotateVector(SDL_Point{1, 1}, 90.f);
 
+    ////////////// DEBUG CODE ////////////////
+
+    SDL_FPoint destPoint = {entity.x * 2, entity.y * 2};
+    GameSystems::GetRenderer()->GameRendererDrawLine({ entity.x, entity.y }, destPoint);
+
+    //////////////////////////////////////////
 }
 
 

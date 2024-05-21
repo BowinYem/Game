@@ -1,7 +1,11 @@
 TODO:
 
-- How to do 
-    
+- Reimplement the x,y of an entity to actaully be the center - or maybe even give an option to specify a center
+
+- For anything related to coordinates, convert from integral to floating type?
+
+- For the rotation of an entity - implement a way for it to wrap around once it's greater than 360 
+        
 - Replace raw pointers
     - Create some wrapper class to encapsulate the keyboard state?
     

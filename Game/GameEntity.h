@@ -15,8 +15,8 @@ public:
     void Update();
 
 public:
-    int32_t x;
-    int32_t y;
+    float x = 100.0f;
+    float y = 100.0f;
     double rotation = 0;
 
     int16_t xVelocity = 0;
