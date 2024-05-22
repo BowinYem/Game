@@ -82,8 +82,36 @@ void PlayerInputComponent::Update(GameEntity& entity)
 
     ////////////// DEBUG CODE ////////////////
 
-    SDL_FPoint destPoint = {entity.x * 2, entity.y * 2};
+    SDL_FPoint destPoint = RotateVector({ entity.x, entity.y }, entity.rotation);
     GameSystems::GetRenderer()->GameRendererDrawLine({ entity.x, entity.y }, destPoint);
+
+    //SDL_FPoint newPoint = RotateVector(destPoint, 45.f);
+    //SDL_FPoint newPoint2 = Normalize(newPoint);
+    //SDL_FPoint newPoint3 = { newPoint2.x * 2, newPoint2.y * 2 };
+
+    //GameSystems::GetRenderer()->GameRendererDrawLine({ entity.x, entity.y }, newPoint3);
+
+    /*
+    // Go off of velocity instead of current position
+
+    Given that vector v is {0, 1}
+
+    To calculate the velocity of an entity, 
+        1. calculate v2 by rotating v by the entity's current rotation
+        2. v3 = normalize(v2)  
+        3.  x = v3.x * speed
+            y = v3.y * speed
+
+
+    */
+
+    /*
+      Approach #2 - Find the directional vector?
+
+    */
+
+   
+    
 
     //////////////////////////////////////////
 }
