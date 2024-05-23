@@ -1,6 +1,11 @@
 TODO:
 
+
+- implement a getForwardDirection function using the trig stuff we implemented
+    - For the entity class
+
 - Create a vector class so that we can take advatage of operator functions (therefore reducing the number of codel lines)
+    - Replace all uses of SDL_Point and SDL_FPoint with this class
 
 - Reimplement the x,y of an entity to actaully be the center - or maybe even give an option to specify a center
 

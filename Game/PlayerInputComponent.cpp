@@ -82,28 +82,19 @@ void PlayerInputComponent::Update(GameEntity& entity)
 
     ////////////// DEBUG CODE ////////////////
 
-    SDL_FPoint PlayerPoint { entity.x, entity.y };
-    
-
-    SDL_FPoint destPoint { entity.x, entity.y };
+    float radians = entity.rotation * (PI / 180);
+    float x2 = entity.x + (100 * cos(radians));
+    float y2 = entity.y + (100 * sin(radians));
+    SDL_FPoint destPoint { x2, y2 };
 
     GameSystems::GetRenderer()->GameRendererDrawLine({ entity.x, entity.y }, destPoint);
-
   
-
     /*
-        - Two kinds of vectors: position and direction
-        - https://www.reddit.com/r/desmos/comments/m6wvja/how_can_i_draw_a_line_with_the_specific_angle/ 
-            - Use y = mx + b
-                - Where m = tan(entityAngle)    
-        - Just look into drawing a line given that you have a point and an angle
-        
-    
-
+    Solution:    
+    x2 = x1 + (L * cos(a))
+    y2 = y1 + (L * sin(a))
     */
    
-    
-
     //////////////////////////////////////////
 }
 

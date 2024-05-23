@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -23,6 +23,7 @@
     <ClCompile Include="GameRenderer.cpp" />
     <ClCompile Include="GameSystems.cpp" />
     <ClCompile Include="GameTexture.cpp" />
+    <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
@@ -37,6 +38,7 @@
     <ClInclude Include="GameRenderer.h" />
     <ClInclude Include="GameSystems.h" />
     <ClInclude Include="GameTexture.h" />
+    <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="PlayerInputComponent.h" />

@@ -17,7 +17,7 @@ public:
 public:
     float x = 100.0f;
     float y = 100.0f;
-    double rotation = 0;
+    double rotation = 90;
 
     int16_t xVelocity = 0;
     int16_t yVelocity = 0;
