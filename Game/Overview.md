@@ -1,5 +1,7 @@
 TODO:
 
+- Create a vector class so that we can take advatage of operator functions (therefore reducing the number of codel lines)
+
 - Reimplement the x,y of an entity to actaully be the center - or maybe even give an option to specify a center
 
 - For anything related to coordinates, convert from integral to floating type?
