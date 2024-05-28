@@ -4,13 +4,16 @@ class GameVector
 {
     friend GameVector operator+(const GameVector& v1, const GameVector& v2);
     friend GameVector operator-(const GameVector& v1, const GameVector& v2);
+    friend GameVector operator-(const GameVector& v);
 
 public:
-    GameVector(float x_, float y_);
+    GameVector();
+    // GameVector(const GameVector& v);
+    GameVector(double x_, double y_);
     void Normalize();
     void Rotate(float angleDegree);
 
-private:
-    float x;
-    float y;
+public:
+    double x;
+    double y;
 };

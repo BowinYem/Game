@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include "GameVector.h"
 
 class SpriteComponent;
 class InputComponent;
@@ -15,9 +16,8 @@ public:
     void Update();
 
 public:
-    float x = 100.0f;
-    float y = 100.0f;
-    double rotation = 90;
+    GameVector position;
+    double rotation = -90;
 
     int16_t xVelocity = 0;
     int16_t yVelocity = 0;

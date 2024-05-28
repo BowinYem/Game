@@ -2,6 +2,7 @@
 #include "GameTexture.h"
 #include "GameSystems.h"
 #include "GameWindow.h"
+#include "GameVector.h"
 
 GameRenderer::GameRenderer()
 {
@@ -31,7 +32,7 @@ void GameRenderer::GameRendererPresent()
     SDL_RenderPresent(rendererSDLPtr);
 }
 
-bool GameRenderer::GameRendererDrawLine(const SDL_FPoint& originPoint, const SDL_FPoint& destPoint)
+bool GameRenderer::GameRendererDrawLine(const GameVector& originPoint, const GameVector& destPoint)
 {
     SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0x00, 0x00, 0xFF);
     return SDL_RenderDrawLineF(rendererSDLPtr, originPoint.x, originPoint.y, destPoint.x, destPoint.y);
