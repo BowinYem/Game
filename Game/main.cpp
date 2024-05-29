@@ -11,6 +11,7 @@
 
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
+#include "PhysicsComponent.h"
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
@@ -22,7 +23,8 @@ std::unique_ptr<GameEntity> CreatePlayerEntity()
 	return std::make_unique<GameEntity>
 		(
 			std::make_unique<SpriteComponent>("star.bmp"),
-			std::make_unique<PlayerInputComponent>()
+			std::make_unique<PlayerInputComponent>(),
+			std::make_unique<PhysicsComponent>()
 		);
 }
 
@@ -32,6 +34,7 @@ std::unique_ptr<GameEntity> CreateEntity()
 	auto newEntity = std::make_unique<GameEntity>
 		(
 			std::make_unique<SpriteComponent>("star.bmp"),
+			nullptr,
 			nullptr
 		);
 	

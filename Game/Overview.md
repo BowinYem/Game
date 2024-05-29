@@ -1,5 +1,8 @@
 TODO:
 
+- go through all classes and clean up
+
+- Cleanup physics component
 
 - implement a getForwardDirection function using the trig stuff we implemented
     - For the entity class

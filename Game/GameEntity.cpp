@@ -1,16 +1,18 @@
 #include "GameEntity.h"
 #include "SpriteComponent.h"
 #include "InputComponent.h"
+#include "PhysicsComponent.h"
 
-#include <math.h>   // ERASE AFTER TRAJECTORY DEBUGGING
-#include "GameRenderer.h" // ERASE AFTER TRAJECTORY DEBUGGING
-#include "GameSystems.h" // ERASE AFTER TRAJECTORY DEBUGGING
-
-GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_) : SpriteComp(std::move(SpriteComp_)), InputComp(std::move(InputComp_))
+GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_, std::unique_ptr<PhysicsComponent> PhysicsComp_) 
+    : SpriteComp(std::move(SpriteComp_)), InputComp(std::move(InputComp_)), PhysicsComp(std::move(PhysicsComp_))
 {
     // Constructor body...
     position.x = 100.f;
     position.y = 100.f;
+
+    // Do this to center the entity postion onto the center of the sprite
+    SpriteComp->offsetX = -(SpriteComp->srcRect.w / 2);
+    SpriteComp->offsetY = -(SpriteComp->srcRect.h / 2);
 }
 
 GameEntity::~GameEntity()
@@ -23,33 +25,11 @@ void GameEntity::Update()
     if(InputComp)
         { InputComp->Update(*this); }
 
-    ///////////Temporary physics code - move this to a phyiscs component later /////////////// 
+    if(PhysicsComp)
+        { PhysicsComp->Update(*this); }
 
-    position.x += xVelocity;
-    position.y += yVelocity;
-    rotation += rotationVelocity;
-
-    constexpr double PI = 3.14159265358979323846;
-    
-
-    /////////////////////////
-
-    SpriteComp->Update(*this);
-
-    ////////////// Velocity, trajectory and direction  ////////////////
-
-    float radians = rotation * (PI / 180);
-    GameVector destPos { position.x + (100 * cos(radians)), position.y + (100 * sin(radians)) };
-    GameSystems::GetRenderer()->GameRendererDrawLine(position, destPos);
-    GameVector direction = destPos - position;
-    
-    /*
-    Solution:    
-    x2 = x1 + (L * cos(a))
-    y2 = y1 + (L * sin(a))
-    */
-   
-    //////////////////////////////////////////
+    if(SpriteComp)
+        { SpriteComp->Update(*this); } 
 }
 
 

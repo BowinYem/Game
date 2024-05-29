@@ -3,7 +3,7 @@
 #include "GameRenderer.h"
 #include <SDL_image.h>
 
-static const Uint8 CHROMA_KEY_COLOR_R = 255; // Set this back to 0 after debugging
+static const Uint8 CHROMA_KEY_COLOR_R = 0; 
 static const Uint8 CHROMA_KEY_COLOR_G = 255;
 static const Uint8 CHROMA_KEY_COLOR_B = 255;
 

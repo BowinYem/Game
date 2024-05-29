@@ -32,8 +32,8 @@ void GameRenderer::GameRendererPresent()
     SDL_RenderPresent(rendererSDLPtr);
 }
 
-bool GameRenderer::GameRendererDrawLine(const GameVector& originPoint, const GameVector& destPoint)
+bool GameRenderer::GameRendererDrawLine(const GameVector& originPoint, const GameVector& destPoint, const SDL_Color& color)
 {
-    SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0x00, 0x00, 0xFF);
+    SDL_SetRenderDrawColor(rendererSDLPtr, color.r, color.g, color.b, color.a);
     return SDL_RenderDrawLineF(rendererSDLPtr, originPoint.x, originPoint.y, destPoint.x, destPoint.y);
 }

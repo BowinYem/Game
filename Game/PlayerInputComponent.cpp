@@ -34,14 +34,17 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
-        entity.yVelocity = -5;
+        entity.xVelocity = 5;
+        entity.yVelocity = 5;
     }
     else if (keyboardState[SDL_SCANCODE_DOWN])
     {
-        entity.yVelocity = 5;
+        entity.xVelocity = -5;
+        entity.yVelocity = -5;
     }
     else
     {
+        entity.xVelocity = 0;
         entity.yVelocity = 0;
     }
 }

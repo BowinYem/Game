@@ -26,6 +26,7 @@
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
@@ -41,6 +42,7 @@
     <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>

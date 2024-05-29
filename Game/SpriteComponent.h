@@ -20,14 +20,14 @@ public:
 private:
 	// void LoadSpriteRects(); // Implement animation on next iteration...
 
-
 public:
-
+	int16_t offsetX;
+	int16_t offsetY;
+	SDL_Rect srcRect;
 
 private:
 	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...
 	std::unique_ptr<GameTexture> SpriteSheet;
-	SDL_Rect srcRect;
 	uint8_t TotalSprites;
 };
 
