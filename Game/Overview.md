@@ -2,17 +2,7 @@ TODO:
 
 - go through all classes and clean up
 
-- Cleanup physics component (and take notes on what we learned)
-
-- implement a getForwardDirection function using the trig stuff we implemented
-    - For the entity class
-
-- Create a vector class so that we can take advatage of operator functions (therefore reducing the number of codel lines)
-    - Replace all uses of SDL_Point and SDL_FPoint with this class
-
-- Reimplement the x,y of an entity to actaully be the center - or maybe even give an option to specify a center
-
-- For anything related to coordinates, convert from integral to floating type?
+- For anything related to coordinates, convert from integral to floating (or rather double?) type?
 
 - For the rotation of an entity - implement a way for it to wrap around once it's greater than 360 
         

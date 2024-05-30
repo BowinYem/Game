@@ -16,6 +16,8 @@ public:
 
     void Update();
 
+    GameVector GetForwardDirection();
+
 public:
     GameVector position;
     double rotation = 0.f;

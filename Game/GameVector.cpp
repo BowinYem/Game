@@ -1,7 +1,6 @@
 #include "GameVector.h"
+#include "GameMath.h"
 #include <math.h>
-
-constexpr double PI = 3.14159265358979323846;
 
 GameVector::GameVector()
 {
@@ -22,7 +21,7 @@ void GameVector::Normalize()
 
 void GameVector::Rotate(float angleDegree)
 {
-    float angleRadians = angleDegree * (PI / 180);
+    float angleRadians = GameMath::DegreesToRadians(angleDegree);
     float cosVal = cos(angleRadians);
     float sinVal = sin(angleRadians);
     x = (cosVal * x) - (sinVal * y);

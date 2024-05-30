@@ -8,7 +8,6 @@ class GameVector
 
 public:
     GameVector();
-    // GameVector(const GameVector& v);
     GameVector(double x_, double y_);
     void Normalize();
     void Rotate(float angleDegree);

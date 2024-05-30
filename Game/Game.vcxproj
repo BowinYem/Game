@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameRenderer.cpp" />
     <ClCompile Include="GameSystems.cpp" />
     <ClCompile Include="GameTexture.cpp" />
@@ -36,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameRenderer.h" />
     <ClInclude Include="GameSystems.h" />
     <ClInclude Include="GameTexture.h" />
