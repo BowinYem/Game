@@ -7,12 +7,12 @@
 
 
 
-GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_, std::unique_ptr<PhysicsComponent> PhysicsComp_, GameVector SpawnLocation) 
-    : SpriteComp{std::move(SpriteComp_)}, InputComp{std::move(InputComp_)}, PhysicsComp{std::move(PhysicsComp_)}, position{SpawnLocation}
+GameEntity::GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
+    : spriteComp{std::move(spriteComp_)}, inputComp{std::move(inputComp_)}, physicsComp{std::move(physicsComp_)}, position{spawnLocation}
 {
     // Do this to center the entity postion onto the center of the sprite
-    SpriteComp->offsetX = -(SpriteComp->srcRect.w / 2);
-    SpriteComp->offsetY = -(SpriteComp->srcRect.h / 2);
+    spriteComp->offsetX = -(spriteComp->srcRect.w / 2);
+    spriteComp->offsetY = -(spriteComp->srcRect.h / 2);
 }
 
 GameEntity::~GameEntity()
@@ -22,14 +22,14 @@ GameEntity::~GameEntity()
 
 void GameEntity::Update()
 {
-    if(InputComp)
-        { InputComp->Update(*this); }
+    if(inputComp)
+        { inputComp->Update(*this); }
 
-    if(PhysicsComp)
-        { PhysicsComp->Update(*this); }
+    if(physicsComp)
+        { physicsComp->Update(*this); }
 
-    if(SpriteComp)
-        { SpriteComp->Update(*this); } 
+    if(spriteComp)
+        { spriteComp->Update(*this); } 
     
 }
 
