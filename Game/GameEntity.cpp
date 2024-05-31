@@ -6,13 +6,10 @@
 #include <iostream>
 
 
-GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_, std::unique_ptr<PhysicsComponent> PhysicsComp_) 
-    : SpriteComp{std::move(SpriteComp_)}, InputComp{std::move(InputComp_)}, PhysicsComp{std::move(PhysicsComp_)}
-{
-    // Set a starting spawn position
-    position.x = 100.f;
-    position.y = 100.f;
 
+GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_, std::unique_ptr<PhysicsComponent> PhysicsComp_, GameVector SpawnLocation) 
+    : SpriteComp{std::move(SpriteComp_)}, InputComp{std::move(InputComp_)}, PhysicsComp{std::move(PhysicsComp_)}, position{SpawnLocation}
+{
     // Do this to center the entity postion onto the center of the sprite
     SpriteComp->offsetX = -(SpriteComp->srcRect.w / 2);
     SpriteComp->offsetY = -(SpriteComp->srcRect.h / 2);
