@@ -19,9 +19,9 @@ PhysicsComponent::~PhysicsComponent()
 void PhysicsComponent::Update(GameEntity& entity)
 {
     GameVector forwardDirection = entity.GetForwardDirection();
-    entity.Position.x += entity.xVelocity * forwardDirection.x;
-    entity.Position.y += entity.yVelocity * forwardDirection.y;
+    entity.position.x += entity.xVelocity * forwardDirection.x;
+    entity.position.y += entity.yVelocity * forwardDirection.y;
 
-    entity.Rotation += entity.RotationVelocity;
-    entity.Rotation %= 360;
+    entity.rotation += entity.rotationVelocity;
+    entity.rotation %= 360;
 }

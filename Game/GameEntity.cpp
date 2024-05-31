@@ -8,7 +8,7 @@
 
 
 GameEntity::GameEntity(std::unique_ptr<SpriteComponent> SpriteComp_, std::unique_ptr<InputComponent> InputComp_, std::unique_ptr<PhysicsComponent> PhysicsComp_, GameVector SpawnLocation) 
-    : SpriteComp{std::move(SpriteComp_)}, InputComp{std::move(InputComp_)}, PhysicsComp{std::move(PhysicsComp_)}, Position{SpawnLocation}
+    : SpriteComp{std::move(SpriteComp_)}, InputComp{std::move(InputComp_)}, PhysicsComp{std::move(PhysicsComp_)}, position{SpawnLocation}
 {
     // Do this to center the entity postion onto the center of the sprite
     SpriteComp->offsetX = -(SpriteComp->srcRect.w / 2);
@@ -56,9 +56,9 @@ GameVector GameEntity::GetForwardDirection()
         Source: https://stackoverflow.com/questions/1571294/line-equation-with-angle
     */
 
-    float rotationRadians = GameMath::DegreesToRadians(Rotation);
-    GameVector destPos { Position.x + (cos(rotationRadians)), Position.y + (sin(rotationRadians)) }; 
-    return destPos - Position;
+    float rotationRadians = GameMath::DegreesToRadians(rotation);
+    GameVector destPos { position.x + (cos(rotationRadians)), position.y + (sin(rotationRadians)) }; 
+    return destPos - position;
 }
 
 

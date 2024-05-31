@@ -3,9 +3,7 @@ TODO:
 - go through all classes and clean up
     - For anything related to coordinates, convert from integral to floating (or rather double?) type?
     - Make capitalizations consistent
-        - class members and paramters lowcase, 
-        - everything else uppercase
-        
+        - members lowcase, everything else capital
 
         
 - Replace raw pointers

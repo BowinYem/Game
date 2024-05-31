@@ -22,12 +22,12 @@ public:
     GameVector GetForwardDirection();
 
 public:
-    GameVector Position;
-    int16_t Rotation = 0;
+    GameVector position;
+    int16_t rotation = 0;
 
     int8_t xVelocity = 0;
     int8_t yVelocity = 0;
-    double RotationVelocity = 0; 
+    double rotationVelocity = 0; 
 
 private:
     std::unique_ptr<SpriteComponent> SpriteComp; 
