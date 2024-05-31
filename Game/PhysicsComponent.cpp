@@ -4,7 +4,7 @@
 #include "GameSystems.h"
 #include "GameRenderer.h"
 #include <math.h>
-
+#include <iostream>
 
 PhysicsComponent::PhysicsComponent()
 {
@@ -19,8 +19,9 @@ PhysicsComponent::~PhysicsComponent()
 void PhysicsComponent::Update(GameEntity& entity)
 {
     GameVector forwardDirection = entity.GetForwardDirection();
-
     entity.position.x += entity.xVelocity * forwardDirection.x;
     entity.position.y += entity.yVelocity * forwardDirection.y;
+
     entity.rotation += entity.rotationVelocity;
+    entity.rotation %= 360;
 }

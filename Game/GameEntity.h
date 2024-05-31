@@ -20,11 +20,14 @@ public:
 
 public:
     GameVector position;
-    double rotation = 0.f;
+    //double rotation = 0.f;
+    int16_t rotation = 0;
 
     int8_t xVelocity = 0;
     int8_t yVelocity = 0;
+    //double rotationVelocity = 0; 
     double rotationVelocity = 0; 
+
     
 private:
     std::unique_ptr<SpriteComponent> SpriteComp; 

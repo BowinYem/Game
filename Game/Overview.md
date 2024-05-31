@@ -1,10 +1,9 @@
 TODO:
 
 - go through all classes and clean up
+    - For anything related to coordinates, convert from integral to floating (or rather double?) type?
+    - Make capitalizations consistent
 
-- For anything related to coordinates, convert from integral to floating (or rather double?) type?
-
-- For the rotation of an entity - implement a way for it to wrap around once it's greater than 360 
         
 - Replace raw pointers
     - Create some wrapper class to encapsulate the keyboard state?
@@ -13,10 +12,7 @@ TODO:
     -	SDL_SetWindowFullscreen(GameSystems::GetGameSystems().GetWindow(), SDL_WINDOW_FULLSCREEN);
 	    SDL_RenderSetLogicalSize(GameSystems::GetGameSystems().GetRenderer(), 1920, 1080);
 
-- Make capitalizations consistent
-
 - Why does specifying ~SpriteComponent() = default cause compilation errors?
-
 
 Input Overview:
 =============================
