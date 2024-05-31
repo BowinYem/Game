@@ -20,11 +20,11 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Rotation
     if (keyboardState[SDL_SCANCODE_LEFT])
     {
-        entity.rotationVelocity = -DefaultRotationRate;
+        entity.rotationVelocity = -rotationRate;
     }
     else if (keyboardState[SDL_SCANCODE_RIGHT])
     {
-       entity.rotationVelocity = DefaultRotationRate;
+       entity.rotationVelocity = rotationRate;
     }
     else
     {
@@ -34,19 +34,21 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
-        entity.xVelocity = DefaultMovementRate;
-        entity.yVelocity = DefaultMovementRate;
+        entity.xVelocity = movementRate;
+        entity.yVelocity = movementRate;
     }
     else if (keyboardState[SDL_SCANCODE_DOWN])
     {
-        entity.xVelocity = -DefaultMovementRate;
-        entity.yVelocity = -DefaultMovementRate;
+        entity.xVelocity = -movementRate;
+        entity.yVelocity = -movementRate;
     }
     else
     {
         entity.xVelocity = 0;
         entity.yVelocity = 0;
     }
+
+
 }
 
 

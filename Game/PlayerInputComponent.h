@@ -17,6 +17,6 @@ public:
 
 private:
 	int8_t movementRate = DefaultMovementRate;
-	int8_t rotatationRate = DefaultRotationRate;
+	int8_t rotationRate = DefaultRotationRate;
 };
 

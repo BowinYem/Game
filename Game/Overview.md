@@ -1,7 +1,6 @@
 TODO:
 
 - go through all classes and clean up
-    - For anything related to coordinates, convert from integral to floating (or rather double?) type?
     - Make capitalizations consistent
         - Lowercase
             - class members 
