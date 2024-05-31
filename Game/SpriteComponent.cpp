@@ -18,7 +18,7 @@ SpriteComponent::~SpriteComponent()
 // Every tick, copy the sprite onto the buffer
 void SpriteComponent::Update(GameEntity& Entity)
 {
-    SDL_Rect destRect = { Entity.position.x + offsetX, Entity.position.y + offsetY, srcRect.w, srcRect.h };
-    GameSystems::GetRenderer()->GameRendererCopy(*SpriteSheet, srcRect, destRect, Entity.rotation);
+    SDL_Rect destRect = { Entity.Position.x + offsetX, Entity.Position.y + offsetY, srcRect.w, srcRect.h };
+    GameSystems::GetRenderer()->GameRendererCopy(*SpriteSheet, srcRect, destRect, Entity.Rotation);
 }
 

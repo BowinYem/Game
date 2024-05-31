@@ -20,15 +20,15 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Rotation
     if (keyboardState[SDL_SCANCODE_LEFT])
     {
-        entity.rotationVelocity = -1;
+        entity.RotationVelocity = -1;
     }
     else if (keyboardState[SDL_SCANCODE_RIGHT])
     {
-       entity.rotationVelocity = 1;
+       entity.RotationVelocity = 1;
     }
     else
     {
-        entity.rotationVelocity = 0;
+        entity.RotationVelocity = 0;
     }
 
     // Forward Movement
