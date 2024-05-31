@@ -11,11 +11,11 @@ class GameTexture;
 class SpriteComponent
 {
 public:
-	SpriteComponent(const std::string& FilePath);
+	SpriteComponent(const std::string& filePath);
 	
 	~SpriteComponent();
 
-	void Update(GameEntity& Entity);
+	void Update(GameEntity& entity);
 	
 private:
 	// void LoadSpriteRects(); // Implement animation on next iteration...
@@ -27,7 +27,6 @@ public:
 
 private:
 	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...
-	std::unique_ptr<GameTexture> SpriteSheet;
-	uint8_t TotalSprites;
+	std::unique_ptr<GameTexture> spriteSheet;
 };
 

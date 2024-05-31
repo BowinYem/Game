@@ -2,7 +2,7 @@
 #include <SDL.h>
 #include <memory>
 
-// Forward declrations
+// Forward declarations
 class GameRenderer;
 class GameWindow;
 

@@ -15,16 +15,16 @@ PlayerInputComponent::~PlayerInputComponent()
 void PlayerInputComponent::Update(GameEntity& entity)
 {
     // Do basic input handling here for now
-    auto keyboardState = GameSystems::keyboardState;
+    const uint8_t* keyboardState = GameSystems::keyboardState;
 
     // Rotation
     if (keyboardState[SDL_SCANCODE_LEFT])
     {
-        entity.rotationVelocity = -1;
+        entity.rotationVelocity = -DefaultRotationRate;
     }
     else if (keyboardState[SDL_SCANCODE_RIGHT])
     {
-       entity.rotationVelocity = 1;
+       entity.rotationVelocity = DefaultRotationRate;
     }
     else
     {
@@ -34,13 +34,13 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
-        entity.xVelocity = 5;
-        entity.yVelocity = 5;
+        entity.xVelocity = DefaultMovementRate;
+        entity.yVelocity = DefaultMovementRate;
     }
     else if (keyboardState[SDL_SCANCODE_DOWN])
     {
-        entity.xVelocity = -5;
-        entity.yVelocity = -5;
+        entity.xVelocity = -DefaultMovementRate;
+        entity.yVelocity = -DefaultMovementRate;
     }
     else
     {
@@ -48,6 +48,8 @@ void PlayerInputComponent::Update(GameEntity& entity)
         entity.yVelocity = 0;
     }
 }
+
+
 
 
 

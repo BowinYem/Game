@@ -3,10 +3,15 @@ TODO:
 - go through all classes and clean up
     - For anything related to coordinates, convert from integral to floating (or rather double?) type?
     - Make capitalizations consistent
-        - class members and function parameters lowcase, 
-        - class types name and class functions uppercase
+        - Lowercase
+            - class members 
+            - function parameters  
+            - local variables
+        - Uppercase:
+            - constant values 
+            - class types name 
+            - class functions 
 
-        
 - Replace raw pointers
     - Create some wrapper class to encapsulate the keyboard state?
     

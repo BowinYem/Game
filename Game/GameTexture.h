@@ -10,7 +10,7 @@ class GameTexture
 friend class GameRenderer;
 
 public:
-    GameTexture(const std::string& FilePath);
+    GameTexture(const std::string& filePath);
 
     ~GameTexture();
 
