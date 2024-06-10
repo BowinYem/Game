@@ -62,6 +62,11 @@ GameVector GameEntity::GetForwardDirection()
 }
 
 
+void GameEntity::SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp_)
+{
+    spriteComp.reset();
+    spriteComp = std::move(spriteComp_);   
+}
 
 
  

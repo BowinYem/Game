@@ -4,7 +4,7 @@
 
 class Projectile
 {
-    
+
 private:
-  uint8_t Veloctiy = 1  
+  uint8_t Veloctiy = 1;  
 };

@@ -1,5 +1,7 @@
 TODO:
 
+- Delete projectile class?
+
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times
 

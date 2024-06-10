@@ -13,6 +13,8 @@
 #include "PlayerInputComponent.h"
 #include "PhysicsComponent.h"
 
+#include "ProjectilePool.h"
+
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
 static const char TOTAL_WALK_CYCLE_FRAMES = 3;
@@ -67,6 +69,8 @@ int main(int argc, char* args[])
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
+
+	ProjectilePool TestPool;
 
 	return 0;
 }

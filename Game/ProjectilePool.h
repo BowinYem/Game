@@ -1,11 +1,7 @@
 #pragma once
 #include <stdint.h>
-#include <array>
-
-constexpr uint8_t ProjectilePoolSize = 50;
-
-// Forward declarations
-class Projectile;
+#include <vector>
+#include "GameEntity.h"
 
 class ProjectilePool
 {
@@ -13,5 +9,5 @@ public:
     ProjectilePool();
 
 private:
-    std::array<Projectile, ProjectilePoolSize> projectles;
+    std::vector<GameEntity> projectiles;
 };

@@ -21,6 +21,13 @@ public:
 
     GameVector GetForwardDirection();
 
+    void SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp__);
+
+    void SetInputComponent(std::unique_ptr<InputComponent> inputComp__);
+
+    void SetPhysicsComponen(std::unique_ptr<PhysicsComponent> PhysicsComponent);
+
+
 public:
     GameVector position;
     int16_t rotation = 0;
