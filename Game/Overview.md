@@ -1,8 +1,9 @@
 TODO:
 
-- Create a projectile class -
-    - Will probably be deprecated later on
-    - Default initialized 
+- TEST projecile pool throroughly
+    - Is there anything wrong memorywise with the components?
+
+- ProjectilePool encasulates some of projectile's behavior?
 
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times
