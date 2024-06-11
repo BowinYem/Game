@@ -37,7 +37,7 @@ std::unique_ptr<GameEntity> CreateEntity()
 		(
 			std::make_unique<SpriteComponent>("star.bmp"),
 			nullptr,
-			nullptr
+			std::make_unique<PhysicsComponent>()
 		);
 	
 	// This kind of entity just rotates in place at this specific spot
@@ -58,6 +58,8 @@ int main(int argc, char* args[])
 	Entities.push_back(CreatePlayerEntity());
 	Entities.push_back(CreateEntity());
 	
+	ProjectilePool testPool;
+
 	while (!GameSystems::quit)
 	{
 		GameSystems::ReadInput();
@@ -66,11 +68,10 @@ int main(int argc, char* args[])
 
 		Entities[0]->Update();
 		Entities[1]->Update();
+		testPool.Animate();
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
-
-	ProjectilePool TestPool;
 
 	return 0;
 }

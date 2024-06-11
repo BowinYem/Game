@@ -1,6 +1,8 @@
 TODO:
 
-- Delete projectile class?
+- Create a projectile class -
+    - Will probably be deprecated later on
+    - Default initialized 
 
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times

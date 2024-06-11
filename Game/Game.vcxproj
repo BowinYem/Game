@@ -30,7 +30,6 @@
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="ProjectilePool.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
@@ -48,7 +47,6 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PlayerInputComponent.h" />
-    <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectilePool.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>

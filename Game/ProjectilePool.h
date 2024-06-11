@@ -1,13 +1,20 @@
 #pragma once
 #include <stdint.h>
-#include <vector>
+#include <array>
 #include "GameEntity.h"
+#include "SpriteComponent.h"
+
+constexpr uint8_t ProjectilePoolSize = 50;
+
+class SpriteComponent;
 
 class ProjectilePool
 {
 public:
     ProjectilePool();
+    void Animate();
 
 private:
-    std::vector<GameEntity> projectiles;
+    SpriteComponent projectileSprite;
+    std::array<GameEntity, ProjectilePoolSize> projectiles;
 };

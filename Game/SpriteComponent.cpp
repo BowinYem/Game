@@ -22,3 +22,11 @@ void SpriteComponent::Update(GameEntity& entity)
     GameSystems::GetRenderer()->GameRendererCopy(*spriteSheet, srcRect, destRect, entity.rotation);
 }
 
+SpriteComponent& SpriteComponent::operator= (SpriteComponent& otherComp)
+{
+    this->offsetX = otherComp.offsetX;
+    this->offsetY = otherComp.offsetY;
+    this->srcRect = otherComp.srcRect;
+    this->spriteSheet = std::move(otherComp.spriteSheet);
+    return *this;
+}

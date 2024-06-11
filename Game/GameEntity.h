@@ -13,6 +13,8 @@ class GameEntity
 {
 public:
 
+    GameEntity();
+
     GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
     ~GameEntity();
@@ -21,11 +23,11 @@ public:
 
     GameVector GetForwardDirection();
 
-    void SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp__);
+    void SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp_);
 
-    void SetInputComponent(std::unique_ptr<InputComponent> inputComp__);
+    void SetInputComponent(std::unique_ptr<InputComponent> inputComp_);
 
-    void SetPhysicsComponen(std::unique_ptr<PhysicsComponent> PhysicsComponent);
+    void SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsComp_);
 
 
 public:
@@ -37,7 +39,7 @@ public:
     double rotationVelocity = 0; 
 
 private:
-    std::unique_ptr<SpriteComponent> spriteComp; 
-    std::unique_ptr<InputComponent> inputComp;
-    std::unique_ptr<PhysicsComponent> physicsComp;
+    std::unique_ptr<SpriteComponent> spriteComp {nullptr}; 
+    std::unique_ptr<InputComponent> inputComp {nullptr};
+    std::unique_ptr<PhysicsComponent> physicsComp {nullptr};
 };

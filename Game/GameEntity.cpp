@@ -5,7 +5,10 @@
 #include "GameMath.h"
 #include <iostream>
 
+GameEntity::GameEntity()
+{
 
+}
 
 GameEntity::GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
     : spriteComp{std::move(spriteComp_)}, inputComp{std::move(inputComp_)}, physicsComp{std::move(physicsComp_)}, position{spawnLocation}
@@ -68,5 +71,15 @@ void GameEntity::SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp_
     spriteComp = std::move(spriteComp_);   
 }
 
+void GameEntity::SetInputComponent(std::unique_ptr<InputComponent> inputComp_)
+{
+    inputComp.reset();
+    inputComp = std::move(inputComp_);
+}
 
+void GameEntity::SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsComp_)
+{
+    physicsComp.reset();
+    physicsComp = std::move(physicsComp_);
+}
  

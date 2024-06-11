@@ -11,11 +11,14 @@ class GameTexture;
 class SpriteComponent
 {
 public:
+
 	SpriteComponent(const std::string& filePath);
 	
 	~SpriteComponent();
 
 	void Update(GameEntity& entity);
+
+	SpriteComponent& operator= (SpriteComponent& otherComp); 
 	
 private:
 	// void LoadSpriteRects(); // Implement animation on next iteration...
