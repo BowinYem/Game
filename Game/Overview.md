@@ -1,5 +1,9 @@
 TODO:
 
+
+
+- Make ProjectilePool::Destroy
+
 - TEST projecile pool throroughly
     - Is there anything wrong memorywise with the components?
     - Go through what we programmed in the last few commits

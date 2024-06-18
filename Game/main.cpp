@@ -59,6 +59,10 @@ int main(int argc, char* args[])
 	Entities.push_back(CreateEntity());
 	
 	ProjectilePool testPool;
+	testPool.Create({200, 200}, 0);
+	testPool.Create({200, 300}, 0);
+	testPool.Create({200, 400}, 0);
+
 
 	while (!GameSystems::quit)
 	{
@@ -68,7 +72,7 @@ int main(int argc, char* args[])
 
 		Entities[0]->Update();
 		Entities[1]->Update();
-		testPool.Animate();
+		testPool.Update();
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
