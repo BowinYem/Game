@@ -1,10 +1,12 @@
-TODO:
+TODO / IDEAS:
+
+- Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
 
 - Create a draw rect function in GameRenderer (for trouble shooting)
 
 - Implement basic collison - give each entity a rectangle - a wrapper class GameRect that wraps SDL_Rect? (Still deciding on this)
     - Gonna go with using a SDL_Rect for now - can implement this in the future if this is needed.
-    - Putting this the physics component
+    - Putting this in the physics component - have it check to see if it is colliding with another entity 
 
 - ProjectilePool encasulates some of projectile's behavior?
 
@@ -59,13 +61,12 @@ void update()
 
 * Have a seperate function that does this:
     
+Collision System Overview:
+=============================
+Idea 1 - check to see if the entity's collisionBox is intersecting with every other existing entity's collison Box
+    - Not optimal?
+    - Need to create a world singleton that give's us access to all of the entitities
+        - Or rather create a pool for meteors
+        Logic
 
-
-Animation?
-====================================
-//currentSprite = WallCycleFrames[currentFrame / (TOTAL_WALK_CYCLE_FRAMES * 3)];
-++currentFrame;
-if((currentFrame / (TOTAL_WALK_CYCLE_FRAMES * 3)) >= TOTAL_WALK_CYCLE_FRAMES)
-{
-	currentFrame = 0;
-}
+Idea 2 - Do some math

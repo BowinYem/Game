@@ -28,3 +28,4 @@ void PhysicsComponent::Update(GameEntity& entity)
     entity.rotation += entity.rotationVelocity;
     entity.rotation %= 360; // Wrap around so the rotation value doesn't go beyond 360 degrees
 }
+
