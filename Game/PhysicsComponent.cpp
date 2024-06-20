@@ -8,6 +8,12 @@ PhysicsComponent::PhysicsComponent()
     //...Constructor body
 }
 
+PhysicsComponent::PhysicsComponent(SDL_Rect& collisionBox_) : collisionBox(collisionBox_)
+{
+    //...Constructor body
+}
+
+
 PhysicsComponent::~PhysicsComponent()
 {
     //...Destructor body

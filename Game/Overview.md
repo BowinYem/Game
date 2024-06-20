@@ -1,12 +1,10 @@
 TODO:
 
+- Create a draw rect function in GameRenderer (for trouble shooting)
 
-
-- Make ProjectilePool::Destroy
-
-- TEST projecile pool throroughly
-    - Is there anything wrong memorywise with the components?
-    - Go through what we programmed in the last few commits
+- Implement basic collison - give each entity a rectangle - a wrapper class GameRect that wraps SDL_Rect? (Still deciding on this)
+    - Gonna go with using a SDL_Rect for now - can implement this in the future if this is needed.
+    - Putting this the physics component
 
 - ProjectilePool encasulates some of projectile's behavior?
 

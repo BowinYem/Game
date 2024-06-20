@@ -2,8 +2,6 @@
 #include "SpriteComponent.h"
 #include "PhysicsComponent.h"
 
-//static SpriteComponent projectileSpriteComp{"star.bmp"};
-
 ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
 {
     for(GameEntity& currProjectile : projectiles)
@@ -29,22 +27,23 @@ void ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
     }
 }
 
+void ProjectilePool::Destroy(uint8_t index)
+{
+    projectiles[index].position = {0, 0};
+    projectiles[index].rotation = 0; 
+    projectiles[index].xVelocity = 0;
+    projectiles[index].yVelocity = 0;
+    projectiles[index].rotationVelocity = 0;
+    projectileInUse[index] = false;
+}
+
 void ProjectilePool::Update()
 {
     for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
     {
-        //"Destroy" invalid projeciles - subject to change. Make this it's own seperate function
         if(projectiles[i].position.x > 500)
-        {
-            projectiles[i].position = {0, 0};
-            projectiles[i].rotation = 0; 
-            projectiles[i].xVelocity = 0;
-            projectiles[i].yVelocity = 0;
-            projectiles[i].rotationVelocity = 0;
-            projectileInUse[i] = false;
-        }       
-
-        if(projectileInUse[i]) 
+            { Destroy(i); }        
+        else if(projectileInUse[i]) 
             { projectiles[i].Update(); }
     }
 }

@@ -7,13 +7,12 @@
 
 constexpr uint8_t ProjectilePoolSize = 50;
 
-class SpriteComponent;
-
 class ProjectilePool
 {
 public:
     ProjectilePool();
     void Create(const GameVector& position_, int16_t rotation_);
+    void Destroy(uint8_t index);
     void Update();
 
 private:
