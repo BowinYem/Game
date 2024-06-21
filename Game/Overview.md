@@ -65,8 +65,36 @@ Collision System Overview:
 =============================
 Idea 1 - check to see if the entity's collisionBox is intersecting with every other existing entity's collison Box
     - Not optimal?
-    - Need to create a world singleton that give's us access to all of the entitities
-        - Or rather create a pool for meteors
-        Logic
+    - For meteors, you'll only need to see if it's colliding with the player. 
+        - Have a pointer to the player globally available
+        - Vice versa for the player - only compare it to any active meteor. (Have a meteor pool?)
+    - For player projeciles - similar jist as above
+    
+- Additional Idea - we can create a physics component subtype (if neededed)
 
-Idea 2 - Do some math
+
+SDL_Rect GameEntity::GetCollisionBox()
+{
+    if(!physicsComp)
+        return physicsComp.CollisionBox;
+    else return a zero'd out rect?
+}
+
+bool PhysicsComponent::IsColliding(const entity*) // I.E: Is the owner of this component colliding with some other entity?
+{
+    return SDL_IntersectRect(CollisionBox, Entity.GetCollisionBox());
+}
+
+void ProjectilePool::Update()
+{
+    for each Projectile...
+    //...
+        for each meteor
+            check to see if the projectile has hit a meteor
+            O(n^2) - VERY BAD...but our sample size is small...
+}
+
+Look into (results came from googling "collision detection check all entities")
+https://gamedev.stackexchange.com/questions/46745/what-is-the-best-way-to-check-lists-of-objects-that-collide
+https://gamedev.stackexchange.com/questions/201773/efficient-way-to-check-collisions-for-many-objects
+https://stackoverflow.com/questions/10392335/how-to-check-for-2d-collision-without-checking-every-object

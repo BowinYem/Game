@@ -11,6 +11,6 @@ class PhysicsComponent
     ~PhysicsComponent();
     void Update(GameEntity& entity);
 
-private:
+public:
     SDL_Rect collisionBox;
 };
