@@ -8,9 +8,13 @@ PhysicsComponent::PhysicsComponent()
     //...Constructor body
 }
 
-PhysicsComponent::PhysicsComponent(SDL_Rect& collisionBox_) : collisionBox(collisionBox_)
+PhysicsComponent::PhysicsComponent(SDL_Rect& collisionBox_) 
 {
-    //...Constructor body
+   //...Constructor body
+   collisionBox.h = collisionBox_.h;
+   collisionBox.w = collisionBox_.w;
+   collisionBox.x = collisionBox_.x;
+   collisionBox.y = collisionBox_.y;
 }
 
 

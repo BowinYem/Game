@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
 #include <memory>
+#include "ProjectilePool.h"
+#include "MeteorPool.h"
 
 // Forward declarations
 class GameRenderer;
@@ -18,6 +20,8 @@ public:
 public:
 	static bool quit;
 	static const uint8_t* keyboardState;
+	static std::unique_ptr<ProjectilePool> projectilePool;
+	static std::unique_ptr<MeteorPool> meteorPool;
 
 private:
 	static std::shared_ptr<GameRenderer> renderer;

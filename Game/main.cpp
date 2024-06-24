@@ -58,12 +58,14 @@ int main(int argc, char* args[])
 	Entities.push_back(CreatePlayerEntity());
 	Entities.push_back(CreateEntity());
 	
-	ProjectilePool testPool;
-	testPool.Create({200, 200}, 0);
-	testPool.Create({200, 300}, 0);
-	testPool.Create({200, 400}, 0);
+	// ProjectilePool testPool;
+	GameSystems::projectilePool->Create({200, 200}, 0);
+	GameSystems::projectilePool->Create({200, 300}, 0);
+	GameSystems::projectilePool->Create({200, 400}, 0);
 
-
+	GameSystems::meteorPool->Create({200, 250}, 0);
+	GameSystems::meteorPool->Create({200, 350}, 0);
+	
 	while (!GameSystems::quit)
 	{
 		GameSystems::ReadInput();
@@ -72,7 +74,8 @@ int main(int argc, char* args[])
 
 		Entities[0]->Update();
 		Entities[1]->Update();
-		testPool.Update();
+		GameSystems::projectilePool->Update();
+		GameSystems::meteorPool->Update();
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}

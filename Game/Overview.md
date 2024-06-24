@@ -1,5 +1,7 @@
 TODO / IDEAS:
 
+- Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
+
 - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
 
 - Create a draw rect function in GameRenderer (for trouble shooting)
@@ -63,6 +65,17 @@ void update()
     
 Collision System Overview:
 =============================
+
+* Going with brute force O(n^2) approach for now since our game is simple. This will later need to reimplemented later down the line. 
+        void ProjectilePool::Update()
+        {
+            for each Projectile...
+            //...
+                for each meteor
+                    check to see if the projectile has hit a meteor
+                    O(n^2) - VERY BAD...but our sample size is small...
+        }
+
 Idea 1 - check to see if the entity's collisionBox is intersecting with every other existing entity's collison Box
     - Not optimal?
     - For meteors, you'll only need to see if it's colliding with the player. 
@@ -85,14 +98,7 @@ bool PhysicsComponent::IsColliding(const entity*) // I.E: Is the owner of this c
     return SDL_IntersectRect(CollisionBox, Entity.GetCollisionBox());
 }
 
-void ProjectilePool::Update()
-{
-    for each Projectile...
-    //...
-        for each meteor
-            check to see if the projectile has hit a meteor
-            O(n^2) - VERY BAD...but our sample size is small...
-}
+
 
 Look into (results came from googling "collision detection check all entities")
 https://gamedev.stackexchange.com/questions/46745/what-is-the-best-way-to-check-lists-of-objects-that-collide

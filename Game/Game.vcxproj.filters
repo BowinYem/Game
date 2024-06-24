@@ -57,6 +57,9 @@
     <ClCompile Include="GameRect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MeteorPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Overview.md" />
@@ -99,6 +102,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameRect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeteorPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

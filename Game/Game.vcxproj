@@ -28,6 +28,7 @@
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="InputComponent.cpp" />
+    <ClCompile Include="MeteorPool.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
@@ -47,6 +48,7 @@
     <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="MeteorPool.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="ProjectilePool.h" />
