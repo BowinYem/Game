@@ -83,3 +83,8 @@ void GameEntity::SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsCo
     physicsComp = std::move(physicsComp_);
 }
  
+const SDL_Rect& GameEntity::GetCollisionBox()
+{
+    if(physicsComp) 
+        { return physicsComp->collisionBox; }
+}

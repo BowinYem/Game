@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "GameVector.h"
+#include "SDL.h"
 
 constexpr double DefaultXPos = 100.f;
 constexpr double DefaultYPos = 100.f;
@@ -28,6 +29,8 @@ public:
     void SetInputComponent(std::unique_ptr<InputComponent> inputComp_);
 
     void SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsComp_);
+
+    const SDL_Rect& GetCollisionBox();
 
 
 public:

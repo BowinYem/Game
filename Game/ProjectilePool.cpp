@@ -47,3 +47,9 @@ void ProjectilePool::Update()
             { projectiles[i].Update(); }
     }
 }
+
+const GameEntity& ProjectilePool::GetProjectile(uint8_t index) 
+{
+    if(projectileInUse[index])
+        { return projectiles[index]; }
+}

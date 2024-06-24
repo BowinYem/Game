@@ -93,12 +93,6 @@ SDL_Rect GameEntity::GetCollisionBox()
     else return a zero'd out rect?
 }
 
-bool PhysicsComponent::IsColliding(const entity*) // I.E: Is the owner of this component colliding with some other entity?
-{
-    return SDL_IntersectRect(CollisionBox, Entity.GetCollisionBox());
-}
-
-
 
 Look into (results came from googling "collision detection check all entities")
 https://gamedev.stackexchange.com/questions/46745/what-is-the-best-way-to-check-lists-of-objects-that-collide

@@ -1,6 +1,8 @@
 #include "MeteorPool.h"
 #include "SpriteComponent.h"
 #include "PhysicsComponent.h"
+#include "GameSystems.h"
+#include "ProjectilePool.h"
 
 MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
 {
@@ -41,9 +43,20 @@ void MeteorPool::Update()
 {
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {
-        if(meteors[i].position.x > 500)
-            { Destroy(i); }        
-        else if(meteorInUse[i]) 
+        
+        for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
+        {
+            const auto& projectile = GameSystems::projectilePool->GetProjectile(i);
+            bool collided = false; /*SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox()); */
+            
+            if(collided)
+            {
+                meteorInUse[i] = false;
+                Destroy(i);
+            }
+        }
+        
+        if(meteorInUse[i]) 
             { meteors[i].Update(); }
     }
 }
