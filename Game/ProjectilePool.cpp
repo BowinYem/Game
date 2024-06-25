@@ -48,8 +48,9 @@ void ProjectilePool::Update()
     }
 }
 
-const GameEntity& ProjectilePool::GetProjectile(uint8_t index) 
+GameEntity& ProjectilePool::GetProjectile(uint8_t index) 
 {
-    if(projectileInUse[index])
+    
+    //if(projectileInUse[index]) // This was causing a memory access issue - a function returning a reference can still return without an explcit return statement?
         { return projectiles[index]; }
 }

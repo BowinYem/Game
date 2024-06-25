@@ -14,7 +14,7 @@ public:
     void Create(const GameVector& position_, int16_t rotation_);
     void Destroy(uint8_t index);
     void Update();
-    const GameEntity& GetProjectile(uint8_t index);
+    GameEntity& GetProjectile(uint8_t index);
 
 private:
     SpriteComponent projectileSprite;

@@ -46,9 +46,10 @@ void MeteorPool::Update()
         
         for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
         {
-            const auto& projectile = GameSystems::projectilePool->GetProjectile(i);
-            bool collided = false; /*SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox()); */
+            auto& projectile = GameSystems::projectilePool->GetProjectile(j);
+            bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
             
+            // Double check - is this happening for every not in use entity?
             if(collided)
             {
                 meteorInUse[i] = false;
