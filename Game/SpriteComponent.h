@@ -27,6 +27,7 @@ public:
 	int16_t offsetX;
 	int16_t offsetY;
 	SDL_Rect srcRect;
+	SDL_Rect destRect;
 
 private:
 	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...

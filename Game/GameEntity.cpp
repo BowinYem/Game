@@ -85,6 +85,5 @@ void GameEntity::SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsCo
  
 const SDL_Rect& GameEntity::GetCollisionBox()
 {
-    if(physicsComp) 
-        { return physicsComp->collisionBox; }
+    return physicsComp->collisionBox; 
 }

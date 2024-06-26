@@ -4,6 +4,8 @@
 #include "GameSystems.h"
 #include "ProjectilePool.h"
 
+#include <iostream> // TODO: delete 
+
 MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
 {
     for(GameEntity& currMeteor : meteors)
@@ -21,8 +23,8 @@ void MeteorPool::Create(const GameVector& position_, int16_t rotation_)
         {
             meteors[i].position = position_;
             meteors[i].rotation = rotation_;
-            meteors[i].xVelocity = 5;
-            meteors[i].yVelocity = 5;
+            meteors[i].xVelocity = -3;
+            meteors[i].yVelocity = -3;
             meteorInUse[i] = true;
             break;
         }
@@ -43,21 +45,25 @@ void MeteorPool::Update()
 {
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {
-        
         for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
         {
-            auto& projectile = GameSystems::projectilePool->GetProjectile(j);
-            bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
-            
             // Double check - is this happening for every not in use entity?
-            if(collided)
-            {
-                meteorInUse[i] = false;
-                Destroy(i);
+            if(meteorInUse[i])
+            {  
+                auto& projectile = GameSystems::projectilePool->GetProjectile(j);
+                bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
+
+                if (collided)
+                {
+                    std::cout << "Collision" << std::endl;
+                    Destroy(i);
+                }
             }
         }
         
-        if(meteorInUse[i]) 
+        if(meteorInUse[i])
+        {
             { meteors[i].Update(); }
+        }
     }
 }

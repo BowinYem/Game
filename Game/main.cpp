@@ -60,11 +60,7 @@ int main(int argc, char* args[])
 	
 	// ProjectilePool testPool;
 	GameSystems::projectilePool->Create({200, 200}, 0);
-	GameSystems::projectilePool->Create({200, 300}, 0);
-	GameSystems::projectilePool->Create({200, 400}, 0);
-
-	GameSystems::meteorPool->Create({200, 250}, 0);
-	GameSystems::meteorPool->Create({200, 350}, 0);
+	GameSystems::meteorPool->Create({400, 200}, 0);
 	
 	while (!GameSystems::quit)
 	{
@@ -74,6 +70,7 @@ int main(int argc, char* args[])
 
 		Entities[0]->Update();
 		Entities[1]->Update();
+
 		GameSystems::projectilePool->Update();
 		GameSystems::meteorPool->Update();
 

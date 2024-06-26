@@ -19,8 +19,8 @@ void ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
         {
             projectiles[i].position = position_;
             projectiles[i].rotation = rotation_;
-            projectiles[i].xVelocity = 5;
-            projectiles[i].yVelocity = 5;
+            projectiles[i].xVelocity = 3;
+            projectiles[i].yVelocity = 3;
             projectileInUse[i] = true;
             break;
         }
@@ -41,16 +41,12 @@ void ProjectilePool::Update()
 {
     for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
     {
-        if(projectiles[i].position.x > 500)
-            { Destroy(i); }        
-        else if(projectileInUse[i]) 
+        if(projectileInUse[i]) 
             { projectiles[i].Update(); }
     }
 }
 
 GameEntity& ProjectilePool::GetProjectile(uint8_t index) 
 {
-    
-    //if(projectileInUse[index]) // This was causing a memory access issue - a function returning a reference can still return without an explcit return statement?
-        { return projectiles[index]; }
+    return projectiles[index]; 
 }
