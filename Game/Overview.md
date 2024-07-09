@@ -74,7 +74,7 @@ Collision System Overview:
 =============================
 
 * Going with brute force O(n^2) approach for now since our game is simple. This will later need to reimplemented later down the line. 
-        void ProjectilePool::Update()
+        void MeteorPool::Update()
         {
             for each Projectile...
             //...

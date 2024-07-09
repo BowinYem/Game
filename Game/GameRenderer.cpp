@@ -37,3 +37,9 @@ bool GameRenderer::GameRendererDrawLine(const GameVector& originPoint, const Gam
     SDL_SetRenderDrawColor(rendererSDLPtr, color.r, color.g, color.b, color.a);
     return SDL_RenderDrawLineF(rendererSDLPtr, originPoint.x, originPoint.y, destPoint.x, destPoint.y);
 }
+
+bool GameRenderer::GameRendererDrawRect(const SDL_Rect& rect, const SDL_Color& color)
+{
+    SDL_SetRenderDrawColor(rendererSDLPtr, color.r, color.g, color.b, color.a);
+    return SDL_RenderDrawRect(rendererSDLPtr, &rect);
+}
