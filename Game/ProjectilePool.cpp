@@ -1,13 +1,19 @@
 #include "ProjectilePool.h"
 #include "SpriteComponent.h"
 #include "PhysicsComponent.h"
+#include "GameSystems.h"
+
+#include "GameRenderer.h" //TODO: Delete this
 
 ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
 {
     for(GameEntity& currProjectile : projectiles)
     {
         currProjectile.SetSpriteComponent(std::unique_ptr<SpriteComponent>{&projectileSprite});
-        currProjectile.SetPhysicsComponent(std::make_unique<PhysicsComponent>());
+        SDL_Rect CollisionBoxSize;
+        CollisionBoxSize.h = 50;
+        CollisionBoxSize.w = 50;
+        currProjectile.SetPhysicsComponent(std::make_unique<PhysicsComponent>(CollisionBoxSize));
     }
 }
 
@@ -42,7 +48,11 @@ void ProjectilePool::Update()
     for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
     {
         if(projectileInUse[i]) 
-            { projectiles[i].Update(); }
+        { 
+            SDL_Color testColor = {0, 0, 0, 0xFF};
+            GameSystems::GetRenderer()->GameRendererDrawRect(projectiles[i].GetCollisionBox(), testColor);
+            projectiles[i].Update(); 
+        }
     }
 }
 

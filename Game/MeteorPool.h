@@ -5,7 +5,7 @@
 #include "SpriteComponent.h"
 #include "GameVector.h"
 
-constexpr uint8_t MeteorPoolSize = 50;
+constexpr uint8_t MeteorPoolSize = 1;
 
 class MeteorPool
 {

@@ -5,7 +5,7 @@
 #include "SpriteComponent.h"
 #include "GameVector.h"
 
-constexpr uint8_t ProjectilePoolSize = 50;
+constexpr uint8_t ProjectilePoolSize = 1;
 
 class ProjectilePool
 {

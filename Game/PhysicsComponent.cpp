@@ -2,6 +2,7 @@
 #include "GameEntity.h"
 #include "GameVector.h"
 #include "GameSystems.h"
+#include "GameRenderer.h"
 
 PhysicsComponent::PhysicsComponent()
 {
@@ -31,5 +32,8 @@ void PhysicsComponent::Update(GameEntity& entity)
 
     entity.rotation += entity.rotationVelocity;
     entity.rotation %= 360; // Wrap around so the rotation value doesn't go beyond 360 degrees
+    
+    collisionBox.x = entity.position.x;
+    collisionBox.y = entity.position.y;
 }
 

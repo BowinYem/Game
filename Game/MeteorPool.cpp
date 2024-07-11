@@ -4,14 +4,18 @@
 #include "GameSystems.h"
 #include "ProjectilePool.h"
 
-#include <iostream> // TODO: delete 
+#include <iostream> // TODO: delete
+#include "GameRenderer.h" // TODO: delete 
 
 MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
 {
     for(GameEntity& currMeteor : meteors)
     {
         currMeteor.SetSpriteComponent(std::unique_ptr<SpriteComponent>{&meteorSprite});
-        currMeteor.SetPhysicsComponent(std::make_unique<PhysicsComponent>());
+        SDL_Rect CollisionBoxSize;
+        CollisionBoxSize.h = 50;
+        CollisionBoxSize.w = 50;
+        currMeteor.SetPhysicsComponent(std::make_unique<PhysicsComponent>(CollisionBoxSize));
     }
 }
 
@@ -63,7 +67,9 @@ void MeteorPool::Update()
         
         if(meteorInUse[i])
         {
-            { meteors[i].Update(); }
+            SDL_Color testColor = {0, 0, 0, 0xFF};
+            GameSystems::GetRenderer()->GameRendererDrawRect(meteors[i].GetCollisionBox(), testColor);
+            meteors[i].Update(); 
         }
     }
 }

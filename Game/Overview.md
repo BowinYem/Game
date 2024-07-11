@@ -1,21 +1,13 @@
 TODO / IDEAS:
 
+- Collision Implementation TO DO:
+    - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
+    - The current implementation works only when the pool sizes are both 1
+    - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
+       
 - Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
 
 - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
-
-- Create a draw rect function in GameRenderer (for trouble shooting)
-
-- Collision Implementation - Issue had where the initial collison boxes for projectiles and meteors where set to (0,0) on "creation" causing
-    a collsion. 
-         - Failed implementing on 6/26 due to the above issue
-            - instead of getting the collision box from the sprite component, we need to just manually determine the collison box 
-            - Move collision box out to entity?
-        - When creating a projectile/meteor. the collision box needs to be set where the entity is
-    
-- Implement basic collison - give each entity a rectangle - a wrapper class GameRect that wraps SDL_Rect? (Still deciding on this)
-    - Gonna go with using a SDL_Rect for now - can implement this in the future if this is needed.
-    - Putting this in the physics component - have it check to see if it is colliding with another entity 
 
 - ProjectilePool encasulates some of projectile's behavior?
 
