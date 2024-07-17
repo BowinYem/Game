@@ -51,8 +51,7 @@ void MeteorPool::Update()
     {
         for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
         {
-            // Double check - is this happening for every not in use entity?
-            if(meteorInUse[i])
+            if(meteorInUse[i] && GameSystems::projectilePool->IsProjectileInUse(j))
             {  
                 auto& projectile = GameSystems::projectilePool->GetProjectile(j);
                 bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
@@ -67,8 +66,6 @@ void MeteorPool::Update()
         
         if(meteorInUse[i])
         {
-            SDL_Color testColor = {0, 0, 0, 0xFF};
-            GameSystems::GetRenderer()->GameRendererDrawRect(meteors[i].GetCollisionBox(), testColor);
             meteors[i].Update(); 
         }
     }

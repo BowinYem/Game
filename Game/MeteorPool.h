@@ -5,7 +5,7 @@
 #include "SpriteComponent.h"
 #include "GameVector.h"
 
-constexpr uint8_t MeteorPoolSize = 1;
+constexpr uint8_t MeteorPoolSize = 25;
 
 class MeteorPool
 {
@@ -13,6 +13,7 @@ public:
     MeteorPool();
     void Create(const GameVector& position_, int16_t rotation_);
     void Destroy(uint8_t index);
+    inline bool IsMeteorInUse(uint8_t index) { return meteorInUse[index]; }
     void Update();
 
 private:

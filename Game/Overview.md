@@ -2,8 +2,9 @@ TODO / IDEAS:
 
 - Collision Implementation TO DO:
     - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
-    - The current implementation works only when the pool sizes are both 1
-    - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
+    OK - The current implementation works only when the pool sizes are both 1
+    OK - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
+    - Create an IDE variable COLLISION_DEBUG
        
 - Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
 

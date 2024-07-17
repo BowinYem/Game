@@ -49,8 +49,6 @@ void ProjectilePool::Update()
     {
         if(projectileInUse[i]) 
         { 
-            SDL_Color testColor = {0, 0, 0, 0xFF};
-            GameSystems::GetRenderer()->GameRendererDrawRect(projectiles[i].GetCollisionBox(), testColor);
             projectiles[i].Update(); 
         }
     }

@@ -59,6 +59,12 @@ int main(int argc, char* args[])
 	Entities.push_back(CreateEntity());
 	
 	// ProjectilePool testPool;
+	GameSystems::projectilePool->Create({200, 400}, 0);
+	GameSystems::meteorPool->Create({400, 400}, 0);
+
+	GameSystems::projectilePool->Create({200, 300}, 0);
+	GameSystems::meteorPool->Create({400, 300}, 0);
+
 	GameSystems::projectilePool->Create({200, 200}, 0);
 	GameSystems::meteorPool->Create({400, 200}, 0);
 	

@@ -22,6 +22,7 @@ public:
 	static const uint8_t* keyboardState;
 	static std::unique_ptr<ProjectilePool> projectilePool;
 	static std::unique_ptr<MeteorPool> meteorPool;
+	static const SDL_Color testColor; 
 
 private:
 	static std::shared_ptr<GameRenderer> renderer;

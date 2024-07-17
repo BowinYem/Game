@@ -3,6 +3,8 @@
 #include "InputComponent.h"
 #include "PhysicsComponent.h"
 #include "GameMath.h"
+#include "GameSystems.h"
+#include "GameRenderer.h"
 #include <iostream>
 
 GameEntity::GameEntity()
@@ -34,6 +36,9 @@ void GameEntity::Update()
     if(spriteComp)
         { spriteComp->Update(*this); } 
     
+    #ifdef COLLISION_DEBUG_MODE
+    GameSystems::GetRenderer()->GameRendererDrawRect(physicsComp->collisionBox, GameSystems::testColor);
+    #endif // COLLISION_DEBUG_MODE
 }
 
 GameVector GameEntity::GetForwardDirection()
