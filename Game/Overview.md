@@ -1,10 +1,13 @@
 TODO / IDEAS:
 
 - Collision Implementation TO DO:
+    - For entities, make it so that the position isn't centered on the sprite anymore. 
+        - Make a centered position member that you use to calculate trajectories  
+        - The reason meteors and projectiles aren't offset is because the default constructor is called (instead of the component constructor)
     - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
     OK - The current implementation works only when the pool sizes are both 1
     OK - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
-    - Create an IDE variable COLLISION_DEBUG
+    OK - Create an IDE variable COLLISION_DEBUG
        
 - Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
 

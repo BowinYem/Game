@@ -6,6 +6,10 @@
 
 PhysicsComponent::PhysicsComponent()
 {
+    collisionBox.h = 0;
+    collisionBox.w = 0;
+    collisionBox.x = 0;
+    collisionBox.y = 0;
     //...Constructor body
 }
 

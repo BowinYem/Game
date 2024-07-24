@@ -74,6 +74,7 @@ void GameEntity::SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp_
 {
     spriteComp.reset();
     spriteComp = std::move(spriteComp_);   
+    
 }
 
 void GameEntity::SetInputComponent(std::unique_ptr<InputComponent> inputComp_)

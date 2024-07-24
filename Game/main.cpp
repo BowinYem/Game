@@ -21,12 +21,16 @@ static const char TOTAL_WALK_CYCLE_FRAMES = 3;
 
 std::unique_ptr<GameEntity> CreatePlayerEntity()
 {
+	SDL_Rect CollisionBoxSize;
+	CollisionBoxSize.h = 50;
+	CollisionBoxSize.w = 50;
+
 	// Create components here
 	return std::make_unique<GameEntity>
 		(
 			std::make_unique<SpriteComponent>("star.bmp"),
 			std::make_unique<PlayerInputComponent>(),
-			std::make_unique<PhysicsComponent>()
+			std::make_unique<PhysicsComponent>(CollisionBoxSize)
 		);
 }
 

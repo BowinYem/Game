@@ -7,12 +7,18 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Game", "Game\Game.vcxproj",
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Collision Debug|x64 = Collision Debug|x64
+		Collision Debug|x86 = Collision Debug|x86
 		Debug|x64 = Debug|x64
 		Debug|x86 = Debug|x86
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9755764-6118-46E2-839A-DBD2643DFC00}.Collision Debug|x64.ActiveCfg = Collision Debug|x64
+		{D9755764-6118-46E2-839A-DBD2643DFC00}.Collision Debug|x64.Build.0 = Collision Debug|x64
+		{D9755764-6118-46E2-839A-DBD2643DFC00}.Collision Debug|x86.ActiveCfg = Debug|Win32
+		{D9755764-6118-46E2-839A-DBD2643DFC00}.Collision Debug|x86.Build.0 = Debug|Win32
 		{D9755764-6118-46E2-839A-DBD2643DFC00}.Debug|x64.ActiveCfg = Debug|x64
 		{D9755764-6118-46E2-839A-DBD2643DFC00}.Debug|x64.Build.0 = Debug|x64
 		{D9755764-6118-46E2-839A-DBD2643DFC00}.Debug|x86.ActiveCfg = Debug|Win32
