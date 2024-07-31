@@ -11,7 +11,7 @@ MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
 {
     for(GameEntity& currMeteor : meteors)
     {
-        currMeteor.SetSpriteComponent(std::unique_ptr<SpriteComponent>{&meteorSprite});
+        currMeteor.SetSpriteComponent("star.bmp");
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = 50;
         CollisionBoxSize.w = 50;

@@ -1,7 +1,10 @@
 TODO / IDEAS:
 
-- Memory violation discovered with pools. To reproduce just click x. The issue goes away if we take out the pools in GameSystems
+- Get rid of the "Flyweight" spriteComponent in the pool classes?
 
+- Look into why this issue was happening: Memory violation discovered with pools. To reproduce just click x. The issue goes away if we take out the pools in GameSystems
+    - Cause of issue - shallow unique_ptr copying done by SetSpriteComponent was causing a double free. Temporarily we've changed from SetSpriteComponent(Unique_Ptr) to SetSpriteComponent(string filePath). 
+    
 - Collision Implementation TO DO:
     - For entities, make it so that the position isn't centered on the sprite anymore. 
         - Make a centered position member that you use to calculate trajectories  

@@ -1,5 +1,6 @@
 #pragma once
 #include <memory>
+#include <string> 
 #include "GameVector.h"
 #include "SDL.h"
 
@@ -24,7 +25,7 @@ public:
 
     GameVector GetForwardDirection();
 
-    void SetSpriteComponent(std::unique_ptr<SpriteComponent> spriteComp_);
+    void SetSpriteComponent(const std::string& filePath);
 
     void SetInputComponent(std::unique_ptr<InputComponent> inputComp_);
 

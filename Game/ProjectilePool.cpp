@@ -9,7 +9,7 @@ ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
 {
     for(GameEntity& currProjectile : projectiles)
     {
-        currProjectile.SetSpriteComponent(std::unique_ptr<SpriteComponent>{&projectileSprite});
+        currProjectile.SetSpriteComponent("star.bmp");
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = 50;
         CollisionBoxSize.w = 50;
