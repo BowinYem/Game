@@ -1,10 +1,7 @@
 TODO / IDEAS:
 
-- Get rid of the "Flyweight" spriteComponent in the pool classes?
-    - Doing this causes projectiles/meteors not to show up.
-
-- Rework SetComponent functions to have constructor arguements 
-
+- Revaluate usage of unique_ptr throughout the whole program - improper use of this can cause memory issues? Question whether or not these should be
+    shared_ptr instead. 
 
 - Collision Implementation TO DO:
     - For entities, make it so that the position isn't centered on the sprite anymore. 
