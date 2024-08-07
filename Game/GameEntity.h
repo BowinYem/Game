@@ -25,7 +25,7 @@ public:
 
     GameVector GetForwardDirection();
 
-    void SetSpriteComponent(const std::string& filePath);
+    void SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_);
 
     void SetInputComponent(std::unique_ptr<InputComponent> inputComp_);
 
@@ -43,7 +43,7 @@ public:
     double rotationVelocity = 0; 
 
 private:
-    std::unique_ptr<SpriteComponent> spriteComp {nullptr}; 
+    std::shared_ptr<SpriteComponent> spriteComp {nullptr}; 
     std::unique_ptr<InputComponent> inputComp {nullptr};
     std::unique_ptr<PhysicsComponent> physicsComp {nullptr};
 };

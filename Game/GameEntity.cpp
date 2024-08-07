@@ -69,10 +69,11 @@ GameVector GameEntity::GetForwardDirection()
     return destPos - position;
 }
 
-void GameEntity::SetSpriteComponent(const std::string& filePath)
+
+void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_)
 {
     spriteComp.reset();
-    spriteComp = std::make_unique<SpriteComponent>(filePath);  
+    spriteComp = spriteComp_;   
 }
 
 void GameEntity::SetInputComponent(std::unique_ptr<InputComponent> inputComp_)
