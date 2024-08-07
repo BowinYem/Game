@@ -31,6 +31,6 @@ public:
 
 private:
 	// std::vector<SDL_Rect> SpriteRects; // Implement animation on next iteration...
-	std::unique_ptr<GameTexture> spriteSheet;
+	std::shared_ptr<GameTexture> spriteSheet;
 };
 
