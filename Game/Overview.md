@@ -4,7 +4,7 @@ TODO / IDEAS:
     shared_ptr instead. 
 
 - Collision Implementation TO DO:
-    - For entities, make it so that the position isn't centered on the sprite anymore. 
+    - For entities, make it so that the position isn't centered on the sprite anymore. (Issue is apparent in the Collision build config) 
         - Make a centered position member that you use to calculate trajectories  
         - The reason meteors and projectiles aren't offset is because the default constructor is called (instead of the component constructor)
     - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
