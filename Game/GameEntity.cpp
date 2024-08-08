@@ -12,8 +12,8 @@ GameEntity::GameEntity()
 
 }
 
-GameEntity::GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
-    : spriteComp{std::move(spriteComp_)}, inputComp{std::move(inputComp_)}, physicsComp{std::move(physicsComp_)}, position{spawnLocation}
+GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
+    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, position{spawnLocation}
 {
     positionOffset.x = -(spriteComp->srcRect.w / 2);
     positionOffset.y = -(spriteComp->srcRect.h / 2);
@@ -76,16 +76,14 @@ void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_
     positionOffset.y = -(spriteComp->srcRect.h / 2);   
 }
 
-void GameEntity::SetInputComponent(std::unique_ptr<InputComponent> inputComp_)
+void GameEntity::SetInputComponent(std::shared_ptr<InputComponent> inputComp_)
 {
-    inputComp.reset();
-    inputComp = std::move(inputComp_);
+    inputComp = inputComp_;
 }
 
-void GameEntity::SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsComp_)
+void GameEntity::SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsComp_)
 {
-    physicsComp.reset();
-    physicsComp = std::move(physicsComp_);
+    physicsComp = physicsComp_;
 }
  
 const SDL_Rect& GameEntity::GetCollisionBox()

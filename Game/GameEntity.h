@@ -17,7 +17,7 @@ public:
 
     GameEntity();
 
-    GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
+    GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
     ~GameEntity();
 
@@ -27,9 +27,9 @@ public:
 
     void SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_);
 
-    void SetInputComponent(std::unique_ptr<InputComponent> inputComp_);
+    void SetInputComponent(std::shared_ptr<InputComponent> inputComp_);
 
-    void SetPhysicsComponent(std::unique_ptr<PhysicsComponent> physicsComp_);
+    void SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsComp_);
 
     const SDL_Rect& GetCollisionBox();
 
@@ -46,6 +46,6 @@ public:
 
 private:
     std::shared_ptr<SpriteComponent> spriteComp {nullptr}; 
-    std::unique_ptr<InputComponent> inputComp {nullptr};
-    std::unique_ptr<PhysicsComponent> physicsComp {nullptr};
+    std::shared_ptr<InputComponent> inputComp {nullptr};
+    std::shared_ptr<PhysicsComponent> physicsComp {nullptr};
 };

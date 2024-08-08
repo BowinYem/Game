@@ -13,7 +13,7 @@ ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = 50;
         CollisionBoxSize.w = 50;
-        currProjectile.SetPhysicsComponent(std::make_unique<PhysicsComponent>(CollisionBoxSize));
+        currProjectile.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
     }
 }
 

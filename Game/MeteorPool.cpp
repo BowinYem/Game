@@ -15,7 +15,7 @@ MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = 50;
         CollisionBoxSize.w = 50;
-        currMeteor.SetPhysicsComponent(std::make_unique<PhysicsComponent>(CollisionBoxSize));
+        currMeteor.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
     }
 }
 

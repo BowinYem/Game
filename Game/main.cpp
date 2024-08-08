@@ -28,9 +28,9 @@ std::unique_ptr<GameEntity> CreatePlayerEntity()
 	// Create components here
 	return std::make_unique<GameEntity>
 		(
-			std::make_unique<SpriteComponent>("star.bmp"),
-			std::make_unique<PlayerInputComponent>(),
-			std::make_unique<PhysicsComponent>(CollisionBoxSize)
+			std::make_shared<SpriteComponent>("star.bmp"),
+			std::make_shared<PlayerInputComponent>(),
+			std::make_shared<PhysicsComponent>(CollisionBoxSize)
 		);
 }
 
@@ -39,9 +39,9 @@ std::unique_ptr<GameEntity> CreateEntity()
 	// Create components here
 	auto newEntity = std::make_unique<GameEntity>
 		(
-			std::make_unique<SpriteComponent>("star.bmp"),
+			std::make_shared<SpriteComponent>("star.bmp"),
 			nullptr,
-			std::make_unique<PhysicsComponent>()
+			std::make_shared<PhysicsComponent>()
 		);
 	
 	// This kind of entity just rotates in place at this specific spot
