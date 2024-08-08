@@ -11,8 +11,8 @@ ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
     {
         currProjectile.SetSpriteComponent(std::make_shared<SpriteComponent>(projectileSprite));
         SDL_Rect CollisionBoxSize;
-        CollisionBoxSize.h = 50;
-        CollisionBoxSize.w = 50;
+        CollisionBoxSize.h = ProjectileHeight;
+        CollisionBoxSize.w = ProjectileWidth;
         currProjectile.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
     }
 }

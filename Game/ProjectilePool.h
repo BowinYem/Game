@@ -6,6 +6,8 @@
 #include "GameVector.h"
 
 constexpr uint8_t ProjectilePoolSize = 25;
+constexpr uint16_t ProjectileHeight = 50;
+constexpr uint16_t ProjectileWidth = 50; 
 
 class ProjectilePool
 {

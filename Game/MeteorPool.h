@@ -6,6 +6,8 @@
 #include "GameVector.h"
 
 constexpr uint8_t MeteorPoolSize = 25;
+constexpr uint16_t MeteorHeight = 50;
+constexpr uint16_t MeteorWidth = 50; 
 
 class MeteorPool
 {
