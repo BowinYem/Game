@@ -89,6 +89,8 @@ int main(int argc, char* args[])
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
+	GameSystems::GameSystems_Close();
+
 	return 0;
 }
 

@@ -16,6 +16,7 @@ public:
 	static void ReadInput();
 	static bool GameSystems_Init();
 	static bool GameSystems_Close();
+	static void GameSystems_UpdateCollision();
 
 public:
 	static bool quit;

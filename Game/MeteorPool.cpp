@@ -49,22 +49,7 @@ void MeteorPool::Destroy(uint8_t index)
 void MeteorPool::Update()
 {
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
-    {
-        for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
-        {
-            if(meteorInUse[i] && GameSystems::projectilePool->IsProjectileInUse(j))
-            {  
-                auto& projectile = GameSystems::projectilePool->GetProjectile(j);
-                bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
-
-                if (collided)
-                {
-                    std::cout << "Collision" << std::endl;
-                    Destroy(i);
-                }
-            }
-        }
-        
+    {       
         if(meteorInUse[i])
         {
             meteors[i].Update(); 
