@@ -15,12 +15,10 @@ class GameEntity
 {
 public:
 
-    GameEntity();
+    GameEntity() = default;
 
     GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
-    ~GameEntity();
-
     void Update();
 
     GameVector GetForwardDirection();
