@@ -8,8 +8,8 @@
 #include <iostream>
 
 
-GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
-    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, position{spawnLocation}
+GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, EntityType entityType_, GameVector spawnLocation) 
+    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, entityType{entityType_}, position{spawnLocation}
 {
     //...
 }

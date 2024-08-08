@@ -6,14 +6,12 @@ TODO / IDEAS:
     shared_ptr instead. 
 
 - Collision Implementation TO DO:
-    - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
-    OK - The current implementation works only when the pool sizes are both 1
-    OK - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
-    OK - Create an IDE variable COLLISION_DEBUG
-       
-- Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
-
-- Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
+    - Program collision for the player - (player and meteor)
+    - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
+        - This will be a member of GameEntities  
+    - Create a function that handles all of the collisions based on the above enum member. 
+        - Have this function in GameSystems?
+    - Need to move player entity to GameSystems for accessibilty  
 
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times

@@ -16,6 +16,7 @@ MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
         CollisionBoxSize.h = MeteorHeight;
         CollisionBoxSize.w = MeteorWidth;
         currMeteor.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
+        currMeteor.entityType = EntityType::MeteorEntity;
     }
 }
 
