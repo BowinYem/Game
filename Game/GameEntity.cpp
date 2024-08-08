@@ -11,8 +11,7 @@
 GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
     : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, position{spawnLocation}
 {
-    positionOffset.x = -(spriteComp->srcRect.w / 2);
-    positionOffset.y = -(spriteComp->srcRect.h / 2);
+    //...
 }
 
 void GameEntity::Update()
@@ -63,8 +62,6 @@ GameVector GameEntity::GetForwardDirection()
 void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_)
 {
     spriteComp = spriteComp_;
-    positionOffset.x = -(spriteComp->srcRect.w / 2);
-    positionOffset.y = -(spriteComp->srcRect.h / 2);   
 }
 
 void GameEntity::SetInputComponent(std::shared_ptr<InputComponent> inputComp_)
