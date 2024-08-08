@@ -1,5 +1,7 @@
 TODO / IDEAS:
 
+- Implement extrapolation and decouple game speed from CPU speed
+
 - Revaluate usage of unique_ptr throughout the whole program - improper use of this can cause memory issues? Question whether or not these should be
     shared_ptr instead. 
 
