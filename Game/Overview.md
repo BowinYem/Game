@@ -4,9 +4,6 @@ TODO / IDEAS:
     shared_ptr instead. 
 
 - Collision Implementation TO DO:
-    - For entities, make it so that the position isn't centered on the sprite anymore. (Issue is apparent in the Collision build config) 
-        - Make a centered position member that you use to calculate trajectories  
-        - The reason meteors and projectiles aren't offset is because the default constructor is called (instead of the component constructor)
     - In the Pool constructors, change so that you aren't hardcoding the 50x50 collision box
     OK - The current implementation works only when the pool sizes are both 1
     OK - Move the call to GameRendererDrawRect in the Pool classes to the Entity class. Do this if the COLLISION_DEBUG PP variable is defined. 
@@ -15,8 +12,6 @@ TODO / IDEAS:
 - Should GameSystems::window and GameSystems::renderer be shared_ptrs? Should they instead be unique_ptrs? 
 
 - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
-
-- ProjectilePool encasulates some of projectile's behavior?
 
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times
@@ -27,8 +22,6 @@ TODO / IDEAS:
 - After implementing some basic physics, play around with multiple resolutions 
     -	SDL_SetWindowFullscreen(GameSystems::GetGameSystems().GetWindow(), SDL_WINDOW_FULLSCREEN);
 	    SDL_RenderSetLogicalSize(GameSystems::GetGameSystems().GetRenderer(), 1920, 1080);
-
-- Why does specifying ~SpriteComponent() = default cause compilation errors?
 
 
 Project Rules

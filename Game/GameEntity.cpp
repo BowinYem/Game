@@ -15,9 +15,8 @@ GameEntity::GameEntity()
 GameEntity::GameEntity(std::unique_ptr<SpriteComponent> spriteComp_, std::unique_ptr<InputComponent> inputComp_, std::unique_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
     : spriteComp{std::move(spriteComp_)}, inputComp{std::move(inputComp_)}, physicsComp{std::move(physicsComp_)}, position{spawnLocation}
 {
-    // Do this to center the entity postion onto the center of the sprite
-    spriteComp->offsetX = -(spriteComp->srcRect.w / 2);
-    spriteComp->offsetY = -(spriteComp->srcRect.h / 2);
+    positionOffset.x = -(spriteComp->srcRect.w / 2);
+    positionOffset.y = -(spriteComp->srcRect.h / 2);
 }
 
 GameEntity::~GameEntity()
@@ -72,8 +71,9 @@ GameVector GameEntity::GetForwardDirection()
 
 void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_)
 {
-    spriteComp.reset();
-    spriteComp = spriteComp_;   
+    spriteComp = spriteComp_;
+    positionOffset.x = -(spriteComp->srcRect.w / 2);
+    positionOffset.y = -(spriteComp->srcRect.h / 2);   
 }
 
 void GameEntity::SetInputComponent(std::unique_ptr<InputComponent> inputComp_)
