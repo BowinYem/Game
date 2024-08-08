@@ -34,8 +34,6 @@ public:
 
 public:
     GameVector position;
-    GameVector positionOffset; 
-
     int16_t rotation = 0;
 
     int8_t xVelocity = 0;
