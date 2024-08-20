@@ -17,6 +17,7 @@ public:
     void Destroy(uint8_t index);
     inline bool IsMeteorInUse(uint8_t index) { return meteorInUse[index]; }
     void Update();
+    inline GameEntity& GetMeteor(uint8_t index) { return meteors[index]; }
 
 private:
     SpriteComponent meteorSprite;

@@ -85,6 +85,7 @@ int main(int argc, char* args[])
 
 		GameSystems::projectilePool->Update();
 		GameSystems::meteorPool->Update();
+		GameSystems::GameSystems_UpdateCollision();
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}

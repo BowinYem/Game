@@ -8,6 +8,7 @@ TODO / IDEAS:
     shared_ptr instead. 
 
 - Collision Implementation TO DO:
+    - Move collision logic to GameSystems::UpdateCollision
     - Program collision for the player - (player and meteor)
     - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
         - This will be a member of GameEntities  

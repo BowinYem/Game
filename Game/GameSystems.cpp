@@ -52,18 +52,21 @@ bool GameSystems::GameSystems_Close()
 
 void GameSystems::GameSystems_UpdateCollision()
 {
-        // for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
-        // {
-        //     if(meteorInUse[i] && GameSystems::projectilePool->IsProjectileInUse(j))
-        //     {  
-        //         auto& projectile = GameSystems::projectilePool->GetProjectile(j);
-        //         bool collided = SDL_HasIntersection(&meteors[i].GetCollisionBox(), &projectile.GetCollisionBox());
-
-        //         if (collided)
-        //         {
-        //             std::cout << "Collision" << std::endl;
-        //             Destroy(i);
-        //         }
-        //     }
-        // }
+    for(uint8_t i = 0; i < MeteorPoolSize; ++i)
+    {
+        for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
+        {
+            if(meteorPool->IsMeteorInUse(i) && projectilePool->IsProjectileInUse(j))
+            {  
+                auto& projectile = projectilePool->GetProjectile(j);
+                auto& meteor = meteorPool->GetMeteor(i);
+                bool collided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
+                if (collided)
+                {
+                    //std::cout << "Collision" << std::endl;
+                    meteorPool->Destroy(i);
+                }
+            }
+        }
+    }
 }
