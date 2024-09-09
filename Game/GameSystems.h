@@ -7,6 +7,7 @@
 // Forward declarations
 class GameRenderer;
 class GameWindow;
+class GameEntity;
 
 class GameSystems
 {
@@ -23,6 +24,7 @@ public:
 	static const uint8_t* keyboardState;
 	static std::unique_ptr<ProjectilePool> projectilePool;
 	static std::unique_ptr<MeteorPool> meteorPool;
+	static std::shared_ptr<GameEntity> playerEntity; 
 	static const SDL_Color testColor; 
 
 private:

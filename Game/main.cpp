@@ -61,7 +61,7 @@ int main(int argc, char* args[])
 
 	// Create entities with a sprite component
 	std::vector<std::unique_ptr<GameEntity>> Entities;
-	Entities.push_back(CreatePlayerEntity());
+	//Entities.push_back(CreatePlayerEntity());
 	Entities.push_back(CreateEntity());
 	
 	// ProjectilePool testPool;
@@ -80,8 +80,9 @@ int main(int argc, char* args[])
 	
 		GameSystems::GetRenderer()->GameRendererClear();
 
+		GameSystems::playerEntity->Update();
 		Entities[0]->Update();
-		Entities[1]->Update();
+		//Entities[1]->Update();
 
 		GameSystems::projectilePool->Update();
 		GameSystems::meteorPool->Update();

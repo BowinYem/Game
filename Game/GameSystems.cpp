@@ -2,6 +2,11 @@
 #include "GameRenderer.h"
 #include "GameWindow.h"
 
+#include "GameEntity.h"
+#include "SpriteComponent.h"
+#include "PlayerInputComponent.h"
+#include "PhysicsComponent.h"
+
 bool GameSystems::quit = false;
 const uint8_t* GameSystems::keyboardState = nullptr;
 const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
@@ -11,6 +16,7 @@ std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
 std::unique_ptr<ProjectilePool> GameSystems::projectilePool(nullptr);
 std::unique_ptr<MeteorPool> GameSystems::meteorPool(nullptr);
+std::shared_ptr<GameEntity> GameSystems::playerEntity(nullptr);
 
 void GameSystems::ReadInput()
 {
@@ -42,6 +48,18 @@ bool GameSystems::GameSystems_Init()
     meteorPool = std::make_unique<MeteorPool>();
     if(!meteorPool) {InitSuccess = false; }
 
+    // Create player entity
+   	SDL_Rect CollisionBoxSize;
+	CollisionBoxSize.h = 50;
+	CollisionBoxSize.w = 50;
+	playerEntity = std::make_shared<GameEntity>
+	(
+		std::make_shared<SpriteComponent>("star.bmp"),
+		std::make_shared<PlayerInputComponent>(),
+		std::make_shared<PhysicsComponent>(CollisionBoxSize),
+		EntityType::PlayerEntity
+	);
+
     return InitSuccess;
 }
 
@@ -52,8 +70,10 @@ bool GameSystems::GameSystems_Close()
 
 void GameSystems::GameSystems_UpdateCollision()
 {
+    // Projectile/Meteor collision 
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {
+        // Compare with every projectile
         for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
         {
             if(meteorPool->IsMeteorInUse(i) && projectilePool->IsProjectileInUse(j))
@@ -66,7 +86,11 @@ void GameSystems::GameSystems_UpdateCollision()
                     //std::cout << "Collision" << std::endl;
                     meteorPool->Destroy(i);
                 }
-            }
+            }       
         }
+
+        // Compare with the player
     }
+
+
 }
