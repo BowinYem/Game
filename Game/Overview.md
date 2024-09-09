@@ -1,12 +1,5 @@
 TODO / IDEAS:
 
-- Impelemnt GameSystems::Close() - need to close SDL subsystems
-
-- Implement extrapolation and decouple game speed from CPU speed
-
-- Revaluate usage of unique_ptr throughout the whole program - improper use of this can cause memory issues? Question whether or not these should be
-    shared_ptr instead. 
-
 - Collision Implementation TO DO:
     - Move collision logic to GameSystems::UpdateCollision
     - Program collision for the player - (player and meteor)
@@ -15,6 +8,13 @@ TODO / IDEAS:
     - Create a function that handles all of the collisions based on the above enum member. 
         - Have this function in GameSystems?
     - Need to move player entity to GameSystems for accessibilty  
+
+- Impelemnt GameSystems::Close() - need to close SDL subsystems
+
+- Implement extrapolation and decouple game speed from CPU speed
+
+- Revaluate usage of unique_ptr throughout the whole program - improper use of this can cause memory issues? Question whether or not these should be
+    shared_ptr instead. 
 
 - Rewrite main loop to fit the loop pattern
     - rendering and reading input needs to happen at seperate times

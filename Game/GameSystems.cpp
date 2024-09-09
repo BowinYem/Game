@@ -59,6 +59,7 @@ bool GameSystems::GameSystems_Init()
 		std::make_shared<PhysicsComponent>(CollisionBoxSize),
 		EntityType::PlayerEntity
 	);
+    if(!playerEntity) { InitSuccess = false; }
 
     return InitSuccess;
 }
