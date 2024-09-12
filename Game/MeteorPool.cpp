@@ -28,8 +28,8 @@ void MeteorPool::Create(const GameVector& position_, int16_t rotation_)
         {
             meteors[i].position = position_;
             meteors[i].rotation = rotation_;
-            meteors[i].xVelocity = -3;
-            meteors[i].yVelocity = -3;
+            meteors[i].xVelocity = -1;
+            meteors[i].yVelocity = -1;
             meteorInUse[i] = true;
             break;
         }

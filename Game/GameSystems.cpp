@@ -7,6 +7,8 @@
 #include "PlayerInputComponent.h"
 #include "PhysicsComponent.h"
 
+#include <iostream> // TODO: DELETE 
+
 bool GameSystems::quit = false;
 const uint8_t* GameSystems::keyboardState = nullptr;
 const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
@@ -71,27 +73,31 @@ bool GameSystems::GameSystems_Close()
 
 void GameSystems::GameSystems_UpdateCollision()
 {
-    // Projectile/Meteor collision 
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {
-        // Compare with every projectile
-        for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
+        if(meteorPool->IsMeteorInUse(i))
         {
-            if(meteorPool->IsMeteorInUse(i) && projectilePool->IsProjectileInUse(j))
-            {  
-                auto& projectile = projectilePool->GetProjectile(j);
-                auto& meteor = meteorPool->GetMeteor(i);
-                bool collided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
-                if (collided)
-                {
-                    //std::cout << "Collision" << std::endl;
-                    meteorPool->Destroy(i);
-                }
-            }       
+            auto& meteor = meteorPool->GetMeteor(i);
+
+            for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
+            {
+                if(projectilePool->IsProjectileInUse(j))
+                {  
+                    auto& projectile = projectilePool->GetProjectile(j);
+                    bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
+                    if (projectileCollided)
+                    {
+                        meteorPool->Destroy(i);
+                    }
+                }       
+            }
+
+            bool playerCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &playerEntity->GetCollisionBox()); 
+            if (playerCollided)
+            {
+                // Player/Meteor collision logic goes here
+                meteorPool->Destroy(i);
+            }
         }
-
-        // Compare with the player
     }
-
-
 }
