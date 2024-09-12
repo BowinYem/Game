@@ -58,8 +58,7 @@ bool GameSystems::GameSystems_Init()
 	(
 		std::make_shared<SpriteComponent>("star.bmp"),
 		std::make_shared<PlayerInputComponent>(),
-		std::make_shared<PhysicsComponent>(CollisionBoxSize),
-		EntityType::PlayerEntity
+		std::make_shared<PhysicsComponent>(CollisionBoxSize)
 	);
     if(!playerEntity) { InitSuccess = false; }
 

@@ -14,7 +14,6 @@ ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
         CollisionBoxSize.h = ProjectileHeight;
         CollisionBoxSize.w = ProjectileWidth;
         currProjectile.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
-        currProjectile.entityType = EntityType::ProjectileEntity;
     }
 }
 

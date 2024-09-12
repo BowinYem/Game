@@ -30,8 +30,7 @@ std::unique_ptr<GameEntity> CreatePlayerEntity()
 		(
 			std::make_shared<SpriteComponent>("star.bmp"),
 			std::make_shared<PlayerInputComponent>(),
-			std::make_shared<PhysicsComponent>(CollisionBoxSize),
-			EntityType::PlayerEntity
+			std::make_shared<PhysicsComponent>(CollisionBoxSize)
 		);
 }
 
@@ -42,8 +41,7 @@ std::unique_ptr<GameEntity> CreateEntity()
 		(
 			std::make_shared<SpriteComponent>("star.bmp"),
 			nullptr,
-			std::make_shared<PhysicsComponent>(),
-			EntityType::OtherEntity
+			std::make_shared<PhysicsComponent>()
 		);
 	
 	// This kind of entity just rotates in place at this specific spot
