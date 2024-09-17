@@ -48,6 +48,11 @@ void PlayerInputComponent::Update(GameEntity& entity)
         entity.yVelocity = 0;
     }
 
+    // Shoot
+    if (keyboardState[SDL_SCANCODE_SPACE])
+    {
+        GameSystems::projectilePool->Create(entity.position, 0);
+    }
 
 }
 

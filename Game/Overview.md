@@ -1,8 +1,9 @@
 TODO / IDEAS:
 
-- Collision Implementation TO DO:
-    - Create an enum for Game Entities identifying what kind of entitty it is: i.e: player, projectile, meteor, etc....
-        - This will be a member of GameEntities  
+- Implement projeciles
+    - We need to implement this using poll events because keyboard state is ideal for movement and not actions like shooting. 
+        - We may potentially need to restructure the way we read inputs.
+    - Update google notes to mention the above 
 
 - Impelemnt GameSystems::Close() - need to close SDL subsystems
 
