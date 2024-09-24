@@ -22,6 +22,7 @@ public:
 public:
 	static bool quit;
 	static const uint8_t* keyboardState;
+	static SDL_Keycode actionEvent;
 	static std::unique_ptr<ProjectilePool> projectilePool;
 	static std::unique_ptr<MeteorPool> meteorPool;
 	static std::shared_ptr<GameEntity> playerEntity; 

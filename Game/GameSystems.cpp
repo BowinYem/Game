@@ -11,6 +11,7 @@
 
 bool GameSystems::quit = false;
 const uint8_t* GameSystems::keyboardState = nullptr;
+SDL_Keycode GameSystems::actionEvent;
 const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
 
 std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
@@ -28,6 +29,14 @@ void GameSystems::ReadInput()
         if (event.type == SDL_QUIT)
         {
             quit = true;
+        }
+        else if(event.type == SDL_KEYUP)
+        {
+            actionEvent = event.key.keysym.sym;
+        }
+        else
+        {
+            actionEvent = SDLK_UNKNOWN;
         }
     }
 
