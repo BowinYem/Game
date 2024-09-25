@@ -25,7 +25,7 @@ void GameSystems::ReadInput()
 {
     actionEvent = SDLK_UNKNOWN;
     SDL_Event event;
-    
+
     while(SDL_PollEvent(&event))
     { 
         if (event.type == SDL_QUIT)
@@ -93,6 +93,7 @@ void GameSystems::GameSystems_UpdateCollision()
                     bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
                     if (projectileCollided)
                     {
+                        projectilePool->Destroy(j);
                         meteorPool->Destroy(i);
                     }
                 }       

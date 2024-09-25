@@ -1,11 +1,6 @@
 TODO / IDEAS:
 
-- Implement projeciles
-    - Line 39 - GameSystems.cpp may not be right
-    - We need to implement this using poll events because keyboard state is ideal for movement and not actions like shooting. 
-        - We may potentially need to restructure the way we read inputs.
-        - See: https://discourse.libsdl.org/t/polling-events-vs-get-keyboardstate/39050/3
-    - Update google notes to mention the above 
+- Implement projectile/edge of screen collision
 
 - Impelemnt GameSystems::Close() - need to close SDL subsystems
 
