@@ -23,7 +23,9 @@ std::shared_ptr<GameEntity> GameSystems::playerEntity(nullptr);
 
 void GameSystems::ReadInput()
 {
+    actionEvent = SDLK_UNKNOWN;
     SDL_Event event;
+    
     while(SDL_PollEvent(&event))
     { 
         if (event.type == SDL_QUIT)
@@ -33,10 +35,6 @@ void GameSystems::ReadInput()
         else if(event.type == SDL_KEYUP)
         {
             actionEvent = event.key.keysym.sym;
-        }
-        else
-        {
-            actionEvent = SDLK_UNKNOWN;
         }
     }
 
