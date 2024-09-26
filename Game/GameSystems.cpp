@@ -98,7 +98,15 @@ void GameSystems::GameSystems_UpdateCollision()
                         meteorPool->Destroy(i);
                     }
 
-                    //bool projectileOutOfBounds = projectile.position.x;
+                    bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)  ||
+                                                 (projectile.position.x < 0.f)              ||
+                                                 (projectile.position.y > GameWindowHeight) ||
+                                                 (projectile.position.y < 0.f);
+                    if(projectileOutOfBounds)
+                    { 
+                        std::cout << "Projectile out of bounds" << std::endl;
+                        projectilePool->Destroy(j); 
+                    }
                 }       
             }
 
