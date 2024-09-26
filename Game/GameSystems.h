@@ -4,6 +4,10 @@
 #include "ProjectilePool.h"
 #include "MeteorPool.h"
 
+// Constants
+constexpr uint16_t GameWindowHeight = 480;
+constexpr uint16_t GameWindowWidth = 640; 
+
 // Forward declarations
 class GameRenderer;
 class GameWindow;

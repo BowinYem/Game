@@ -45,7 +45,7 @@ bool GameSystems::GameSystems_Init()
 {
     bool InitSuccess = true;
 
-    window = std::make_shared<GameWindow>();
+    window = std::make_shared<GameWindow>(GameWindowHeight, GameWindowWidth);
     if(!window) { InitSuccess = false; }
 
     renderer = std::make_shared<GameRenderer>();
@@ -90,12 +90,15 @@ void GameSystems::GameSystems_UpdateCollision()
                 if(projectilePool->IsProjectileInUse(j))
                 {  
                     auto& projectile = projectilePool->GetProjectile(j);
+
                     bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
                     if (projectileCollided)
                     {
                         projectilePool->Destroy(j);
                         meteorPool->Destroy(i);
                     }
+
+                    //bool projectileOutOfBounds = projectile.position.x;
                 }       
             }
 

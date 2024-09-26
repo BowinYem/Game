@@ -1,8 +1,8 @@
 #include "GameWindow.h"
 
-GameWindow::GameWindow()
+GameWindow::GameWindow(uint16_t window_h, uint16_t window_w) : windowHeight(window_h), windowWidth(window_w)
 {
-    windowSDLPtr = SDL_CreateWindow("TestWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 640, 480, 0);
+    windowSDLPtr = SDL_CreateWindow("TestWindow", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, windowWidth, windowHeight, 0);
 }
 
 GameWindow::~GameWindow()
