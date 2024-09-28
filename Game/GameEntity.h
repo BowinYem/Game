@@ -32,6 +32,7 @@ public:
 
     const SDL_Rect& GetCollisionBox();
 
+    const SDL_Rect& GetSpriteDimensions();
 
 public:
     EntityType entityType;

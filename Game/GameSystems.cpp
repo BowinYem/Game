@@ -99,9 +99,9 @@ void GameSystems::GameSystems_UpdateCollision()
                     }
 
                     bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)  ||
-                                                 (projectile.position.x < 0.f)              ||
+                                                 (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)             ||
                                                  (projectile.position.y > GameWindowHeight) ||
-                                                 (projectile.position.y < 0.f);
+                                                 (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
                     if(projectileOutOfBounds)
                     { 
                         std::cout << "Projectile out of bounds" << std::endl;

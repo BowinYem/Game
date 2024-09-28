@@ -7,6 +7,7 @@
 // Forward Declarations
 class GameEntity;
 class GameTexture;
+class GameVector;
 
 class SpriteComponent
 {
@@ -17,6 +18,8 @@ public:
 	void Update(GameEntity& entity);
 
 	SpriteComponent& operator= (SpriteComponent& otherComp); 
+
+	const SDL_Rect& GetSpriteDimenisions();
 
 public:
 	SDL_Rect srcRect;

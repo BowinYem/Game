@@ -76,5 +76,12 @@ void GameEntity::SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsCo
  
 const SDL_Rect& GameEntity::GetCollisionBox()
 {
-    return physicsComp->collisionBox; 
+    if(physicsComp)
+        { return physicsComp->collisionBox; }
+}
+
+const SDL_Rect& GameEntity::GetSpriteDimensions()
+{
+    if(spriteComp)
+        { return spriteComp->GetSpriteDimenisions(); }
 }

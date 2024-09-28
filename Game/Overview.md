@@ -1,8 +1,8 @@
 TODO / IDEAS:
 
-- Polish this up: Implement projectile/edge of screen collision
-
 - Check this: if the projecile pool is being "fully used", then you cant "spawn" a new projectile 
+
+- Change SpriteComponent::SpriteComponent(const std::string& filePath), so that it accepts two additonal argument that determine the size to render the sprite ingame
 
 - Impelemnt GameSystems::Close() - need to close SDL subsystems
 

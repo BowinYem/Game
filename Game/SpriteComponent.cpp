@@ -26,3 +26,8 @@ SpriteComponent& SpriteComponent::operator= (SpriteComponent& otherComp)
     this->spriteSheet = otherComp.spriteSheet;
     return *this;
 }
+
+const SDL_Rect& SpriteComponent::GetSpriteDimenisions()
+{
+    return srcRect;
+}
