@@ -1,5 +1,7 @@
 TODO / IDEAS:
 
+- Bug - projectiles will sometimes not despawn when colliding with the edge of the screen    
+
 - Check this: if the projecile pool is being "fully used", then you cant "spawn" a new projectile 
 
 - Change SpriteComponent::SpriteComponent(const std::string& filePath), so that it accepts two additonal argument that determine the size to render the sprite ingame
