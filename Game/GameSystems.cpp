@@ -104,8 +104,9 @@ void GameSystems::GameSystems_UpdateCollision()
                                                  (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
                     if(projectileOutOfBounds)
                     { 
-                        std::cout << "Projectile out of bounds" << std::endl;
                         projectilePool->Destroy(j); 
+                        std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
+
                     }
                 }       
             }

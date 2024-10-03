@@ -17,8 +17,10 @@ ProjectilePool::ProjectilePool() : projectileSprite { "star.bmp" }
     }
 }
 
-void ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
+bool ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
 {
+    bool projectileCreated = false;
+
     for(uint16_t i = 0; i < ProjectilePoolSize; ++i)
     {
         if(!projectileInUse[i])
@@ -28,19 +30,32 @@ void ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
             projectiles[i].xVelocity = 3;
             projectiles[i].yVelocity = 3;
             projectileInUse[i] = true;
+            ++activeProjectiles;
+            projectileCreated = true;
             break;
         }
     }
+    
+    return projectileCreated;
 }
 
-void ProjectilePool::Destroy(uint8_t index)
+bool ProjectilePool::Destroy(uint8_t index)
 {
-    projectiles[index].position = {0, 0};
-    projectiles[index].rotation = 0; 
-    projectiles[index].xVelocity = 0;
-    projectiles[index].yVelocity = 0;
-    projectiles[index].rotationVelocity = 0;
-    projectileInUse[index] = false;
+    if(projectileInUse[index])
+    {
+        projectiles[index].position = {0, 0};
+        projectiles[index].rotation = 0; 
+        projectiles[index].xVelocity = 0;
+        projectiles[index].yVelocity = 0;
+        projectiles[index].rotationVelocity = 0;
+        projectileInUse[index] = false;
+        --activeProjectiles;
+        return true;
+    }
+    else 
+    {
+        return false;
+    }
 }
 
 void ProjectilePool::Update()
@@ -58,3 +73,4 @@ GameEntity& ProjectilePool::GetProjectile(uint8_t index)
 {
     return projectiles[index]; 
 }
+
