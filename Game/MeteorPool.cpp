@@ -19,8 +19,10 @@ MeteorPool::MeteorPool() : meteorSprite { "star.bmp" }
     }
 }
 
-void MeteorPool::Create(const GameVector& position_, int16_t rotation_)
+bool MeteorPool::Create(const GameVector& position_, int16_t rotation_)
 {
+    bool meteorCreated = false;
+
     for(uint16_t i = 0; i < MeteorPoolSize; ++i)
     {
         if(!meteorInUse[i])
@@ -30,19 +32,32 @@ void MeteorPool::Create(const GameVector& position_, int16_t rotation_)
             meteors[i].xVelocity = -1;
             meteors[i].yVelocity = -1;
             meteorInUse[i] = true;
+            ++activeMeteors;
+            meteorCreated = true;
             break;
         }
     }
+
+    return meteorCreated;
 }
 
-void MeteorPool::Destroy(uint8_t index)
+bool MeteorPool::Destroy(uint8_t index)
 {
-    meteors[index].position = {0, 0};
-    meteors[index].rotation = 0; 
-    meteors[index].xVelocity = 0;
-    meteors[index].yVelocity = 0;
-    meteors[index].rotationVelocity = 0;
-    meteorInUse[index] = false;
+    if((meteorInUse[index]) && (activeMeteors > 0))
+    {
+        meteors[index].position = {0, 0};
+        meteors[index].rotation = 0; 
+        meteors[index].xVelocity = 0;
+        meteors[index].yVelocity = 0;
+        meteors[index].rotationVelocity = 0;
+        meteorInUse[index] = false;
+        --activeMeteors;
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void MeteorPool::Update()

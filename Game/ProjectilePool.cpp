@@ -30,6 +30,7 @@ bool ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
             projectiles[i].xVelocity = 3;
             projectiles[i].yVelocity = 3;
             projectileInUse[i] = true;
+            
             ++activeProjectiles;
             projectileCreated = true;
             break;
@@ -41,7 +42,7 @@ bool ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
 
 bool ProjectilePool::Destroy(uint8_t index)
 {
-    if(projectileInUse[index])
+    if((projectileInUse[index]) && (activeProjectiles > 0))
     {
         projectiles[index].position = {0, 0};
         projectiles[index].rotation = 0; 
@@ -49,6 +50,7 @@ bool ProjectilePool::Destroy(uint8_t index)
         projectiles[index].yVelocity = 0;
         projectiles[index].rotationVelocity = 0;
         projectileInUse[index] = false;
+        
         --activeProjectiles;
         return true;
     }

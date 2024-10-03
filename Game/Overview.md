@@ -1,5 +1,9 @@
 TODO / IDEAS:
 
+- Bug: After destorying all meteors and the max num of projectiles out of bounds, you cant shoot anymore
+
+- Implement a count for the meteor pool and do the checks we did in projectile pool as well.
+
 - Change SpriteComponent::SpriteComponent(const std::string& filePath), so that it accepts two additonal argument that determine the size to render the sprite ingame
 
 - Impelemnt GameSystems::Close() - need to close SDL subsystems

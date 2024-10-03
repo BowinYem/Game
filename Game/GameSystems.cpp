@@ -95,20 +95,20 @@ void GameSystems::GameSystems_UpdateCollision()
                     if (projectileCollided)
                     {
                         projectilePool->Destroy(j);
+                        std::cout << "Projectile collided w/ Meteor. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
                         meteorPool->Destroy(i);
                     }
 
-                    bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)  ||
-                                                 (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)             ||
-                                                 (projectile.position.y > GameWindowHeight) ||
+                    bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)                                  ||
+                                                 (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
+                                                 (projectile.position.y > GameWindowHeight)                                 ||
                                                  (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
                     if(projectileOutOfBounds)
                     { 
                         projectilePool->Destroy(j); 
                         std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
-
                     }
-                }       
+                }     
             }
 
             bool playerCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &playerEntity->GetCollisionBox()); 
