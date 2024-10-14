@@ -79,34 +79,24 @@ bool GameSystems::GameSystems_Close()
 
 void GameSystems::GameSystems_UpdateCollision()
 {
-    for(uint8_t i = 0; i < MeteorPoolSize; ++i)
+    for(uint8_t currMeteor = 0; currMeteor < MeteorPoolSize; ++currMeteor)
     {
-        if(meteorPool->IsMeteorInUse(i))
+        if(meteorPool->IsMeteorInUse(currMeteor))
         {
-            auto& meteor = meteorPool->GetMeteor(i);
+            auto& meteor = meteorPool->GetMeteor(currMeteor);
 
-            for(uint8_t j = 0; j < ProjectilePoolSize; ++j)
+            for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
             {
-                if(projectilePool->IsProjectileInUse(j))
+                if(projectilePool->IsProjectileInUse(currProj))
                 {  
-                    auto& projectile = projectilePool->GetProjectile(j);
+                    auto& projectile = projectilePool->GetProjectile(currProj);
 
                     bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
                     if (projectileCollided)
                     {
-                        projectilePool->Destroy(j);
+                        projectilePool->Destroy(currProj);
                         std::cout << "Projectile collided w/ Meteor. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
-                        meteorPool->Destroy(i);
-                    }
-
-                    bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)                                  ||
-                                                 (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
-                                                 (projectile.position.y > GameWindowHeight)                                 ||
-                                                 (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
-                    if(projectileOutOfBounds)
-                    { 
-                        projectilePool->Destroy(j); 
-                        std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
+                        meteorPool->Destroy(currMeteor);
                     }
                 }     
             }
@@ -115,7 +105,25 @@ void GameSystems::GameSystems_UpdateCollision()
             if (playerCollided)
             {
                 // Player/Meteor collision logic goes here
-                meteorPool->Destroy(i);
+                meteorPool->Destroy(currMeteor);
+            }
+        }
+    }
+
+    for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
+    {
+        if(projectilePool->IsProjectileInUse(currProj))
+        {
+            auto& projectile = projectilePool->GetProjectile(currProj);
+            bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)                         ||
+                                (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
+                                (projectile.position.y > GameWindowHeight)                                 ||
+                                (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
+
+            if(projectileOutOfBounds)
+            { 
+                projectilePool->Destroy(currProj); 
+                std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
             }
         }
     }

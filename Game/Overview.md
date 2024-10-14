@@ -1,6 +1,8 @@
 TODO / IDEAS:
 
 - Bug: After destorying all meteors and the max num of projectiles out of bounds, you cant shoot anymore
+    - The projecile destruction logic being nested in if(meteorPool->IsMeteorInUse(i)) is causing this
+    - Fixed - but test this a little more...
 
 - Implement a count for the meteor pool and do the checks we did in projectile pool as well.
 
