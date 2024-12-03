@@ -15,9 +15,12 @@
 
 #include "ProjectilePool.h"
 
+#include <iostream>
+
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
 static const char TOTAL_WALK_CYCLE_FRAMES = 3;
+static const char MS_PER_UPDATE = 16;
 
 std::unique_ptr<GameEntity> CreatePlayerEntity()
 {
@@ -71,21 +74,31 @@ int main(int argc, char* args[])
 
 	//GameSystems::projectilePool->Create({200, 200}, 0);
 	GameSystems::meteorPool->Create({400, 200}, 0);
-	
+
+	uint32_t previousTime = SDL_GetTicks();
+	uint32_t lagTime = 0;	
+
 	while (!GameSystems::quit)
 	{
+		uint32_t currentTime = SDL_GetTicks(); 
+		uint32_t elapsedTime = currentTime - previousTime;
+		previousTime = currentTime;
+		lagTime += elapsedTime;
+
 		GameSystems::ReadInput();
 	
 		GameSystems::GetRenderer()->GameRendererClear();
+		
+		while (lagTime >= MS_PER_UPDATE) 
+		{
+			lagTime -= MS_PER_UPDATE;
+			GameSystems::playerEntity->Update();
+			Entities[0]->Update();
 
-		GameSystems::playerEntity->Update();
-		Entities[0]->Update();
-		//Entities[1]->Update();
-
-		GameSystems::projectilePool->Update();
-		GameSystems::meteorPool->Update();
-		GameSystems::GameSystems_UpdateCollision();
-
+			GameSystems::projectilePool->Update();
+			GameSystems::meteorPool->Update();
+			GameSystems::GameSystems_UpdateCollision();
+		}
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
