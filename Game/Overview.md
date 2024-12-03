@@ -40,6 +40,19 @@ Project Rules
             - class functions 
 
 
+Frame Rate implementation
+===============================
+* Need to simulate physics every iteration of this loop:
+    while (lagTime >= MS_PER_UPDATE)
+    {
+        ...
+    } 
+
+
+*  Test whether or not implementation worked by changing MS_PER_UPDATE
+
+
+
 Input Overview:
 =============================
 
