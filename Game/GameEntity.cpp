@@ -14,20 +14,33 @@ GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared
     //...
 }
 
-void GameEntity::Update()
+void GameEntity::Update(double extrapolateVal)
 {
-    if(inputComp)
-        { inputComp->Update(*this); }
+    UpdateInput();
+    UpdatePhysics(extrapolateVal);
+    UpdateSprite();
 
-    if(physicsComp)
-        { physicsComp->Update(*this); }
-
-    if(spriteComp)
-        { spriteComp->Update(*this); } 
-    
     #ifdef COLLISION_DEBUG_MODE
     GameSystems::GetRenderer()->GameRendererDrawRect(physicsComp->collisionBox, GameSystems::testColor);
     #endif // COLLISION_DEBUG_MODE
+}
+
+void GameEntity::UpdatePhysics(double extrapolateVal)
+{
+    if(physicsComp)
+        { physicsComp->Update(*this, extrapolateVal); }
+}
+
+void GameEntity::UpdateInput()
+{
+    if(inputComp)
+        { inputComp->Update(*this); }
+}
+
+void GameEntity::UpdateSprite()
+{
+    if(spriteComp)
+        { spriteComp->Update(*this); } 
 }
 
 GameVector GameEntity::GetForwardDirection()

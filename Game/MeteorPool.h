@@ -16,7 +16,10 @@ public:
     bool Create(const GameVector& position_, int16_t rotation_);
     bool Destroy(uint8_t index);
     inline bool IsMeteorInUse(uint8_t index) { return meteorInUse[index]; }
-    void Update();
+    void Update(double extrapolateVal);
+    void UpdatePhysics(double extrapolateVal);
+    void UpdateInput();
+    void UpdateSprite();
     inline GameEntity& GetMeteor(uint8_t index) { return meteors[index]; }
     inline uint8_t GetTotalActiveMeteors() { return activeMeteors; }; 
 

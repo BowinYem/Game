@@ -60,14 +60,35 @@ bool ProjectilePool::Destroy(uint8_t index)
     }
 }
 
-void ProjectilePool::Update()
+void ProjectilePool::Update(double extrapolateVal)
 {
     for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
     {
-        if(projectileInUse[i]) 
-        { 
-            projectiles[i].Update(); 
-        }
+        if(projectileInUse[i]) { projectiles[i].Update(extrapolateVal); }
+    }
+}
+
+void ProjectilePool::UpdatePhysics(double extrapolateVal)
+{
+    for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
+    {
+        if(projectileInUse[i]) { projectiles[i].UpdatePhysics(extrapolateVal); }
+    }
+}
+
+void ProjectilePool::UpdateInput()
+{
+    for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
+    {
+        if(projectileInUse[i]) { projectiles[i].UpdateInput(); }
+    }
+}
+
+void ProjectilePool::UpdateSprite()
+{
+    for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
+    {
+        if(projectileInUse[i]) { projectiles[i].UpdateSprite(); }
     }
 }
 

@@ -28,11 +28,11 @@ PhysicsComponent::~PhysicsComponent()
     //...Destructor body
 }
 
-void PhysicsComponent::Update(GameEntity& entity)
+void PhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
 {
     GameVector forwardDirection = entity.GetForwardDirection();
-    entity.position.x += entity.xVelocity * forwardDirection.x;
-    entity.position.y += entity.yVelocity * forwardDirection.y;
+    entity.position.x += (entity.xVelocity * extrapolateVal) * forwardDirection.x;
+    entity.position.y += (entity.yVelocity * extrapolateVal) * forwardDirection.y;
 
     entity.rotation += entity.rotationVelocity;
     entity.rotation %= 360; // Wrap around so the rotation value doesn't go beyond 360 degrees

@@ -20,7 +20,13 @@ public:
 
     GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
-    void Update();
+    void Update(double extrapolateVal);
+
+    void UpdatePhysics(double extrapolateVal);
+
+    void UpdateInput();
+
+    void UpdateSprite();
 
     GameVector GetForwardDirection();
 
@@ -40,8 +46,8 @@ public:
     GameVector position;
     int16_t rotation = 0;
 
-    int8_t xVelocity = 0;
-    int8_t yVelocity = 0;
+    double xVelocity = 0;
+    double yVelocity = 0;
     double rotationVelocity = 0; 
 
 private:

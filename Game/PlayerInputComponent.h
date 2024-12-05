@@ -2,7 +2,7 @@
 #include "InputComponent.h"
 #include <cstdint>
 
-constexpr int8_t DefaultMovementRate = 5;
+constexpr double DefaultMovementRate = 5.0f;
 constexpr int8_t DefaultRotationRate = 3;
 
 // Forward declarations

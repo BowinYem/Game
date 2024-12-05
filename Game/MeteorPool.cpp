@@ -60,13 +60,34 @@ bool MeteorPool::Destroy(uint8_t index)
     }
 }
 
-void MeteorPool::Update()
+void MeteorPool::Update(double extrapolateVal)
 {
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {       
-        if(meteorInUse[i])
-        {
-            meteors[i].Update(); 
-        }
+        if(meteorInUse[i]) { meteors[i].Update(extrapolateVal); }
+    }
+}
+
+void MeteorPool::UpdatePhysics(double extrapolateVal)
+{
+    for(uint8_t i = 0; i < MeteorPoolSize; ++i)
+    {       
+        if(meteorInUse[i]) { meteors[i].UpdatePhysics(extrapolateVal); }
+    }
+}
+
+void MeteorPool::UpdateInput()
+{
+    for(uint8_t i = 0; i < MeteorPoolSize; ++i)
+    {       
+        if(meteorInUse[i]) { meteors[i].UpdateInput(); }
+    }
+}
+
+void MeteorPool::UpdateSprite()
+{
+    for(uint8_t i = 0; i < MeteorPoolSize; ++i)
+    {       
+        if(meteorInUse[i]) { meteors[i].UpdateSprite(); }
     }
 }

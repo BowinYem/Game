@@ -15,7 +15,10 @@ public:
     ProjectilePool();
     bool Create(const GameVector& position_, int16_t rotation_);
     bool Destroy(uint8_t index);
-    void Update();
+    void Update(double extrapolateVal);
+    void UpdatePhysics(double extrapolateVal);
+    void UpdateInput();
+    void UpdateSprite();
     inline bool IsProjectileInUse(uint8_t index) { return projectileInUse[index]; }
     GameEntity& GetProjectile(uint8_t index);
     inline uint8_t GetTotalActiveProjectiles() { return activeProjectiles; }; 
