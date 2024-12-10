@@ -92,9 +92,7 @@ int main(int argc, char* args[])
 		while (lagTime >= MS_PER_UPDATE) 
 		{
 			lagTime -= MS_PER_UPDATE;
-			GameSystems::playerEntity->Update();
-			GameSystems::projectilePool->Update();
-			GameSystems::meteorPool->Update();
+	
 			GameSystems::GameSystems_UpdateCollision();
 		}
 		GameSystems::GetRenderer()->GameRendererPresent();
