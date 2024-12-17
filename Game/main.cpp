@@ -19,7 +19,6 @@
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
-static const char TOTAL_WALK_CYCLE_FRAMES = 3;
 static const char MS_PER_UPDATE = 16;
 
 std::unique_ptr<GameEntity> CreatePlayerEntity()
@@ -86,15 +85,19 @@ int main(int argc, char* args[])
 		lagTime += elapsedTime;
 
 		GameSystems::ReadInput();
-	
+	    GameSystems::playerEntity->UpdateInput();
+
 		GameSystems::GetRenderer()->GameRendererClear();
 		
 		while (lagTime >= MS_PER_UPDATE) 
 		{
 			lagTime -= MS_PER_UPDATE;
 	
+			GameSystems::playerEntity->UpdatePhysics(lagTime / MS_PER_UPDATE);
 			GameSystems::GameSystems_UpdateCollision();
 		}
+
+		GameSystems::playerEntity->UpdateSprite();
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 

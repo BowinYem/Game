@@ -42,14 +42,13 @@ Project Rules
 
 Frame Rate implementation
 ===============================
-* Need to simulate physics every iteration of this loop:
-    while (lagTime >= MS_PER_UPDATE)
-    {
-        ...
-    } 
 
+TO DO
+* Double Check whether or not the timestep calculations are correct 
+* Rename timestep variabe to "delta" 
+* Make sure we're working with floating point values - i.e use sdl_frect not sdl_rect, call the floating point version of SDL_Render, etc...
+* Test whether or not implementation worked by changing MS_PER_UPDATE
 
-*  Test whether or not implementation worked by changing MS_PER_UPDATE
 
 
 
