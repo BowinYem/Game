@@ -34,7 +34,7 @@ void PhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
     entity.position.x += (entity.xVelocity * extrapolateVal) * forwardDirection.x;
     entity.position.y += (entity.yVelocity * extrapolateVal) * forwardDirection.y;
 
-    entity.rotation += entity.rotationVelocity;
+    entity.rotation += (entity.rotationVelocity * extrapolateVal);
     entity.rotation %= 360; // Wrap around so the rotation value doesn't go beyond 360 degrees
     
     collisionBox.x = entity.position.x;
