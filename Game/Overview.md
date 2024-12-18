@@ -45,6 +45,9 @@ Frame Rate implementation
 
 TO DO
 * Double Check whether or not the timestep calculations are correct 
+    - Make a new branch just for this
+* Compare the current implementation to this:
+    - https://gafferongames.com/post/fix_your_timestep/
 * Rename timestep variabe to "delta" 
 * Make sure we're working with floating point values - i.e use sdl_frect not sdl_rect, call the floating point version of SDL_Render, etc...
 * Test whether or not implementation worked by changing MS_PER_UPDATE
