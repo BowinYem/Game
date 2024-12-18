@@ -19,7 +19,7 @@
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
-static const char MS_PER_UPDATE = 16;
+static const float MS_PER_UPDATE = 16;
 
 std::unique_ptr<GameEntity> CreatePlayerEntity()
 {
