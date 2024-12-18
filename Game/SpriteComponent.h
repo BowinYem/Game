@@ -23,7 +23,7 @@ public:
 
 public:
 	SDL_Rect srcRect;
-	SDL_Rect destRect;
+	SDL_FRect destRect;
 
 private:
 	std::shared_ptr<GameTexture> spriteSheet;
