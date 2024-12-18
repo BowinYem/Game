@@ -20,7 +20,7 @@ bool GameRenderer::GameRendererClear()
     return !(SDL_RenderClear(rendererSDLPtr));
 }
 
- bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_Rect& destRect, const double rotation)
+ bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_FRect& destRect, const double rotation)
  {
     SDL_FRect destFRect = {destRect.x, destRect.y, destRect.h, destRect.w};
     return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destFRect, rotation, nullptr, SDL_FLIP_NONE));
