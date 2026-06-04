@@ -11,13 +11,14 @@ SpriteComponent::SpriteComponent(const std::string& filePath)
 }
 
 // Every tick, copy the sprite onto the buffer
-void SpriteComponent::Update(GameEntity& entity)
+void SpriteComponent::Update(GameEntity& entity, double alpha)
 {
-    destRect.x =  entity.position.x;
-    destRect.y =  entity.position.y; 
+    interpolate(entity, alpha);
+    destRect.x =  entity.renderPosition.x;
+    destRect.y =  entity.renderPosition.y; 
     destRect.w =  srcRect.w;
     destRect.h =  srcRect.h;
-    GameSystems::GetRenderer()->GameRendererCopy(*spriteSheet, srcRect, destRect, entity.rotation);
+    GameSystems::GetRenderer()->GameRendererCopy(*spriteSheet, srcRect, destRect, entity.renderRotation);
 }
 
 SpriteComponent& SpriteComponent::operator= (SpriteComponent& otherComp)
@@ -30,4 +31,10 @@ SpriteComponent& SpriteComponent::operator= (SpriteComponent& otherComp)
 const SDL_Rect& SpriteComponent::GetSpriteDimenisions()
 {
     return srcRect;
+}
+
+void SpriteComponent::interpolate(GameEntity& entity, double alpha)
+{
+		entity.renderPosition  = (entity.physicsState.currPosition * alpha) + (entity.physicsState.prevPosition * (1.0 - alpha));
+        entity.renderRotation  = (entity.physicsState.currRotation * alpha) + (entity.physicsState.prevRotation * (1.0 - alpha));
 }

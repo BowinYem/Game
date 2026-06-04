@@ -38,6 +38,7 @@
     <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="MeteorPool.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
+    <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ProjectilePool.cpp" />
@@ -58,6 +59,7 @@
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="MeteorPool.h" />
     <ClInclude Include="PhysicsComponent.h" />
+    <ClInclude Include="PhysicsState.h" />
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="ProjectilePool.h" />
     <ClInclude Include="SpriteComponent.h" />

@@ -3,6 +3,7 @@
 #include "GameVector.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
+#include <cmath>
 
 PhysicsComponent::PhysicsComponent()
 {
@@ -30,14 +31,19 @@ PhysicsComponent::~PhysicsComponent()
 
 void PhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
 {
-    GameVector forwardDirection = entity.GetForwardDirection();
-    entity.position.x += (entity.xVelocity * extrapolateVal) * forwardDirection.x;
-    entity.position.y += (entity.yVelocity * extrapolateVal) * forwardDirection.y;
-
-    entity.rotation += (entity.rotationVelocity * extrapolateVal);
-    entity.rotation %= 360; // Wrap around so the rotation value doesn't go beyond 360 degrees
+    auto& entPhyState = entity.physicsState;
     
-    collisionBox.x = entity.position.x;
-    collisionBox.y = entity.position.y;
+    GameVector forwardDirection = entity.GetForwardDirection();
+    entPhyState.prevPosition = entPhyState.currPosition;
+    entPhyState.currPosition.x += (entity.xVelocity * extrapolateVal) * forwardDirection.x;
+    entPhyState.currPosition.y += (entity.yVelocity * extrapolateVal) * forwardDirection.y;
+
+    entPhyState.prevRotation = entPhyState.currRotation;
+    entPhyState.currRotation += (entity.rotationVelocity * extrapolateVal);
+    entPhyState.currRotation = std::fmod(entPhyState.currRotation, 360.0f); // Wrap around so the rotation value doesn't go beyond 360 degrees
+    
+    collisionBox.x = entity.renderPosition.x;
+    collisionBox.y = entity.renderPosition.y;
 }
 
+ 

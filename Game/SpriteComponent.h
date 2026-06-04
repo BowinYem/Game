@@ -15,7 +15,7 @@ public:
 
 	SpriteComponent(const std::string& filePath);
 	
-	void Update(GameEntity& entity);
+	void Update(GameEntity& entity, double alpha);
 
 	SpriteComponent& operator= (SpriteComponent& otherComp); 
 
@@ -26,6 +26,7 @@ public:
 	SDL_FRect destRect;
 
 private:
+	void interpolate(GameEntity& entity, double alpha);
 	std::shared_ptr<GameTexture> spriteSheet;
 };
 

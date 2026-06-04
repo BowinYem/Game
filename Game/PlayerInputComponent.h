@@ -2,8 +2,8 @@
 #include "InputComponent.h"
 #include <cstdint>
 
-constexpr double DefaultMovementRate = 5.0f;
-constexpr int8_t DefaultRotationRate = 3;
+constexpr double DefaultMovementRate = 100.0;
+constexpr double DefaultRotationRate = 100.0;
 
 // Forward declarations
 class GameEntity;

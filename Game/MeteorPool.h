@@ -19,7 +19,7 @@ public:
     void Update(double extrapolateVal);
     void UpdatePhysics(double extrapolateVal);
     void UpdateInput();
-    void UpdateSprite();
+    void UpdateSprite(double alpha);
     inline GameEntity& GetMeteor(uint8_t index) { return meteors[index]; }
     inline uint8_t GetTotalActiveMeteors() { return activeMeteors; }; 
 

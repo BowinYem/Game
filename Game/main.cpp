@@ -19,7 +19,8 @@
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
-static const float MS_PER_UPDATE = 16;
+static const float MS_PER_UPDATE = .01;
+static const float FRAME_TIME_LIMIT = .25;
 
 std::unique_ptr<GameEntity> CreatePlayerEntity()
 {
@@ -48,8 +49,8 @@ std::unique_ptr<GameEntity> CreateEntity()
 	
 	// This kind of entity just rotates in place at this specific spot
 	newEntity->rotationVelocity = 5.f;
-	newEntity->position.x = 300;
-	newEntity->position.y = 300;
+	newEntity->renderPosition.x = 300;
+	newEntity->renderPosition.y = 300;
 	return newEntity;
 }
 
@@ -74,30 +75,33 @@ int main(int argc, char* args[])
 	//GameSystems::projectilePool->Create({200, 200}, 0);
 	GameSystems::meteorPool->Create({400, 200}, 0);
 
-	uint32_t previousTime = SDL_GetTicks();
-	uint32_t lagTime = 0;	
+	double previousTime = SDL_GetTicks() / 1000.0f;
+	double accumulator = 0.0; 
+	double frameTime = 0;	
 
 	while (!GameSystems::quit)
-	{
-		uint32_t currentTime = SDL_GetTicks(); 
-		uint32_t elapsedTime = currentTime - previousTime;
+	{	
+		double currentTime = SDL_GetTicks() / 1000.0f; 
+		frameTime = currentTime - previousTime;
+		if(frameTime > FRAME_TIME_LIMIT)
+			{ frameTime = FRAME_TIME_LIMIT; }
 		previousTime = currentTime;
-		lagTime += elapsedTime;
+		accumulator += frameTime;
 
 		GameSystems::ReadInput();
 	    GameSystems::playerEntity->UpdateInput();
 
 		GameSystems::GetRenderer()->GameRendererClear();
 		
-		while (lagTime >= MS_PER_UPDATE) 
+		while (accumulator >= MS_PER_UPDATE) 
 		{
-			lagTime -= MS_PER_UPDATE;
-	
-			GameSystems::playerEntity->UpdatePhysics(lagTime / MS_PER_UPDATE);
+			GameSystems::playerEntity->UpdatePhysics(MS_PER_UPDATE);
 			GameSystems::GameSystems_UpdateCollision();
+			accumulator -= MS_PER_UPDATE;
 		}
 
-		GameSystems::playerEntity->UpdateSprite();
+		double alpha = accumulator / MS_PER_UPDATE;
+		GameSystems::playerEntity->UpdateSprite(alpha);
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 

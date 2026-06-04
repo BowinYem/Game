@@ -12,6 +12,9 @@ public:
     void Normalize();
     void Rotate(float angleDegree);
 
+    template <typename T>
+    GameVector operator* (const T scalar) { return GameVector(this->x * scalar, this->y * scalar); }
+
 public:
     double x;
     double y;

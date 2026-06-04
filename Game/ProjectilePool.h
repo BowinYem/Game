@@ -18,7 +18,7 @@ public:
     void Update(double extrapolateVal);
     void UpdatePhysics(double extrapolateVal);
     void UpdateInput();
-    void UpdateSprite();
+    void UpdateSprite(double alpha);
     inline bool IsProjectileInUse(uint8_t index) { return projectileInUse[index]; }
     GameEntity& GetProjectile(uint8_t index);
     inline uint8_t GetTotalActiveProjectiles() { return activeProjectiles; }; 

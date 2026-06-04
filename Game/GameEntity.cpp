@@ -9,7 +9,7 @@
 
 
 GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
-    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, position{spawnLocation}
+    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, renderPosition{spawnLocation}, physicsState{renderPosition}
 {
     //...
 }
@@ -18,7 +18,7 @@ void GameEntity::Update(double extrapolateVal)
 {
     UpdateInput();
     UpdatePhysics(extrapolateVal);
-    UpdateSprite();
+    //UpdateSprite();
 
     #ifdef COLLISION_DEBUG_MODE
     GameSystems::GetRenderer()->GameRendererDrawRect(physicsComp->collisionBox, GameSystems::testColor);
@@ -37,10 +37,10 @@ void GameEntity::UpdateInput()
         { inputComp->Update(*this); }
 }
 
-void GameEntity::UpdateSprite()
+void GameEntity::UpdateSprite(double alpha)
 {
     if(spriteComp)
-        { spriteComp->Update(*this); } 
+        { spriteComp->Update(*this, alpha); } 
 }
 
 GameVector GameEntity::GetForwardDirection()
@@ -66,9 +66,9 @@ GameVector GameEntity::GetForwardDirection()
         Source: https://stackoverflow.com/questions/1571294/line-equation-with-angle
     */
 
-    float rotationRadians = GameMath::DegreesToRadians(rotation);
-    GameVector destPos { position.x + (cos(rotationRadians)), position.y + (sin(rotationRadians)) }; 
-    return destPos - position;
+    float rotationRadians = GameMath::DegreesToRadians(renderRotation);
+    GameVector destPos { renderPosition.x + (cos(rotationRadians)), renderPosition.y + (sin(rotationRadians)) }; 
+    return destPos - renderPosition;
 }
 
 

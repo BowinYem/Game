@@ -25,8 +25,8 @@ bool ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
     {
         if(!projectileInUse[i])
         {
-            projectiles[i].position = position_;
-            projectiles[i].rotation = rotation_;
+            projectiles[i].renderPosition = position_;
+            projectiles[i].renderRotation = rotation_;
             projectiles[i].xVelocity = 3;
             projectiles[i].yVelocity = 3;
             projectileInUse[i] = true;
@@ -44,8 +44,8 @@ bool ProjectilePool::Destroy(uint8_t index)
 {
     if((projectileInUse[index]) && (activeProjectiles > 0))
     {
-        projectiles[index].position = {0, 0};
-        projectiles[index].rotation = 0; 
+        projectiles[index].renderPosition = {0, 0};
+        projectiles[index].renderRotation = 0; 
         projectiles[index].xVelocity = 0;
         projectiles[index].yVelocity = 0;
         projectiles[index].rotationVelocity = 0;
@@ -84,11 +84,11 @@ void ProjectilePool::UpdateInput()
     }
 }
 
-void ProjectilePool::UpdateSprite()
+void ProjectilePool::UpdateSprite(double alpha)
 {
     for(uint8_t i = 0; i < ProjectilePoolSize; ++i)
     {
-        if(projectileInUse[i]) { projectiles[i].UpdateSprite(); }
+        if(projectileInUse[i]) { projectiles[i].UpdateSprite(alpha); }
     }
 }
 

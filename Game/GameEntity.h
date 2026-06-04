@@ -2,6 +2,7 @@
 #include <memory>
 #include <string> 
 #include "GameVector.h"
+#include "PhysicsState.h"
 #include "SDL.h"
 
 constexpr double DefaultXPos = 100.f;
@@ -26,7 +27,7 @@ public:
 
     void UpdateInput();
 
-    void UpdateSprite();
+    void UpdateSprite(double alpha);
 
     GameVector GetForwardDirection();
 
@@ -43,9 +44,10 @@ public:
 public:
     EntityType entityType;
 
-    GameVector position;
-    int16_t rotation = 0;
+    GameVector renderPosition;
+    double renderRotation = 0;
 
+    PhysicsState physicsState;
     double xVelocity = 0;
     double yVelocity = 0;
     double rotationVelocity = 0; 

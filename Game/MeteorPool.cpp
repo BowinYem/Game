@@ -27,8 +27,8 @@ bool MeteorPool::Create(const GameVector& position_, int16_t rotation_)
     {
         if(!meteorInUse[i])
         {
-            meteors[i].position = position_;
-            meteors[i].rotation = rotation_;
+            meteors[i].renderPosition = position_;
+            meteors[i].renderRotation = rotation_;
             meteors[i].xVelocity = -1;
             meteors[i].yVelocity = -1;
             meteorInUse[i] = true;
@@ -45,8 +45,8 @@ bool MeteorPool::Destroy(uint8_t index)
 {
     if((meteorInUse[index]) && (activeMeteors > 0))
     {
-        meteors[index].position = {0, 0};
-        meteors[index].rotation = 0; 
+        meteors[index].renderPosition = {0, 0};
+        meteors[index].renderRotation = 0; 
         meteors[index].xVelocity = 0;
         meteors[index].yVelocity = 0;
         meteors[index].rotationVelocity = 0;
@@ -84,10 +84,10 @@ void MeteorPool::UpdateInput()
     }
 }
 
-void MeteorPool::UpdateSprite()
+void MeteorPool::UpdateSprite(double alpha)
 {
     for(uint8_t i = 0; i < MeteorPoolSize; ++i)
     {       
-        if(meteorInUse[i]) { meteors[i].UpdateSprite(); }
+        if(meteorInUse[i]) { meteors[i].UpdateSprite(alpha); }
     }
 }

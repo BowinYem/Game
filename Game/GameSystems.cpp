@@ -115,10 +115,10 @@ void GameSystems::GameSystems_UpdateCollision()
         if(projectilePool->IsProjectileInUse(currProj))
         {
             auto& projectile = projectilePool->GetProjectile(currProj);
-            bool projectileOutOfBounds = (projectile.position.x > GameWindowWidth)                         ||
-                                (projectile.position.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
-                                (projectile.position.y > GameWindowHeight)                                 ||
-                                (projectile.position.y < 0.f - playerEntity->GetSpriteDimensions().h));
+            bool projectileOutOfBounds = (projectile.renderPosition.x > GameWindowWidth)                         ||
+                                (projectile.renderPosition.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
+                                (projectile.renderPosition.y > GameWindowHeight)                                 ||
+                                (projectile.renderPosition.y < 0.f - playerEntity->GetSpriteDimensions().h));
 
             if(projectileOutOfBounds)
             { 
