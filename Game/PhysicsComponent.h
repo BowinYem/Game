@@ -2,6 +2,10 @@
 #include "GameVector.h"
 #include "SDL.h"
 
+constexpr double defaultXVelocity = 100;
+constexpr double defaultYVelocity = 100;
+constexpr double defaultRotateVelocity = 100; 
+
 class GameEntity;
 
 class PhysicsComponent
@@ -14,4 +18,8 @@ class PhysicsComponent
 
 public:
     SDL_Rect collisionBox;
+    double xVelocity = defaultXVelocity;
+    double yVelocity = defaultYVelocity;
+    double rotationVelocity = defaultRotateVelocity; 
+;
 };

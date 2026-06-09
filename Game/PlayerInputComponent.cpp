@@ -21,32 +21,29 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Rotation
     if (keyboardState[SDL_SCANCODE_LEFT])
     {
-        entity.rotationVelocity = -rotationRate;
+        entity.rotateDir = RotateDirection::rotateLeft;
     }
     else if (keyboardState[SDL_SCANCODE_RIGHT])
     {
-       entity.rotationVelocity = rotationRate;
+       entity.rotateDir = RotateDirection::rotateRight;
     }
     else
     {
-        entity.rotationVelocity = 0;
+        entity.rotateDir = RotateDirection::rotateNone;
     }
 
     // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
-        entity.xVelocity = movementRate;
-        entity.yVelocity = movementRate;
+        entity.moveDir = MovementDirection::movementForward;
     }
     else if (keyboardState[SDL_SCANCODE_DOWN])
     {
-        entity.xVelocity = -movementRate;
-        entity.yVelocity = -movementRate;
+        entity.moveDir = MovementDirection::movementBackwards;
     }
     else
     {
-        entity.xVelocity = 0;
-        entity.yVelocity = 0;
+        entity.moveDir = MovementDirection::movementNone;
     }
 
     // Actions

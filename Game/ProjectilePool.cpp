@@ -27,8 +27,7 @@ bool ProjectilePool::Create(const GameVector& position_, int16_t rotation_)
         {
             projectiles[i].renderPosition = position_;
             projectiles[i].renderRotation = rotation_;
-            projectiles[i].xVelocity = 3;
-            projectiles[i].yVelocity = 3;
+            projectiles[i].moveDir = MovementDirection::movementForward;
             projectileInUse[i] = true;
             
             ++activeProjectiles;
@@ -46,9 +45,8 @@ bool ProjectilePool::Destroy(uint8_t index)
     {
         projectiles[index].renderPosition = {0, 0};
         projectiles[index].renderRotation = 0; 
-        projectiles[index].xVelocity = 0;
-        projectiles[index].yVelocity = 0;
-        projectiles[index].rotationVelocity = 0;
+        projectiles[index].moveDir = MovementDirection::movementNone;
+        projectiles[index].rotateDir = RotateDirection::rotateNone;
         projectileInUse[index] = false;
         
         --activeProjectiles;

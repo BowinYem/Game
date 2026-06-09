@@ -29,8 +29,7 @@ bool MeteorPool::Create(const GameVector& position_, int16_t rotation_)
         {
             meteors[i].renderPosition = position_;
             meteors[i].renderRotation = rotation_;
-            meteors[i].xVelocity = -1;
-            meteors[i].yVelocity = -1;
+            meteors[i].moveDir = MovementDirection::movementBackwards;
             meteorInUse[i] = true;
             ++activeMeteors;
             meteorCreated = true;
@@ -47,9 +46,8 @@ bool MeteorPool::Destroy(uint8_t index)
     {
         meteors[index].renderPosition = {0, 0};
         meteors[index].renderRotation = 0; 
-        meteors[index].xVelocity = 0;
-        meteors[index].yVelocity = 0;
-        meteors[index].rotationVelocity = 0;
+        meteors[index].moveDir = MovementDirection::movementNone;
+        meteors[index].rotateDir = RotateDirection::rotateNone;
         meteorInUse[index] = false;
         --activeMeteors;
         return true;

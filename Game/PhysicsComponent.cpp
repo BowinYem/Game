@@ -35,11 +35,11 @@ void PhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
     
     GameVector forwardDirection = entity.GetForwardDirection();
     entPhyState.prevPosition = entPhyState.currPosition;
-    entPhyState.currPosition.x += (entity.xVelocity * extrapolateVal) * forwardDirection.x;
-    entPhyState.currPosition.y += (entity.yVelocity * extrapolateVal) * forwardDirection.y;
+    entPhyState.currPosition.x += (((+entity.moveDir) * xVelocity) * extrapolateVal) * forwardDirection.x;
+    entPhyState.currPosition.y += (((+entity.moveDir) * yVelocity) * extrapolateVal) * forwardDirection.y;
 
     entPhyState.prevRotation = entPhyState.currRotation;
-    entPhyState.currRotation += (entity.rotationVelocity * extrapolateVal);
+    entPhyState.currRotation += (((+entity.rotateDir) * rotationVelocity) * extrapolateVal);
     entPhyState.currRotation = std::fmod(entPhyState.currRotation, 360.0f); // Wrap around so the rotation value doesn't go beyond 360 degrees
     
     collisionBox.x = entity.renderPosition.x;

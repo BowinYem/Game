@@ -48,6 +48,7 @@
     <None Include="Overview.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DirectionEnum.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameRect.h" />

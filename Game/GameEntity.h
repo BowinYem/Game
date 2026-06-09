@@ -4,6 +4,7 @@
 #include "GameVector.h"
 #include "PhysicsState.h"
 #include "SDL.h"
+#include "DirectionEnum.h"
 
 constexpr double DefaultXPos = 100.f;
 constexpr double DefaultYPos = 100.f;
@@ -47,10 +48,9 @@ public:
     GameVector renderPosition;
     double renderRotation = 0;
 
+	MovementDirection moveDir = MovementDirection::movementNone;
+	RotateDirection rotateDir = RotateDirection::rotateNone; 
     PhysicsState physicsState;
-    double xVelocity = 0;
-    double yVelocity = 0;
-    double rotationVelocity = 0; 
 
 private:
     std::shared_ptr<SpriteComponent> spriteComp {nullptr}; 

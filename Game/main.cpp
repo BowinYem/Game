@@ -48,9 +48,8 @@ std::unique_ptr<GameEntity> CreateEntity()
 		);
 	
 	// This kind of entity just rotates in place at this specific spot
-	newEntity->rotationVelocity = 5.f;
-	newEntity->renderPosition.x = 300;
-	newEntity->renderPosition.y = 300;
+	newEntity->rotateDir = RotateDirection::rotateRight;
+	newEntity->moveDir = MovementDirection::movementNone;
 	return newEntity;
 }
 
