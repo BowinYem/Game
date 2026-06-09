@@ -21,5 +21,4 @@ public:
     double xVelocity = defaultXVelocity;
     double yVelocity = defaultYVelocity;
     double rotationVelocity = defaultRotateVelocity; 
-;
 };
