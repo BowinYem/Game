@@ -5,7 +5,6 @@
 constexpr uint16_t SpriteHeight = 50;
 constexpr uint16_t SpriteWidth = 50; 
 
-// TO DO!!!!!!!!!!!!! Look into giving SpriteComponent an implicit default constructor
 EntityPool::EntityPool(size_t poolSize) : entities(poolSize), entitiesInUse(poolSize), entitySprite("star.bmp")
 {
     for(GameEntity& currEntity : entities)
