@@ -48,6 +48,7 @@ int main(int argc, char* args[])
 
 		GameSystems::ReadInput();
 	    GameSystems::playerEntity->UpdateInput();
+		testPool.UpdateInput();
 
 		GameSystems::GetRenderer()->GameRendererClear();
 		

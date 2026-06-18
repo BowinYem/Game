@@ -42,6 +42,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerPhysicsComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
+    <ClCompile Include="TestInputComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Overview.md" />
@@ -63,6 +64,7 @@
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="PlayerPhysicsComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
+    <ClInclude Include="TestInputComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

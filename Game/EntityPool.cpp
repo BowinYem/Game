@@ -1,5 +1,6 @@
 #include "EntityPool.h"
-
+#include "TestInputComponent.h"
+#include "PlayerPhysicsComponent.h"
 
 constexpr uint16_t SpriteHeight = 50;
 constexpr uint16_t SpriteWidth = 50; 
@@ -13,7 +14,10 @@ EntityPool::EntityPool(size_t poolSize) : entities(poolSize), entitiesInUse(pool
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = SpriteHeight;
         CollisionBoxSize.w = SpriteWidth;
-        // currEntity.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
+
+        // Probably going to change/remove
+        currEntity.SetInputComponent(std::make_shared<TestInputComponent>());
+        currEntity.SetPhysicsComponent(std::make_shared<PlayerPhysicsComponent>(CollisionBoxSize)); 
     }    
 }
 
@@ -34,7 +38,7 @@ bool EntityPool::Create(const GameVector& position, int16_t rotation)
             entities[i].physicsState.prevRotation = rotation;
 
             entities[i].moveDir = MovementDirection::movementNone;
-            entities[i].rotateDir = RotateDirection::rotateRight;
+            entities[i].rotateDir = RotateDirection::rotateNone;
             entitiesInUse[i] = true;
             ++activeEntities;
             entityCreated = true;
