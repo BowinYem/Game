@@ -17,8 +17,6 @@ const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
 std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
-std::unique_ptr<ProjectilePool> GameSystems::projectilePool(nullptr);
-std::unique_ptr<MeteorPool> GameSystems::meteorPool(nullptr);
 std::shared_ptr<GameEntity> GameSystems::playerEntity(nullptr);
 
 void GameSystems::ReadInput()
@@ -51,12 +49,6 @@ bool GameSystems::GameSystems_Init()
     renderer = std::make_shared<GameRenderer>();
     if(!renderer) { InitSuccess = false; }    
 
-    projectilePool = std::make_unique<ProjectilePool>();
-    if(!projectilePool) {InitSuccess = false; }
-
-    meteorPool = std::make_unique<MeteorPool>();
-    if(!meteorPool) {InitSuccess = false; }
-
     // Create player entity
    	SDL_Rect CollisionBoxSize;
 	CollisionBoxSize.h = 50;
@@ -79,52 +71,52 @@ bool GameSystems::GameSystems_Close()
 
 void GameSystems::GameSystems_UpdateCollision()
 {
-    for(uint8_t currMeteor = 0; currMeteor < MeteorPoolSize; ++currMeteor)
-    {
-        if(meteorPool->IsMeteorInUse(currMeteor))
-        {
-            auto& meteor = meteorPool->GetMeteor(currMeteor);
+    //for(uint8_t currMeteor = 0; currMeteor < MeteorPoolSize; ++currMeteor)
+    //{
+    //    if(meteorPool->IsMeteorInUse(currMeteor))
+    //    {
+    //        auto& meteor = meteorPool->GetMeteor(currMeteor);
 
-            for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
-            {
-                if(projectilePool->IsProjectileInUse(currProj))
-                {  
-                    auto& projectile = projectilePool->GetProjectile(currProj);
+    //        for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
+    //        {
+    //            if(projectilePool->IsProjectileInUse(currProj))
+    //            {  
+    //                auto& projectile = projectilePool->GetProjectile(currProj);
 
-                    bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
-                    if (projectileCollided)
-                    {
-                        projectilePool->Destroy(currProj);
-                        std::cout << "Projectile collided w/ Meteor. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
-                        meteorPool->Destroy(currMeteor);
-                    }
-                }     
-            }
+    //                bool projectileCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &projectile.GetCollisionBox());  
+    //                if (projectileCollided)
+    //                {
+    //                    projectilePool->Destroy(currProj);
+    //                    std::cout << "Projectile collided w/ Meteor. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
+    //                    meteorPool->Destroy(currMeteor);
+    //                }
+    //            }     
+    //        }
 
-            bool playerCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &playerEntity->GetCollisionBox()); 
-            if (playerCollided)
-            {
-                // Player/Meteor collision logic goes here
-                meteorPool->Destroy(currMeteor);
-            }
-        }
-    }
+    //        bool playerCollided = SDL_HasIntersection(&meteor.GetCollisionBox(), &playerEntity->GetCollisionBox()); 
+    //        if (playerCollided)
+    //        {
+    //            // Player/Meteor collision logic goes here
+    //            meteorPool->Destroy(currMeteor);
+    //        }
+    //    }
+    //}
 
-    for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
-    {
-        if(projectilePool->IsProjectileInUse(currProj))
-        {
-            auto& projectile = projectilePool->GetProjectile(currProj);
-            bool projectileOutOfBounds = (projectile.renderPosition.x > GameWindowWidth)                         ||
-                                (projectile.renderPosition.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
-                                (projectile.renderPosition.y > GameWindowHeight)                                 ||
-                                (projectile.renderPosition.y < 0.f - playerEntity->GetSpriteDimensions().h));
+    //for(uint8_t currProj = 0; currProj < ProjectilePoolSize; ++currProj)
+    //{
+    //    if(projectilePool->IsProjectileInUse(currProj))
+    //    {
+    //        auto& projectile = projectilePool->GetProjectile(currProj);
+    //        bool projectileOutOfBounds = (projectile.renderPosition.x > GameWindowWidth)                         ||
+    //                            (projectile.renderPosition.x < (0.f - playerEntity->GetSpriteDimensions().w)     ||
+    //                            (projectile.renderPosition.y > GameWindowHeight)                                 ||
+    //                            (projectile.renderPosition.y < 0.f - playerEntity->GetSpriteDimensions().h));
 
-            if(projectileOutOfBounds)
-            { 
-                projectilePool->Destroy(currProj); 
-                std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
-            }
-        }
-    }
+    //        if(projectileOutOfBounds)
+    //        { 
+    //            projectilePool->Destroy(currProj); 
+    //            std::cout << "Projectile out of bounds. " << std::to_string(projectilePool->GetTotalActiveProjectiles()) << " remain." << std::endl;
+    //        }
+    //    }
+    //}
 }

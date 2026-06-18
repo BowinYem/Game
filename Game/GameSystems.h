@@ -1,8 +1,6 @@
 #pragma once
 #include <SDL.h>
 #include <memory>
-#include "ProjectilePool.h"
-#include "MeteorPool.h"
 
 // Constants
 constexpr uint16_t GameWindowHeight = 480;
@@ -27,8 +25,6 @@ public:
 	static bool quit;
 	static const uint8_t* keyboardState;
 	static SDL_Keycode actionEvent;
-	static std::unique_ptr<ProjectilePool> projectilePool;
-	static std::unique_ptr<MeteorPool> meteorPool;
 	static std::shared_ptr<GameEntity> playerEntity; 
 	static const SDL_Color testColor; 
 

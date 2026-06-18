@@ -51,16 +51,13 @@
     <ClCompile Include="GameMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ProjectilePool.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameRect.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MeteorPool.cpp">
+    <ClCompile Include="PhysicsState.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PhysicsState.cpp">
+    <ClCompile Include="EntityPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -101,19 +98,16 @@
     <ClInclude Include="GameMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ProjectilePool.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameRect.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MeteorPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PhysicsState.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DirectionEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EntityPool.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -27,6 +27,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EntityPool.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameRect.cpp" />
@@ -36,12 +37,10 @@
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="InputComponent.cpp" />
-    <ClCompile Include="MeteorPool.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ProjectilePool.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DirectionEnum.h" />
+    <ClInclude Include="EntityPool.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameRect.h" />
@@ -58,11 +58,9 @@
     <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
-    <ClInclude Include="MeteorPool.h" />
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PhysicsState.h" />
     <ClInclude Include="PlayerInputComponent.h" />
-    <ClInclude Include="ProjectilePool.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

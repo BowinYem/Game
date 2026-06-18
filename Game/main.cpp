@@ -13,7 +13,7 @@
 #include "PlayerInputComponent.h"
 #include "PhysicsComponent.h"
 
-#include "ProjectilePool.h"
+#include "EntityPool.h"
 
 #include <iostream>
 
@@ -59,20 +59,10 @@ int main(int argc, char* args[])
 
 	GameSystems::GameSystems_Init();
 
-	// Create entities with a sprite component
-	std::vector<std::unique_ptr<GameEntity>> Entities;
-	//Entities.push_back(CreatePlayerEntity());
-	Entities.push_back(CreateEntity());
-	
-	// ProjectilePool testPool;
-	//GameSystems::projectilePool->Create({200, 400}, 0);
-	GameSystems::meteorPool->Create({400, 400}, 0);
-
-	//GameSystems::projectilePool->Create({200, 300}, 0);
-	GameSystems::meteorPool->Create({400, 300}, 0);
-
-	//GameSystems::projectilePool->Create({200, 200}, 0);
-	GameSystems::meteorPool->Create({400, 200}, 0);
+	EntityPool testPool(5);
+	testPool.Create(GameVector(100, 100), 0);
+	testPool.Create(GameVector(200, 200), 0);
+	testPool.Create(GameVector(300, 300), 0);
 
 	double previousTime = SDL_GetTicks() / 1000.0f;
 	double accumulator = 0.0; 
@@ -95,12 +85,14 @@ int main(int argc, char* args[])
 		while (accumulator >= MS_PER_UPDATE) 
 		{
 			GameSystems::playerEntity->UpdatePhysics(MS_PER_UPDATE);
+			testPool.UpdatePhysics(MS_PER_UPDATE);
 			GameSystems::GameSystems_UpdateCollision();
 			accumulator -= MS_PER_UPDATE;
 		}
 
 		double alpha = accumulator / MS_PER_UPDATE;
 		GameSystems::playerEntity->UpdateSprite(alpha);
+		testPool.UpdateSprite(alpha);
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
