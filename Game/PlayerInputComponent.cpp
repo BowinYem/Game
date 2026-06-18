@@ -2,16 +2,6 @@
 #include "GameSystems.h"
 #include "GameEntity.h"
 
-PlayerInputComponent::PlayerInputComponent()
-{
-    // Constructor body...
-}
-
-PlayerInputComponent::~PlayerInputComponent()
-{
-    // Destructor body...
-}
-
 void PlayerInputComponent::Update(GameEntity& entity)
 {
     // Do basic input handling here for now
