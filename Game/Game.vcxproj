@@ -36,7 +36,6 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
-    <ClCompile Include="InputComponent.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
