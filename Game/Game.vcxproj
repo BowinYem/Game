@@ -41,6 +41,7 @@
     <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerPhysicsComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +62,7 @@
     <ClInclude Include="PhysicsComponent.h" />
     <ClInclude Include="PhysicsState.h" />
     <ClInclude Include="PlayerInputComponent.h" />
+    <ClInclude Include="PlayerPhysicsComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

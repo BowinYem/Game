@@ -13,7 +13,7 @@ EntityPool::EntityPool(size_t poolSize) : entities(poolSize), entitiesInUse(pool
         SDL_Rect CollisionBoxSize;
         CollisionBoxSize.h = SpriteHeight;
         CollisionBoxSize.w = SpriteWidth;
-        currEntity.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
+        // currEntity.SetPhysicsComponent(std::make_shared<PhysicsComponent>(CollisionBoxSize));
     }    
 }
 

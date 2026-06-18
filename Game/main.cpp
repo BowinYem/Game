@@ -22,37 +22,6 @@ static const char SPRITE_HEIGHT = 31;
 static const float MS_PER_UPDATE = .01;
 static const float FRAME_TIME_LIMIT = .25;
 
-std::unique_ptr<GameEntity> CreatePlayerEntity()
-{
-	SDL_Rect CollisionBoxSize;
-	CollisionBoxSize.h = 50;
-	CollisionBoxSize.w = 50;
-
-	// Create components here
-	return std::make_unique<GameEntity>
-		(
-			std::make_shared<SpriteComponent>("star.bmp"),
-			std::make_shared<PlayerInputComponent>(),
-			std::make_shared<PhysicsComponent>(CollisionBoxSize)
-		);
-}
-
-std::unique_ptr<GameEntity> CreateEntity()
-{
-	// Create components here
-	auto newEntity = std::make_unique<GameEntity>
-		(
-			std::make_shared<SpriteComponent>("star.bmp"),
-			nullptr,
-			std::make_shared<PhysicsComponent>()
-		);
-	
-	// This kind of entity just rotates in place at this specific spot
-	newEntity->rotateDir = RotateDirection::rotateRight;
-	newEntity->moveDir = MovementDirection::movementNone;
-	return newEntity;
-}
-
 int main(int argc, char* args[])
 {
 	SDL_Init(SDL_INIT_VIDEO);

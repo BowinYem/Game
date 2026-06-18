@@ -14,7 +14,7 @@ class PhysicsComponent
     PhysicsComponent();
     PhysicsComponent(SDL_Rect& collisionBox_);
     ~PhysicsComponent();
-    void Update(GameEntity& entity, double extrapolateVal);
+    virtual void Update(GameEntity& entity, double extrapolateVal) = 0;
 
 public:
     SDL_Rect collisionBox;

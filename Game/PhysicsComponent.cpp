@@ -3,7 +3,6 @@
 #include "GameVector.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
-#include <cmath>
 
 PhysicsComponent::PhysicsComponent()
 {
@@ -23,27 +22,7 @@ PhysicsComponent::PhysicsComponent(SDL_Rect& collisionBox_)
    collisionBox.y = collisionBox_.y;
 }
 
-
 PhysicsComponent::~PhysicsComponent()
 {
     //...Destructor body
 }
-
-void PhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
-{
-    auto& entPhyState = entity.physicsState;
-    
-    GameVector forwardDirection = entity.GetForwardDirection();
-    entPhyState.prevPosition = entPhyState.currPosition;
-    entPhyState.currPosition.x += (((+entity.moveDir) * xVelocity) * extrapolateVal) * forwardDirection.x;
-    entPhyState.currPosition.y += (((+entity.moveDir) * yVelocity) * extrapolateVal) * forwardDirection.y;
-
-    entPhyState.prevRotation = entPhyState.currRotation;
-    entPhyState.currRotation += (((+entity.rotateDir) * rotationVelocity) * extrapolateVal);
-    entPhyState.currRotation = std::fmod(entPhyState.currRotation, 360.0f); // Wrap around so the rotation value doesn't go beyond 360 degrees
-    
-    collisionBox.x = entity.renderPosition.x;
-    collisionBox.y = entity.renderPosition.y;
-}
-
- 

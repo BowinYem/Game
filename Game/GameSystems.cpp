@@ -5,7 +5,7 @@
 #include "GameEntity.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
-#include "PhysicsComponent.h"
+#include "PlayerPhysicsComponent.h"
 
 #include <iostream> // TODO: DELETE 
 
@@ -57,7 +57,7 @@ bool GameSystems::GameSystems_Init()
 	(
 		std::make_shared<SpriteComponent>("star.bmp"),
 		std::make_shared<PlayerInputComponent>(),
-		std::make_shared<PhysicsComponent>(CollisionBoxSize)
+		std::make_shared<PlayerPhysicsComponent>(CollisionBoxSize)
 	);
     if(!playerEntity) { InitSuccess = false; }
 
