@@ -22,8 +22,6 @@ public:
 
     GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
-    void Update(double extrapolateVal);
-
     void UpdatePhysics(double extrapolateVal);
 
     void UpdateInput();
