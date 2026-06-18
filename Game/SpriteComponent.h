@@ -15,7 +15,7 @@ public:
 
 	SpriteComponent(const std::string& filePath);
 	
-	void Update(GameEntity& entity, double alpha);
+	virtual void Update(GameEntity& entity, double alpha);
 
 	SpriteComponent& operator= (SpriteComponent& otherComp); 
 
