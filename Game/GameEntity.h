@@ -15,8 +15,6 @@
 constexpr double DefaultXPos = 100.f;
 constexpr double DefaultYPos = 100.f;
 
-enum class EntityType;
-
 class GameEntity
 {
 public:
@@ -44,8 +42,6 @@ public:
     const SDL_Rect& GetSpriteDimensions();
 
 public:
-    EntityType entityType;
-
     GameVector renderPosition;
     double renderRotation = 0;
 
