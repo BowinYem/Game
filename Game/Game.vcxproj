@@ -142,7 +142,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Collision Debug|x64'">
     <IncludePath>..\Game\SDL2-2.30.2\include;..\Game\SDL2_image-2.8.2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>..\Game\SDL2-2.30.2\lib\x64;..\Game\SDL2_image-2.8.2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\Game\SDL2-2.30.2\lib\x64_lib;..\Game\SDL2_image-2.8.2\lib\x64_lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
