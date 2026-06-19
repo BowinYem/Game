@@ -3,6 +3,7 @@
 #include "GameTexture.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
+#include <cmath>
 
 SpriteComponent::SpriteComponent(const std::string& filePath) 
 {
@@ -35,6 +36,11 @@ const SDL_Rect& SpriteComponent::GetSpriteDimenisions()
 
 void SpriteComponent::interpolate(GameEntity& entity, double alpha)
 {
+        // Naive LERP
 		entity.renderPosition  = (entity.physicsState.currPosition * alpha) + (entity.physicsState.prevPosition * (1.0 - alpha));
-        entity.renderRotation  = (entity.physicsState.currRotation * alpha) + (entity.physicsState.prevRotation * (1.0 - alpha));
+        
+        // Shortest Path Algorithm Formula for Rotational Interpolation
+        auto diff = entity.physicsState.currRotation - entity.physicsState.prevRotation;
+        diff = diff - (360.0 * std::floor((diff + 180.0)/360.0)); 
+        entity.renderRotation = entity.physicsState.prevRotation + (diff * alpha);
 }
