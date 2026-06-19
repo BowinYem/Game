@@ -13,7 +13,6 @@ class PhysicsComponent
  public:
     PhysicsComponent();
     PhysicsComponent(SDL_Rect& collisionBox_);
-    ~PhysicsComponent();
     virtual void Update(GameEntity& entity, double extrapolateVal) = 0;
 
 public:

@@ -22,7 +22,3 @@ PhysicsComponent::PhysicsComponent(SDL_Rect& collisionBox_)
    collisionBox.y = collisionBox_.y;
 }
 
-PhysicsComponent::~PhysicsComponent()
-{
-    //...Destructor body
-}
