@@ -1,17 +1,20 @@
 #pragma once
+#include "SDL.h"
+
 #include <memory>
 #include <string> 
+
 #include "GameVector.h"
 #include "PhysicsState.h"
-#include "SDL.h"
 #include "DirectionEnum.h"
+
+#include "SpriteComponent.h"
+#include "InputComponent.h"
+#include "PhysicsComponent.h"
 
 constexpr double DefaultXPos = 100.f;
 constexpr double DefaultYPos = 100.f;
 
-class SpriteComponent;
-class InputComponent;
-class PhysicsComponent;
 enum class EntityType;
 
 class GameEntity
