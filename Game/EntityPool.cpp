@@ -75,7 +75,6 @@ bool EntityPool::Destroy(uint8_t index)
     }
 }
 
-// No physics component yet
 void EntityPool::UpdatePhysics(double extrapolateVal)
 {
     for(uint8_t i = 0; i < entities.size(); ++i)
@@ -84,7 +83,6 @@ void EntityPool::UpdatePhysics(double extrapolateVal)
     }
 }
 
-// No input component yet
 void EntityPool::UpdateInput()
 {
     for(uint8_t i = 0; i < entities.size(); ++i)
