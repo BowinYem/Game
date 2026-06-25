@@ -17,8 +17,10 @@ public:
     void UpdatePhysics(double extrapolateVal);
     void UpdateInput();
     void UpdateSprite(double alpha);
+    void UpdateCollision(); 
     inline GameEntity& GetEntity(uint8_t index) { return entities[index]; }
     inline uint8_t GetTotalActiveEntities() { return activeEntities; }; 
+    inline uint16_t GetPoolSize() { return entities.size(); }
 
 private:
     uint8_t activeEntities = 0;

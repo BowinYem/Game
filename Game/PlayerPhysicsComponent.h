@@ -4,6 +4,5 @@
 class PlayerPhysicsComponent : public PhysicsComponent
 {
  public:
-    PlayerPhysicsComponent(SDL_Rect& collisionBox);
-    virtual void Update(GameEntity& entity, double extrapolateVal) override;
+    void Update(GameEntity& entity, double extrapolateVal) override;
 };

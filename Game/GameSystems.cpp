@@ -3,9 +3,13 @@
 #include "GameWindow.h"
 
 #include "GameEntity.h"
+#include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
 #include "PlayerPhysicsComponent.h"
+#include "PlayerCollisionComponent.h"
+
+#include "CollisionSystem.h"
 
 #include <iostream> // TODO: DELETE 
 
@@ -17,7 +21,12 @@ const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
 std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
-std::shared_ptr<GameEntity> GameSystems::playerEntity(nullptr);
+std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
+std::shared_ptr<EntityPool> GameSystems::enemyPool{nullptr};
+std::shared_ptr<EntityPool> GameSystems::projectilePool{nullptr};
+
+
+std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 
 void GameSystems::ReadInput()
 {
@@ -49,6 +58,9 @@ bool GameSystems::GameSystems_Init()
     renderer = std::make_shared<GameRenderer>();
     if(!renderer) { InitSuccess = false; }    
 
+    collisionSys = std::make_shared<CollisionSystem>();
+    if(!collisionSys) { InitSuccess = false; }
+
     // Create player entity
    	SDL_Rect CollisionBoxSize;
 	CollisionBoxSize.h = 50;
@@ -57,9 +69,16 @@ bool GameSystems::GameSystems_Init()
 	(
 		std::make_shared<SpriteComponent>("star.bmp"),
 		std::make_shared<PlayerInputComponent>(),
-		std::make_shared<PlayerPhysicsComponent>(CollisionBoxSize)
+		std::make_shared<PlayerPhysicsComponent>(),
+        std::make_shared<PlayerCollisionComponent>(CollisionBoxSize)
 	);
     if(!playerEntity) { InitSuccess = false; }
+
+    enemyPool = std::make_shared<EntityPool>(EnemyPoolSize);
+    if(!enemyPool) { InitSuccess = false; }
+
+    projectilePool= std::make_shared<EntityPool>(ProjectilePoolSize);
+    if(!projectilePool) { InitSuccess = false; }
 
     return InitSuccess;
 }
@@ -69,8 +88,8 @@ bool GameSystems::GameSystems_Close()
     return 1;
 }
 
-void GameSystems::GameSystems_UpdateCollision()
-{
+// void GameSystems::GameSystems_UpdateCollision()
+// {
     //for(uint8_t currMeteor = 0; currMeteor < MeteorPoolSize; ++currMeteor)
     //{
     //    if(meteorPool->IsMeteorInUse(currMeteor))
@@ -119,4 +138,4 @@ void GameSystems::GameSystems_UpdateCollision()
     //        }
     //    }
     //}
-}
+// }

@@ -11,23 +11,28 @@
 #include "SpriteComponent.h"
 #include "InputComponent.h"
 #include "PhysicsComponent.h"
+#include "CollisionComponent.h"
 
 constexpr double DefaultXPos = 100.f;
 constexpr double DefaultYPos = 100.f;
 
+class CollisionComponent;
 class GameEntity
 {
 public:
 
     GameEntity() = default;
 
-    GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation = {DefaultXPos, DefaultYPos});
+    GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, std::shared_ptr<CollisionComponent> collisionComp_, 
+        GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
     void UpdatePhysics(double extrapolateVal);
 
     void UpdateInput();
 
     void UpdateSprite(double alpha);
+
+    void UpdateCollision();
 
     GameVector GetForwardDirection();
 
@@ -36,6 +41,8 @@ public:
     void SetInputComponent(std::shared_ptr<InputComponent> inputComp_);
 
     void SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsComp_);
+
+    void SetCollisionComponent(std::shared_ptr<CollisionComponent> collisionComp_);
 
     const SDL_Rect& GetCollisionBox();
 
@@ -53,4 +60,5 @@ private:
     std::shared_ptr<SpriteComponent> spriteComp {nullptr}; 
     std::shared_ptr<InputComponent> inputComp {nullptr};
     std::shared_ptr<PhysicsComponent> physicsComp {nullptr};
+    std::shared_ptr<CollisionComponent> collisionComp {nullptr};
 };

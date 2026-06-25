@@ -1,6 +1,8 @@
 #include "EntityPool.h"
 #include "TestInputComponent.h"
+#include "TestCollisionComponent.h"
 #include "PlayerPhysicsComponent.h"
+#include "PlayerCollisionComponent.h"
 
 constexpr uint16_t SpriteHeight = 50;
 constexpr uint16_t SpriteWidth = 50; 
@@ -16,7 +18,8 @@ EntityPool::EntityPool(size_t poolSize) : entities(poolSize), entitiesInUse(pool
 
         // Probably going to change/remove
         currEntity.SetInputComponent(std::make_shared<TestInputComponent>());
-        currEntity.SetPhysicsComponent(std::make_shared<PlayerPhysicsComponent>(CollisionBoxSize)); 
+        currEntity.SetPhysicsComponent(std::make_shared<PlayerPhysicsComponent>());
+        currEntity.SetCollisionComponent(std::make_shared<TestCollisionComponent>(CollisionBoxSize));
     }    
 }
 
@@ -95,5 +98,13 @@ void EntityPool::UpdateSprite(double alpha)
     for(uint8_t i = 0; i < entities.size(); ++i)
     {       
         if(entitiesInUse[i]) { entities[i].UpdateSprite(alpha); }
+    }
+}
+
+void EntityPool::UpdateCollision()
+{
+    for(uint8_t i = 0; i < entities.size(); ++i)
+    {       
+        if(entitiesInUse[i]) { entities[i].UpdateCollision(); }
     }
 }

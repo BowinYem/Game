@@ -11,12 +11,9 @@ class GameEntity;
 class PhysicsComponent
 {
  public:
-    PhysicsComponent();
-    PhysicsComponent(SDL_Rect& collisionBox_);
     virtual void Update(GameEntity& entity, double extrapolateVal) = 0;
 
 public:
-    SDL_Rect collisionBox;
     double xVelocity = defaultXVelocity;
     double yVelocity = defaultYVelocity;
     double rotationVelocity = defaultRotateVelocity; 

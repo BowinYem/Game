@@ -2,14 +2,15 @@
 #include "SpriteComponent.h"
 #include "InputComponent.h"
 #include "PhysicsComponent.h"
+#include "CollisionComponent.h"
 #include "GameMath.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
 #include <iostream>
 
 
-GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, GameVector spawnLocation) 
-    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, renderPosition{spawnLocation}, physicsState{renderPosition}
+GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, std::shared_ptr<CollisionComponent> collisionComp_, GameVector spawnLocation) 
+    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, collisionComp{collisionComp_}, renderPosition{spawnLocation}, physicsState{renderPosition}
 {
     //...
 }
@@ -32,8 +33,14 @@ void GameEntity::UpdateSprite(double alpha)
         { spriteComp->Update(*this, alpha); } 
 
     #ifdef COLLISION_DEBUG_MODE
-    GameSystems::GetRenderer()->GameRendererDrawRect(physicsComp->collisionBox, GameSystems::testColor);
+    GameSystems::GetRenderer()->GameRendererDrawRect(collisionComp->collisionBox, GameSystems::testColor);
     #endif // COLLISION_DEBUG_MODE
+}
+
+void GameEntity::UpdateCollision()
+{
+    if(collisionComp)
+        { collisionComp->update(*this); }
 }
 
 GameVector GameEntity::GetForwardDirection()
@@ -64,7 +71,6 @@ GameVector GameEntity::GetForwardDirection()
     return destPos - renderPosition;
 }
 
-
 void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_)
 {
     spriteComp = spriteComp_;
@@ -80,10 +86,17 @@ void GameEntity::SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsCo
     physicsComp = physicsComp_;
 }
  
+void GameEntity::SetCollisionComponent(std::shared_ptr<CollisionComponent> collisionComp_)
+{
+    collisionComp = collisionComp_;
+}
+
+
+
 const SDL_Rect& GameEntity::GetCollisionBox()
 {
     if(physicsComp)
-        { return physicsComp->collisionBox; }
+        { return collisionComp->collisionBox; }
 }
 
 const SDL_Rect& GameEntity::GetSpriteDimensions()

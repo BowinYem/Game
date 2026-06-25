@@ -4,12 +4,16 @@
 
 // Constants
 constexpr uint16_t GameWindowHeight = 480;
-constexpr uint16_t GameWindowWidth = 640; 
+constexpr uint16_t GameWindowWidth = 640;
+constexpr uint8_t EnemyPoolSize = 5;
+constexpr uint8_t ProjectilePoolSize = 5; 
 
 // Forward declarations
 class GameRenderer;
 class GameWindow;
 class GameEntity;
+class EntityPool;
+class CollisionSystem;
 
 class GameSystems
 {
@@ -19,14 +23,20 @@ public:
 	static void ReadInput();
 	static bool GameSystems_Init();
 	static bool GameSystems_Close();
-	static void GameSystems_UpdateCollision();
 
 public:
 	static bool quit;
+
 	static const uint8_t* keyboardState;
 	static SDL_Keycode actionEvent;
+
+	static const SDL_Color testColor;	
+
 	static std::shared_ptr<GameEntity> playerEntity; 
-	static const SDL_Color testColor; 
+	static std::shared_ptr<EntityPool> enemyPool;
+	static std::shared_ptr<EntityPool> projectilePool;
+
+	static std::shared_ptr<CollisionSystem> collisionSys;
 
 private:
 	static std::shared_ptr<GameRenderer> renderer;
