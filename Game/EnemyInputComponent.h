@@ -2,10 +2,10 @@
 #include "InputComponent.h"
 #include <stdint.h>
 
-class TestInputComponent : public InputComponent
+class EnemyInputComponent : public InputComponent
 {
 public:
-    TestInputComponent();
+    EnemyInputComponent();
     void Update(GameEntity& entity) override;
 private:
     uint32_t prevTime;

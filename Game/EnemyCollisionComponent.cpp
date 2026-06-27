@@ -1,12 +1,12 @@
-#include "TestCollisionComponent.h"
+#include "EnemyCollisionComponent.h"
 #include "GameSystems.h"
 
-TestCollisionComponent::TestCollisionComponent(const SDL_Rect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionEnemy} 
+EnemyCollisionComponent::EnemyCollisionComponent(const SDL_Rect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionEnemy} 
 {  
     //...
 }
 
-void TestCollisionComponent::detectCollisions(GameEntity& testEntity)
+void EnemyCollisionComponent::detectCollisions(GameEntity& testEntity)
 {
     if(GameSystems::playerEntity != nullptr)
     {

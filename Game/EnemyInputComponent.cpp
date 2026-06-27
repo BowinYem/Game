@@ -1,12 +1,12 @@
-#include "TestInputComponent.h"
+#include "EnemyInputComponent.h"
 #include <SDL.h>
 #include "GameEntity.h"
 
 constexpr uint16_t TestInputComp_WaitTime = 1000;
 
-TestInputComponent::TestInputComponent() : prevTime(SDL_GetTicks()){ }
+EnemyInputComponent::EnemyInputComponent() : prevTime(SDL_GetTicks()){ }
 
-void TestInputComponent::Update(GameEntity& entity)
+void EnemyInputComponent::Update(GameEntity& entity)
 {
     auto currentTime = SDL_GetTicks();
     auto elapsedTime = currentTime - prevTime;

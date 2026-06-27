@@ -46,8 +46,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerPhysicsComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
-    <ClCompile Include="TestCollisionComponent.cpp" />
-    <ClCompile Include="TestInputComponent.cpp" />
+    <ClCompile Include="EnemyCollisionComponent.cpp" />
+    <ClCompile Include="EnemyInputComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Overview.md" />
@@ -76,8 +76,8 @@
     <ClInclude Include="PlayerInputComponent.h" />
     <ClInclude Include="PlayerPhysicsComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
-    <ClInclude Include="TestCollisionComponent.h" />
-    <ClInclude Include="TestInputComponent.h" />
+    <ClInclude Include="EnemyCollisionComponent.h" />
+    <ClInclude Include="EnemyInputComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
