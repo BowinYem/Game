@@ -1,6 +1,9 @@
 #pragma once
 #include <SDL.h>
 #include <memory>
+#include "EntityPool.h"
+#include "EnemyEntity.h"
+#include "ProjectileEntity.h"
 
 // Constants
 constexpr uint16_t GameWindowHeight = 480;
@@ -32,6 +35,8 @@ public:
 	static const SDL_Color testColor;	
 
 	static std::shared_ptr<GameEntity> playerEntity; 
+	static std::shared_ptr<EntityPool<EnemyEntity>> enemyPool;
+	static std::shared_ptr<EntityPool<ProjectileEntity>> projectilePool;
 
 	static std::shared_ptr<CollisionSystem> collisionSys;
 

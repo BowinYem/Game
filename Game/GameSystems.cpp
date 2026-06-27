@@ -3,6 +3,7 @@
 #include "GameWindow.h"
 
 #include "GameEntity.h"
+#include "EnemyEntity.h"
 #include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
@@ -22,6 +23,8 @@ std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
 std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
+std::shared_ptr<EntityPool<EnemyEntity>> GameSystems::enemyPool{nullptr};
+std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullptr};
 
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
@@ -72,8 +75,10 @@ bool GameSystems::GameSystems_Init()
 	);
     if(!playerEntity) { InitSuccess = false; }
 
+    enemyPool = std::make_shared<EntityPool<EnemyEntity>>(EnemyPoolSize);
     if(!enemyPool) { InitSuccess = false; }
 
+    projectilePool= std::make_shared<EntityPool<ProjectileEntity>>(ProjectilePoolSize);
     if(!projectilePool) { InitSuccess = false; }
 
     return InitSuccess;
