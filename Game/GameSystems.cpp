@@ -75,6 +75,7 @@ bool GameSystems::GameSystems_Init()
 	);
     if(!playerEntity) { InitSuccess = false; }
 
+    // Initialize Entity Pools
     enemyPool = std::make_shared<EntityPool<EnemyEntity>>(EnemyPoolSize);
     if(!enemyPool) { InitSuccess = false; }
 
