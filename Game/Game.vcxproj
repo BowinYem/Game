@@ -45,6 +45,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerPhysicsComponent.cpp" />
     <ClCompile Include="ProjectileCollisionComponent.cpp" />
+    <ClCompile Include="ProjectileEntity.cpp" />
     <ClCompile Include="ProjectileInputComponent.cpp" />
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="EnemyCollisionComponent.cpp" />
@@ -71,6 +72,7 @@
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
     <ClInclude Include="ProjectileCollisionComponent.h" />
+    <ClInclude Include="ProjectileEntity.h" />
     <ClInclude Include="ProjectileInputComponent.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="PhysicsComponent.h" />
