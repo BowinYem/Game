@@ -39,7 +39,7 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Actions
     if(actionEvent == SDLK_SPACE)
     {
-        //GameSystems::projectilePool->Create(entity.renderPosition, entity.renderRotation);
+        GameSystems::projectilePool->Create(entity.renderPosition, entity.renderRotation);
     }
 }
 
