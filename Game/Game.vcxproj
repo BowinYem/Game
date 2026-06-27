@@ -30,6 +30,7 @@
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionEvent.cpp" />
     <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="EnemyEntity.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="GameEntity.cpp" />
     <ClCompile Include="GameMath.cpp" />
@@ -60,6 +61,7 @@
     <ClInclude Include="CollisionEvent.h" />
     <ClInclude Include="CollisionSystem.h" />
     <ClInclude Include="DirectionEnum.h" />
+    <ClInclude Include="EnemyEntity.h" />
     <ClInclude Include="EntityPool.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameEntity.h" />
