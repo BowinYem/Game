@@ -1,6 +1,7 @@
 #include "PlayerCollisionComponent.h"
 #include "GameSystems.h"
 #include "EntityPool.h"
+#include "EnemyEntity.h"
 #include "CollisionEvent.h"
 
 PlayerCollisionComponent::PlayerCollisionComponent(const SDL_Rect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionPlayer}
@@ -14,11 +15,11 @@ void PlayerCollisionComponent::detectCollisions(GameEntity& entity)
     {
         if(GameSystems::enemyPool->IsEntityInUse(i))
         {
-            auto& enemyEntity = GameSystems::enemyPool->GetEntity(i);
-            bool collisionDetected = SDL_HasIntersection(&collisionBox, &enemyEntity.GetCollisionBox());
+            auto& enemy = GameSystems::enemyPool->GetEntity(i);
+            bool collisionDetected = SDL_HasIntersection(&collisionBox, &enemy.GetCollisionBox());
             if(collisionDetected) 
             { 
-                notify(entity, std::make_shared<CollisionEvent>(enemyEntity, collisionType, CollisionEnum::collisionEnemy)); 
+                notify(entity, std::make_shared<CollisionEvent>(enemy, collisionType, CollisionEnum::collisionEnemy)); 
             }
         }
     }
