@@ -22,8 +22,6 @@ std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
 std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
-std::shared_ptr<EntityPool> GameSystems::enemyPool{nullptr};
-std::shared_ptr<EntityPool> GameSystems::projectilePool{nullptr};
 
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
@@ -74,10 +72,8 @@ bool GameSystems::GameSystems_Init()
 	);
     if(!playerEntity) { InitSuccess = false; }
 
-    enemyPool = std::make_shared<EntityPool>(EnemyPoolSize);
     if(!enemyPool) { InitSuccess = false; }
 
-    projectilePool= std::make_shared<EntityPool>(ProjectilePoolSize);
     if(!projectilePool) { InitSuccess = false; }
 
     return InitSuccess;

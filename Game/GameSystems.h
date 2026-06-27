@@ -12,7 +12,6 @@ constexpr uint8_t ProjectilePoolSize = 5;
 class GameRenderer;
 class GameWindow;
 class GameEntity;
-class EntityPool;
 class CollisionSystem;
 
 class GameSystems
@@ -33,8 +32,6 @@ public:
 	static const SDL_Color testColor;	
 
 	static std::shared_ptr<GameEntity> playerEntity; 
-	static std::shared_ptr<EntityPool> enemyPool;
-	static std::shared_ptr<EntityPool> projectilePool;
 
 	static std::shared_ptr<CollisionSystem> collisionSys;
 

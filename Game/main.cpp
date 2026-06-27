@@ -28,10 +28,6 @@ int main(int argc, char* args[])
 
 	GameSystems::GameSystems_Init();
 
-	auto testPool = GameSystems::enemyPool;
-	testPool->Create(GameVector(100, 100), 0);
-	testPool->Create(GameVector(200, 200), 0);
-	testPool->Create(GameVector(300, 300), 0);
 
 	double previousTime = SDL_GetTicks() / 1000.0f;
 	double accumulator = 0.0; 
@@ -48,24 +44,20 @@ int main(int argc, char* args[])
 
 		GameSystems::ReadInput();
 	    GameSystems::playerEntity->UpdateInput();
-		testPool->UpdateInput();
 
 		GameSystems::GetRenderer()->GameRendererClear();
 		
 		while (accumulator >= MS_PER_UPDATE) 
 		{
 			GameSystems::playerEntity->UpdatePhysics(MS_PER_UPDATE);
-			testPool->UpdatePhysics(MS_PER_UPDATE);
 
 			GameSystems::playerEntity->UpdateCollision();
-			testPool->UpdateCollision();
 
 			accumulator -= MS_PER_UPDATE;
 		}
 
 		double alpha = accumulator / MS_PER_UPDATE;
 		GameSystems::playerEntity->UpdateSprite(alpha);
-		testPool->UpdateSprite(alpha);
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
