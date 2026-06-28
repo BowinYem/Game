@@ -3,6 +3,7 @@
 #include "GameWindow.h"
 
 #include "GameEntity.h"
+#include "GameBackground.h"
 #include "EnemyEntity.h"
 #include "EntityPool.h"
 #include "SpriteComponent.h"
@@ -12,6 +13,7 @@
 
 #include "CollisionSystem.h"
 
+#include <string_view>
 #include <iostream> // TODO: DELETE 
 
 bool GameSystems::quit = false;
@@ -22,12 +24,15 @@ const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
 std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
+std::shared_ptr<GameBackground> GameSystems::gameBG{nullptr};
+
 std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
 std::shared_ptr<EntityPool<EnemyEntity>> GameSystems::enemyPool{nullptr};
 std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullptr};
 
-
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
+
+inline constexpr std::string_view BGFilePath = "bg.bmp";
 
 void GameSystems::ReadInput()
 {
@@ -61,6 +66,11 @@ bool GameSystems::GameSystems_Init()
 
     collisionSys = std::make_shared<CollisionSystem>();
     if(!collisionSys) { InitSuccess = false; }
+
+
+    // Initialize Background
+    gameBG = std::make_shared<GameBackground>(std::string(BGFilePath));
+    if(!gameBG) { InitSuccess = false; }
 
     // Create player entity
    	SDL_Rect CollisionBoxSize;

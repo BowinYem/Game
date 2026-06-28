@@ -4,6 +4,8 @@
 #include "EntityPool.h"
 #include "EnemyEntity.h"
 #include "ProjectileEntity.h"
+#include "GameRenderer.h"
+#include "GameBackground.h"
 
 // Constants
 constexpr uint16_t GameWindowHeight = 480;
@@ -15,6 +17,7 @@ constexpr uint8_t ProjectilePoolSize = 5;
 class GameRenderer;
 class GameWindow;
 class GameEntity;
+class GameBackground;
 class CollisionSystem;
 
 class GameSystems
@@ -33,6 +36,8 @@ public:
 	static SDL_Keycode actionEvent;
 
 	static const SDL_Color testColor;	
+
+	static std::shared_ptr<GameBackground> gameBG;
 
 	static std::shared_ptr<GameEntity> playerEntity; 
 	static std::shared_ptr<EntityPool<EnemyEntity>> enemyPool;

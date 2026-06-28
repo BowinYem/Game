@@ -33,6 +33,7 @@
     <ClCompile Include="EnemyEntity.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="GameEntity.cpp" />
+    <ClCompile Include="GameBackground.cpp" />
     <ClCompile Include="GameMath.cpp" />
     <ClCompile Include="GameRect.cpp" />
     <ClCompile Include="GameRenderer.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="EntityPool.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="GameEntity.h" />
+    <ClInclude Include="GameBackground.h" />
     <ClInclude Include="GameMath.h" />
     <ClInclude Include="GameRect.h" />
     <ClInclude Include="GameRenderer.h" />

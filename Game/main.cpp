@@ -68,10 +68,13 @@ int main(int argc, char* args[])
 			accumulator -= MS_PER_UPDATE;
 		}
 
+		GameSystems::gameBG->Update();
+
 		double alpha = accumulator / MS_PER_UPDATE;
 		GameSystems::playerEntity->UpdateSprite(alpha);
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
+
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
