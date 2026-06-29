@@ -28,7 +28,8 @@ public:
                 entities[i].physicsState.currRotation = rotation;
                 entities[i].physicsState.prevRotation = rotation;
 
-                entities[i].moveDir = MovementDirection::movementNone;
+                entities[i].moveDirX = MovementDirection::movementNone;
+                entities[i].moveDirY = MovementDirection::movementNone;
                 entities[i].rotateDir = RotateDirection::rotateNone;
                 entitiesInUse[i] = true;
                 ++activeEntities;
@@ -52,7 +53,8 @@ public:
             entities[index].physicsState.currRotation = 0;
             entities[index].physicsState.prevRotation = 0;
 
-            entities[index].moveDir = MovementDirection::movementNone;
+            entities[index].moveDirX = MovementDirection::movementNone;
+            entities[index].moveDirY = MovementDirection::movementNone;
             entities[index].rotateDir = RotateDirection::rotateNone;
             entitiesInUse[index] = false;
             --activeEntities;

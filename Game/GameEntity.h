@@ -52,7 +52,8 @@ public:
     GameVector renderPosition;
     double renderRotation = 0;
 
-	MovementDirection moveDir = MovementDirection::movementNone;
+	MovementDirection moveDirX = MovementDirection::movementNone;
+    MovementDirection moveDirY = MovementDirection::movementNone;
 	RotateDirection rotateDir = RotateDirection::rotateNone; 
     PhysicsState physicsState;
 

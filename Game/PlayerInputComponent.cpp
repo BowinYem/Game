@@ -25,15 +25,18 @@ void PlayerInputComponent::Update(GameEntity& entity)
     // Forward Movement
     if (keyboardState[SDL_SCANCODE_UP])
     {
-        entity.moveDir = MovementDirection::movementForward;
+        entity.moveDirX = MovementDirection::movementForward;
+        entity.moveDirY = MovementDirection::movementForward;
     }
     else if (keyboardState[SDL_SCANCODE_DOWN])
     {
-        entity.moveDir = MovementDirection::movementBackwards;
+        entity.moveDirX = MovementDirection::movementBackwards;
+        entity.moveDirY = MovementDirection::movementBackwards;
     }
     else
     {
-        entity.moveDir = MovementDirection::movementNone;
+        entity.moveDirX = MovementDirection::movementNone;
+        entity.moveDirY = MovementDirection::movementNone;
     }
 
     // Actions

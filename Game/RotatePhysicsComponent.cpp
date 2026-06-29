@@ -8,8 +8,8 @@ void RotatePhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
     
     GameVector forwardDirection = entity.GetForwardDirection();
     entPhyState.prevPosition = entPhyState.currPosition;
-    entPhyState.currPosition.x += (((+entity.moveDir) * xVelocity) * extrapolateVal) * forwardDirection.x;
-    entPhyState.currPosition.y += (((+entity.moveDir) * yVelocity) * extrapolateVal) * forwardDirection.y;
+    entPhyState.currPosition.x += (((+entity.moveDirX) * xVelocity) * extrapolateVal) * forwardDirection.x;
+    entPhyState.currPosition.y += (((+entity.moveDirY) * yVelocity) * extrapolateVal) * forwardDirection.y;
 
     entPhyState.prevRotation = entPhyState.currRotation;
     entPhyState.currRotation += (((+entity.rotateDir) * rotationVelocity) * extrapolateVal);

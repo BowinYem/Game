@@ -13,7 +13,8 @@ void EnemyInputComponent::Update(GameEntity& entity)
 
     if(elapsedTime >= TestInputComp_WaitTime)
     { 
-        entity.moveDir = (entity.moveDir == MovementDirection::movementNone) ? MovementDirection::movementForward : MovementDirection::movementNone;
+        entity.moveDirX = (entity.moveDirX == MovementDirection::movementNone) ? MovementDirection::movementForward : MovementDirection::movementNone;
+        entity.moveDirY = (entity.moveDirY == MovementDirection::movementNone) ? MovementDirection::movementForward : MovementDirection::movementNone;
         prevTime = currentTime;
     }
 
