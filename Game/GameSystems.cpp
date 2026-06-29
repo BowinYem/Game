@@ -8,7 +8,7 @@
 #include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
-#include "PlayerPhysicsComponent.h"
+#include "RotatePhysicsComponent.h"
 #include "PlayerCollisionComponent.h"
 
 #include "CollisionSystem.h"
@@ -80,7 +80,7 @@ bool GameSystems::GameSystems_Init()
 	(
 		std::make_shared<SpriteComponent>("star.bmp"),
 		std::make_shared<PlayerInputComponent>(),
-		std::make_shared<PlayerPhysicsComponent>(),
+		std::make_shared<RotatePhysicsComponent>(),
         std::make_shared<PlayerCollisionComponent>(CollisionBoxSize)
 	);
     if(!playerEntity) { InitSuccess = false; }

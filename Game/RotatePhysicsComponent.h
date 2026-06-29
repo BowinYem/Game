@@ -1,7 +1,7 @@
 #pragma once
 #include "PhysicsComponent.h"
 
-class PlayerPhysicsComponent : public PhysicsComponent
+class RotatePhysicsComponent : public PhysicsComponent
 {
  public:
     void Update(GameEntity& entity, double extrapolateVal) override;

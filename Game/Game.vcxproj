@@ -45,7 +45,7 @@
     <ClCompile Include="PlayerCollisionComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PlayerPhysicsComponent.cpp" />
+    <ClCompile Include="RotatePhysicsComponent.cpp" />
     <ClCompile Include="ProjectileCollisionComponent.cpp" />
     <ClCompile Include="ProjectileEntity.cpp" />
     <ClCompile Include="ProjectileInputComponent.cpp" />
@@ -83,7 +83,7 @@
     <ClInclude Include="PhysicsState.h" />
     <ClInclude Include="PlayerCollisionComponent.h" />
     <ClInclude Include="PlayerInputComponent.h" />
-    <ClInclude Include="PlayerPhysicsComponent.h" />
+    <ClInclude Include="RotatePhysicsComponent.h" />
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="EnemyCollisionComponent.h" />
     <ClInclude Include="EnemyInputComponent.h" />

@@ -1,8 +1,8 @@
-#include "PlayerPhysicsComponent.h"
+#include "RotatePhysicsComponent.h"
 #include "GameEntity.h"
 #include <cmath>
 
-void PlayerPhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
+void RotatePhysicsComponent::Update(GameEntity& entity, double extrapolateVal)
 {
     auto& entPhyState = entity.physicsState;
     
