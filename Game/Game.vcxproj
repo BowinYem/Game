@@ -41,6 +41,7 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="LinearPhysicsComponent.cpp" />
     <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerCollisionComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="LinearPhysicsComponent.h" />
     <ClInclude Include="ProjectileCollisionComponent.h" />
     <ClInclude Include="ProjectileEntity.h" />
     <ClInclude Include="ProjectileInputComponent.h" />
