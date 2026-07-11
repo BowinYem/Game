@@ -6,5 +6,5 @@
 class System
 {
  public:
-    virtual void onNotify(const GameEntity& entity, const std::shared_ptr<Event> const e) = 0;
+    virtual void onNotify(GameEntity& entity, const std::shared_ptr<Event> const e) = 0;
 };
