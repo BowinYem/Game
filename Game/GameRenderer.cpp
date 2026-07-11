@@ -26,6 +26,11 @@ bool GameRenderer::GameRendererClear()
     return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destFRect, rotation, nullptr, SDL_FLIP_NONE));
  }
 
+bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const SDL_Rect& srcRect, const double rotation)
+{
+    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, nullptr, rotation, nullptr, SDL_FLIP_NONE));
+}
+
 void GameRenderer::GameRendererPresent()
 {
     SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
