@@ -26,13 +26,13 @@ public:
     GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, std::shared_ptr<CollisionComponent> collisionComp_, 
         GameVector spawnLocation = {DefaultXPos, DefaultYPos});
     
-    void UpdatePhysics(double extrapolateVal);
+    virtual void UpdatePhysics(double extrapolateVal);
 
-    void UpdateInput();
+    virtual void UpdateInput();
 
-    void UpdateSprite(double alpha);
+    virtual void UpdateSprite(double alpha);
 
-    void UpdateCollision();
+    virtual void UpdateCollision();
 
     GameVector GetForwardDirection();
 
