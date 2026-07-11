@@ -27,6 +27,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CameraEntity.cpp" />
+    <ClCompile Include="CameraInputComponent.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionEvent.cpp" />
     <ClCompile Include="CollisionSystem.cpp" />
@@ -58,6 +60,9 @@
     <None Include="Overview.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CameraEntity.h" />
+    <ClInclude Include="CameraInputComponent.h" />
+    <ClInclude Include="CameraMoveEnum.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionEnum.h" />
     <ClInclude Include="CollisionEvent.h" />

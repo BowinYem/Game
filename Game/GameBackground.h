@@ -7,9 +7,9 @@ class GameBackground
 public:
     GameBackground(const std::string& filePath);
     void Update();
+    SDL_FRect destRect;     
 
 private:
     GameTexture bgTexture;
-    SDL_Rect srcRect;
-    SDL_FRect destRect;     
+
 };

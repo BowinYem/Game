@@ -3,13 +3,17 @@
 #include <memory>
 #include "EntityPool.h"
 #include "EnemyEntity.h"
+#include "CameraEntity.h"
 #include "ProjectileEntity.h"
 #include "GameRenderer.h"
 #include "GameBackground.h"
 
 // Constants
-constexpr uint16_t GameWindowHeight = 480;
-constexpr uint16_t GameWindowWidth = 640;
+constexpr uint16_t GameWindowHeight = 600;
+constexpr uint16_t GameWindowWidth = 600;
+constexpr uint16_t GameLevelHeight = 1200;
+constexpr uint16_t GameLevelWidth = 1200; 
+
 constexpr uint8_t EnemyPoolSize = 5;
 constexpr uint8_t ProjectilePoolSize = 5; 
 
@@ -17,6 +21,7 @@ constexpr uint8_t ProjectilePoolSize = 5;
 class GameRenderer;
 class GameWindow;
 class GameEntity;
+class CameraEntity;
 class GameBackground;
 class CollisionSystem;
 
@@ -40,6 +45,7 @@ public:
 	static std::shared_ptr<GameBackground> gameBG;
 
 	static std::shared_ptr<GameEntity> playerEntity; 
+	static std::shared_ptr<CameraEntity> camera;
 	static std::shared_ptr<EntityPool<EnemyEntity>> enemyPool;
 	static std::shared_ptr<EntityPool<ProjectileEntity>> projectilePool;
 

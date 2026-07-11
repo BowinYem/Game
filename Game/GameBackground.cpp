@@ -4,14 +4,16 @@
 
 GameBackground::GameBackground(const std::string& filePath) : bgTexture{filePath}
 {
-    srcRect = { 0, 0, bgTexture.width, bgTexture.height };
     destRect.x = 0;
     destRect.y = 0;
-    destRect.w = srcRect.w;
-    destRect.h = srcRect.h;
 }
 
 void GameBackground::Update()
 {
-    GameSystems::GetRenderer()->GameRendererCopy(bgTexture, srcRect, destRect, 0);
+    if(GameSystems::camera)
+    {   
+        destRect.w =  GameSystems::camera->getCameraRect().w;
+        destRect.h = GameSystems::camera->getCameraRect().h;
+        GameSystems::GetRenderer()->GameRendererCopy(bgTexture, GameSystems::camera->getCameraRect(), destRect, 0);
+    }
 }

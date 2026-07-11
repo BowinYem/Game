@@ -29,15 +29,17 @@ int main(int argc, char* args[])
 	GameSystems::GameSystems_Init();
 
 	auto enemyPool = GameSystems::enemyPool;
-	enemyPool->Create(GameVector(100, 100), 0);
-	enemyPool->Create(GameVector(200, 200), 0);
 	enemyPool->Create(GameVector(300, 300), 0);
+	enemyPool->Create(GameVector(400, 400), 0);
+	enemyPool->Create(GameVector(600, 600), 0);
 
 	auto projPool = GameSystems::projectilePool;
 
 	double previousTime = SDL_GetTicks() / 1000.0f;
 	double accumulator = 0.0; 
 	double frameTime = 0;	
+
+	auto debugCount = 0;
 
 	while (!GameSystems::quit)
 	{	
@@ -52,34 +54,57 @@ int main(int argc, char* args[])
 	    GameSystems::playerEntity->UpdateInput();
 		enemyPool->UpdateInput();
 		projPool->UpdateInput();
+		GameSystems::camera->UpdateInput();
 
 		GameSystems::GetRenderer()->GameRendererClear();
 		
 		while (accumulator >= MS_PER_UPDATE) 
 		{
+			GameSystems::camera->UpdatePhysics(MS_PER_UPDATE);
 			GameSystems::playerEntity->UpdatePhysics(MS_PER_UPDATE);
 			enemyPool->UpdatePhysics(MS_PER_UPDATE);
 			projPool->UpdatePhysics(MS_PER_UPDATE);
 
-			GameSystems::playerEntity->UpdateCollision();
+			GameSystems::camera->UpdateCollision();
 			enemyPool->UpdateCollision();
 			projPool->UpdateCollision();
 
 			accumulator -= MS_PER_UPDATE;
 		}
+					
+		GameSystems::playerEntity->UpdateCollision();
 
-		GameSystems::gameBG->Update();
 
 		double alpha = accumulator / MS_PER_UPDATE;
+
+		GameSystems::gameBG->Update();
+		GameSystems::camera->InterpolateCamPos(alpha);
+
 		GameSystems::playerEntity->UpdateSprite(alpha);
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
+
+		// std::cout << "Cam X: " << GameSystems::camera->getCameraRect().x << "/" << GameLevelWidth - GameSystems::camera->getCameraRect().w <<
+		// 	" Cam Y: " << GameSystems::camera->getCameraRect().y << "/" << GameLevelHeight - GameSystems::camera->getCameraRect().h << "\n\n";
+
+		// std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
+		// std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n\n"; 
+
+
+		// SDL_Rect cBox = GameSystems::playerEntity->GetCollisionBox();
+		// std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
+	
+		if(debugCount == 1000)
+		{
+			debugCount = 0;
+		}
+		else debugCount++;
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}
 
 	GameSystems::GameSystems_Close();
-
+	
 	return 0;
 }
 

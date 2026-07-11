@@ -5,6 +5,8 @@
 #include "GameEntity.h"
 #include "GameBackground.h"
 #include "EnemyEntity.h"
+#include "CameraEntity.h"
+#include "CameraMoveEnum.h"
 #include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
@@ -27,12 +29,16 @@ std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 std::shared_ptr<GameBackground> GameSystems::gameBG{nullptr};
 
 std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
+std::shared_ptr<CameraEntity> GameSystems::camera{nullptr};
 std::shared_ptr<EntityPool<EnemyEntity>> GameSystems::enemyPool{nullptr};
 std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullptr};
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 
 inline constexpr std::string_view BGFilePath = "bg.bmp";
+
+constexpr CameraMoveEnum cameraType = CameraMoveEnum::PlayerCamera;
+constexpr SDL_Rect initCameraRect{0, 0, GameWindowHeight, GameWindowWidth};
 
 void GameSystems::ReadInput()
 {
@@ -71,6 +77,10 @@ bool GameSystems::GameSystems_Init()
     // Initialize Background
     gameBG = std::make_shared<GameBackground>(std::string(BGFilePath));
     if(!gameBG) { InitSuccess = false; }
+
+    // Create camera Entity
+    camera = std::make_shared<CameraEntity>(cameraType, initCameraRect);
+    if(!camera) { InitSuccess = false; }
 
     // Create player entity
    	SDL_Rect CollisionBoxSize;
