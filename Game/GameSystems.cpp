@@ -38,7 +38,7 @@ std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 inline constexpr std::string_view BGFilePath = "bg.bmp";
 
 constexpr CameraMoveEnum cameraType = CameraMoveEnum::PlayerCamera;
-constexpr SDL_Rect initCameraRect{0, 0, GameWindowHeight, GameWindowWidth};
+constexpr SDL_Rect initCameraRect{0, 0, GameWindowWidth, GameWindowHeight};
 
 void GameSystems::ReadInput()
 {
@@ -64,7 +64,7 @@ bool GameSystems::GameSystems_Init()
 {
     bool InitSuccess = true;
 
-    window = std::make_shared<GameWindow>(GameWindowHeight, GameWindowWidth);
+    window = std::make_shared<GameWindow>(GameWindowWidth, GameWindowHeight);
     if(!window) { InitSuccess = false; }
 
     renderer = std::make_shared<GameRenderer>();
