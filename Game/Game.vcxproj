@@ -55,6 +55,7 @@
     <ClCompile Include="SpriteComponent.cpp" />
     <ClCompile Include="EnemyCollisionComponent.cpp" />
     <ClCompile Include="EnemyInputComponent.cpp" />
+    <ClCompile Include="TestInputComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Overview.md" />
@@ -94,6 +95,7 @@
     <ClInclude Include="SpriteComponent.h" />
     <ClInclude Include="EnemyCollisionComponent.h" />
     <ClInclude Include="EnemyInputComponent.h" />
+    <ClInclude Include="TestInputComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
