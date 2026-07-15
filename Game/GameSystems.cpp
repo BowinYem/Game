@@ -10,6 +10,7 @@
 #include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
+#include "TestInputComponent.h"
 #include "RotatePhysicsComponent.h"
 #include "PlayerCollisionComponent.h"
 
@@ -38,7 +39,7 @@ std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 inline constexpr std::string_view BGFilePath = "bg.bmp";
 
 constexpr CameraMoveEnum cameraType = CameraMoveEnum::PlayerCamera;
-constexpr SDL_Rect initCameraRect{0, 0, GameWindowWidth, GameWindowHeight};
+constexpr SDL_Rect initCameraRect{0, 0, GameLogicalWidth, GameLogicalHeight};
 
 void GameSystems::ReadInput()
 {

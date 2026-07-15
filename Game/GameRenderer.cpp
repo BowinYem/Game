@@ -8,6 +8,7 @@ GameRenderer::GameRenderer()
 {
     rendererSDLPtr = SDL_CreateRenderer(GameSystems::GetWindow()->windowSDLPtr, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderSetLogicalSize(rendererSDLPtr, GameLogicalWidth, GameLogicalHeight);
 }
 
 GameRenderer::~GameRenderer()
@@ -33,7 +34,7 @@ bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const SDL_Rec
 
 void GameRenderer::GameRendererPresent()
 {
-    SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_SetRenderDrawColor(rendererSDLPtr, 0x00, 0x00, 0x00, 0x00);
     SDL_RenderPresent(rendererSDLPtr);
 }
 

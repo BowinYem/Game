@@ -9,8 +9,10 @@
 #include "GameBackground.h"
 
 // Constants
-constexpr uint16_t GameWindowWidth = 1920;
-constexpr uint16_t GameWindowHeight = 1920;
+constexpr uint16_t GameLogicalWidth = 1000;
+constexpr uint16_t GameLogicalHeight = 563;
+constexpr uint16_t GameWindowWidth = 1280;
+constexpr uint16_t GameWindowHeight = 720;
 constexpr uint16_t GameLevelWidth = 1200; 
 constexpr uint16_t GameLevelHeight = 1200;
 

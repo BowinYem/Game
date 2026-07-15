@@ -84,15 +84,14 @@ int main(int argc, char* args[])
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
 
-		// std::cout << "Cam X: " << GameSystems::camera->getCameraRect().x << "/" << GameLevelWidth - GameSystems::camera->getCameraRect().w <<
-		// 	" Cam Y: " << GameSystems::camera->getCameraRect().y << "/" << GameLevelHeight - GameSystems::camera->getCameraRect().h << "\n\n";
+		std::cout << "Cam X: " << GameSystems::camera->getCameraRect().x << "/" << GameLevelWidth - GameSystems::camera->getCameraRect().w <<
+			" Cam Y: " << GameSystems::camera->getCameraRect().y << "/" << GameLevelHeight - GameSystems::camera->getCameraRect().h << "\n";
 
-		// std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
-		// std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n\n"; 
+		std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
+		std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 
 
-
-		// SDL_Rect cBox = GameSystems::playerEntity->GetCollisionBox();
-		// std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
+		SDL_Rect cBox = GameSystems::playerEntity->GetCollisionBox();
+		std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
 	
 		if(debugCount == 1000)
 		{
