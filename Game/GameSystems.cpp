@@ -74,7 +74,7 @@ bool GameSystems::GameSystems_Init()
     if(!gameBG) { InitSuccess = false; }
 
     // Create camera Entity
-    camera = std::make_shared<CameraEntity>(GameGlobals::InitCameraType, GameGlobals::CameraSize);
+    camera = std::make_shared<CameraEntity>(GameGlobals::StartingCameraType, GameGlobals::StartingCameraRect);
     if(!camera) { InitSuccess = false; }
 
     // Create player entity

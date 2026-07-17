@@ -20,6 +20,6 @@ namespace GameGlobals
     inline constexpr uint8_t ProjectilePoolSize = 5; 
 
     inline constexpr std::string_view BGFilePath = "bg.bmp";
-    inline constexpr CameraMoveEnum InitCameraType = CameraMoveEnum::PlayerCamera; 
-    inline constexpr SDL_Rect CameraSize{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
+    inline constexpr CameraMoveEnum StartingCameraType = CameraMoveEnum::PlayerCamera; 
+    inline constexpr SDL_Rect StartingCameraRect{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
 }
