@@ -26,8 +26,8 @@ void CameraInputComponent::updatePlayerCamera(CameraEntity& camera)
     auto player = GameSystems::playerEntity;
     auto playerSize = player->GetSpriteDimensions();
 
-    cameraRect.x = (player->renderPosition.x + (playerSize.w / 2)) - (GameLogicalWidth / 2);
-    cameraRect.y = (player->renderPosition.y + (playerSize.h / 2)) - (GameLogicalHeight / 2);
+    cameraRect.x = (player->renderPosition.x + (playerSize.w / 2)) - (GameGlobals::GameLogicalWidth / 2);
+    cameraRect.y = (player->renderPosition.y + (playerSize.h / 2)) - (GameGlobals::GameLogicalHeight / 2);
 
     if(cameraRect.x < 0) 
         { cameraRect.x = 0; }
@@ -35,11 +35,11 @@ void CameraInputComponent::updatePlayerCamera(CameraEntity& camera)
     if (cameraRect.y < 0) 
         { cameraRect.y = 0; }
 
-    if(cameraRect.x > (GameLevelWidth - GameLogicalWidth))      
-        { cameraRect.x = GameLevelWidth - GameLogicalWidth; }
+    if(cameraRect.x > (GameGlobals::GameLevelWidth - GameGlobals::GameLogicalWidth))      
+        { cameraRect.x = GameGlobals::GameLevelWidth - GameGlobals::GameLogicalWidth; }
 
-    if (cameraRect.y > (GameLevelHeight - GameLogicalHeight))  
-        { cameraRect.y = GameLevelHeight - GameLogicalHeight; }
+    if (cameraRect.y > (GameGlobals::GameLevelHeight - GameGlobals::GameLogicalHeight))  
+        { cameraRect.y = GameGlobals::GameLevelHeight - GameGlobals::GameLogicalHeight; }
 }
 
 void CameraInputComponent::updateDebugCamera(CameraEntity& camera)
@@ -52,7 +52,7 @@ void CameraInputComponent::updateDebugCamera(CameraEntity& camera)
     {
         camera.moveDirY = MovementDirection::movementBackwards;
     }
-    else if ((keyboardState[SDL_SCANCODE_S]) && (cameraRect.y < (GameLevelHeight - GameLogicalHeight)))  
+    else if ((keyboardState[SDL_SCANCODE_S]) && (cameraRect.y < (GameGlobals::GameLevelHeight - GameGlobals::GameLogicalHeight)))  
     {
         camera.moveDirY = MovementDirection::movementForward;
     }
@@ -61,7 +61,7 @@ void CameraInputComponent::updateDebugCamera(CameraEntity& camera)
         camera.moveDirY = MovementDirection::movementNone;
     }
 
-    if ((keyboardState[SDL_SCANCODE_D]) && (cameraRect.x < (GameLevelWidth - GameLogicalWidth))) 
+    if ((keyboardState[SDL_SCANCODE_D]) && (cameraRect.x < (GameGlobals::GameLevelWidth - GameGlobals::GameLogicalWidth))) 
     {
         camera.moveDirX = MovementDirection::movementForward;
     }

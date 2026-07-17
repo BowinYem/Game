@@ -7,17 +7,7 @@
 #include "ProjectileEntity.h"
 #include "GameRenderer.h"
 #include "GameBackground.h"
-
-// Constants
-constexpr uint16_t GameLogicalWidth = 1000;
-constexpr uint16_t GameLogicalHeight = 563;
-constexpr uint16_t GameWindowWidth = 1280;
-constexpr uint16_t GameWindowHeight = 720;
-constexpr uint16_t GameLevelWidth = 1200; 
-constexpr uint16_t GameLevelHeight = 1200;
-
-constexpr uint8_t EnemyPoolSize = 5;
-constexpr uint8_t ProjectilePoolSize = 5; 
+#include "GameGlobals.h"
 
 // Forward declarations
 class GameRenderer;

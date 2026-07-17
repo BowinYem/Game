@@ -6,7 +6,6 @@
 #include "GameBackground.h"
 #include "EnemyEntity.h"
 #include "CameraEntity.h"
-#include "CameraMoveEnum.h"
 #include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
@@ -16,7 +15,6 @@
 
 #include "CollisionSystem.h"
 
-#include <string_view>
 #include <iostream> // TODO: DELETE 
 
 bool GameSystems::quit = false;
@@ -36,10 +34,6 @@ std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullpt
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 
-inline constexpr std::string_view BGFilePath = "bg.bmp";
-
-constexpr CameraMoveEnum cameraType = CameraMoveEnum::PlayerCamera;
-constexpr SDL_Rect initCameraRect{0, 0, GameLogicalWidth, GameLogicalHeight};
 
 void GameSystems::ReadInput()
 {
@@ -65,7 +59,7 @@ bool GameSystems::GameSystems_Init()
 {
     bool InitSuccess = true;
 
-    window = std::make_shared<GameWindow>(GameWindowWidth, GameWindowHeight);
+    window = std::make_shared<GameWindow>(GameGlobals::GameWindowWidth, GameGlobals::GameWindowHeight);
     if(!window) { InitSuccess = false; }
 
     renderer = std::make_shared<GameRenderer>();
@@ -76,11 +70,11 @@ bool GameSystems::GameSystems_Init()
 
 
     // Initialize Background
-    gameBG = std::make_shared<GameBackground>(std::string(BGFilePath));
+    gameBG = std::make_shared<GameBackground>(std::string(GameGlobals::BGFilePath));
     if(!gameBG) { InitSuccess = false; }
 
     // Create camera Entity
-    camera = std::make_shared<CameraEntity>(cameraType, initCameraRect);
+    camera = std::make_shared<CameraEntity>(GameGlobals::InitCameraType, GameGlobals::CameraSize);
     if(!camera) { InitSuccess = false; }
 
     // Create player entity
@@ -97,10 +91,10 @@ bool GameSystems::GameSystems_Init()
     if(!playerEntity) { InitSuccess = false; }
 
     // Initialize Entity Pools
-    enemyPool = std::make_shared<EntityPool<EnemyEntity>>(EnemyPoolSize);
+    enemyPool = std::make_shared<EntityPool<EnemyEntity>>(GameGlobals::EnemyPoolSize);
     if(!enemyPool) { InitSuccess = false; }
 
-    projectilePool= std::make_shared<EntityPool<ProjectileEntity>>(ProjectilePoolSize);
+    projectilePool= std::make_shared<EntityPool<ProjectileEntity>>(GameGlobals::ProjectilePoolSize);
     if(!projectilePool) { InitSuccess = false; }
 
     return InitSuccess;

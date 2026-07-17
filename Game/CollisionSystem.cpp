@@ -36,10 +36,10 @@ void CollisionSystem::handlePlayerCollision(GameEntity& playerEntity, const std:
         case CollisionEnum::collisionBoundary:
             const SDL_Rect& collisionBox = playerEntity.GetCollisionBox();
             if(collisionBox.x < 0)                                      { playerEntity.physicsState.currPosition.x = 0; }
-            if(collisionBox.x > (GameLevelWidth - collisionBox.w))      { playerEntity.physicsState.currPosition.x = (GameLevelWidth - collisionBox.w); }
+            if(collisionBox.x > (GameGlobals::GameLevelWidth - collisionBox.w))      { playerEntity.physicsState.currPosition.x = (GameGlobals::GameLevelWidth - collisionBox.w); }
             
             if (collisionBox.y < 0)                                     { playerEntity.physicsState.currPosition.y = 0; }
-            if (collisionBox.y > (GameLevelHeight - collisionBox.h))    { playerEntity.physicsState.currPosition.y = (GameLevelHeight - collisionBox.h); }
+            if (collisionBox.y > (GameGlobals::GameLevelHeight - collisionBox.h))    { playerEntity.physicsState.currPosition.y = (GameGlobals::GameLevelHeight - collisionBox.h); }
             break;
     }
 }

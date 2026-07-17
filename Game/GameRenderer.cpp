@@ -8,7 +8,7 @@ GameRenderer::GameRenderer()
 {
     rendererSDLPtr = SDL_CreateRenderer(GameSystems::GetWindow()->windowSDLPtr, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderSetLogicalSize(rendererSDLPtr, GameLogicalWidth, GameLogicalHeight);
+    SDL_RenderSetLogicalSize(rendererSDLPtr, GameGlobals::GameLogicalWidth, GameGlobals::GameLogicalHeight);
 }
 
 GameRenderer::~GameRenderer()
