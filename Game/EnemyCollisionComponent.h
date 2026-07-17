@@ -5,6 +5,6 @@ class EnemyCollisionComponent : public CollisionComponent
 {
 public:
     EnemyCollisionComponent(const SDL_Rect& collisionBox_);
-    void detectCollisions(GameEntity& testEntity) override;
+    void DetectCollisions(GameEntity& testEntity) override;
 
 };

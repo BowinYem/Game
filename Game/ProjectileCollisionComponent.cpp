@@ -6,7 +6,7 @@ ProjectileCollisionComponent::ProjectileCollisionComponent(const SDL_Rect& colli
     //...
 }
 
-void ProjectileCollisionComponent::detectCollisions(GameEntity& entity)
+void ProjectileCollisionComponent::DetectCollisions(GameEntity& entity)
 {
     for(size_t i = 0; i < GameSystems::enemyPool->GetPoolSize(); ++i)
     {
@@ -16,7 +16,7 @@ void ProjectileCollisionComponent::detectCollisions(GameEntity& entity)
             bool collisionDetected = SDL_HasIntersection(&collisionBox, &enemy.GetCollisionBox());
             if(collisionDetected) 
             { 
-                notify(entity, std::make_shared<CollisionEvent>(enemy, collisionType, CollisionEnum::collisionEnemy)); 
+                Notify(entity, std::make_shared<CollisionEvent>(enemy, collisionType, CollisionEnum::collisionEnemy)); 
             }
         }
     }

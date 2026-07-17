@@ -4,33 +4,32 @@
 #include "Event.h"
 #include "CollisionEvent.h"
 #include "CollisionEnum.h"
+#include "GameEntity.h"
 #include <vector>
 #include <memory>
 
+// Forward Declarations
 class GameEntity;
 class System;
 
 class CollisionComponent
 {
- public:
-    CollisionComponent(const SDL_Rect& collisionBox_, CollisionEnum collisionType_ = CollisionEnum::collisionNone);
-    virtual void update(GameEntity& entity);
-    inline void addSystem(const std::shared_ptr<System> sys) { systemList.push_back(sys); };
-    void removeSystem(const std::shared_ptr<System> sys);
+public:
+   CollisionComponent(const SDL_Rect& collisionBox_, const CollisionEnum& collisionType_ = CollisionEnum::collisionNone);
+   virtual void Update(GameEntity& entity);
+   inline void AddSystem(const std::shared_ptr<System> sys) { systemList.push_back(sys); };
+   void RemoveSystem(const std::shared_ptr<System> sys);
+
+   SDL_Rect collisionBox;
 
 protected:
-    void notify(GameEntity& entity, const std::shared_ptr<Event> const event);
+   void Notify(GameEntity& entity, const std::shared_ptr<Event> const event);
 
- private:
-    virtual void detectCollisions(GameEntity& entity) = 0;
-    virtual void updateCollisionBox(const GameEntity& entity);
+   CollisionEnum collisionType;
 
- public:
-    SDL_Rect collisionBox;
+private:
+   virtual void DetectCollisions(GameEntity& entity) = 0;
+   virtual void UpdateCollisionBox(const GameEntity& entity);
 
- private:
-    std::vector<std::shared_ptr<System>> systemList;
-    
- protected:
-    CollisionEnum collisionType;
+   std::vector<std::shared_ptr<System>> systemList;
 };

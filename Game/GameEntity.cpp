@@ -44,7 +44,7 @@ void GameEntity::UpdateSprite(double alpha)
 void GameEntity::UpdateCollision()
 {
     if(collisionComp)
-        { collisionComp->update(*this); }
+        { collisionComp->Update(*this); }
 }
 
 GameVector GameEntity::GetForwardDirection()

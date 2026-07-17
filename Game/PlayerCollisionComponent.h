@@ -5,5 +5,5 @@ class PlayerCollisionComponent : public CollisionComponent
 {
  public:
     PlayerCollisionComponent(const SDL_Rect& collisionBox_);
-    void detectCollisions(GameEntity& entity) override;
+    void DetectCollisions(GameEntity& entity) override;
 };

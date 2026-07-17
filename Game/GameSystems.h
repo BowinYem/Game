@@ -8,6 +8,7 @@
 #include "GameRenderer.h"
 #include "GameBackground.h"
 #include "GameGlobals.h"
+#include "CollisionSystem.h"
 
 // Forward declarations
 class GameRenderer;
