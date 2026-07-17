@@ -34,8 +34,8 @@ void GameEntity::UpdateSprite(double alpha)
 
     #ifdef COLLISION_DEBUG_MODE
     SDL_Rect collisionRect = collisionComp->collisionBox;
-    collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->getCameraRect().x;
-    collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->getCameraRect().y; 
+    collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->cameraRect.x;
+    collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->cameraRect.y; 
 
     GameSystems::GetRenderer()->GameRendererDrawRect(collisionRect, GameSystems::testColor);
     #endif // COLLISION_DEBUG_MODE

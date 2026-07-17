@@ -22,7 +22,7 @@ void CameraInputComponent::Update(GameEntity& entity)
 
 void CameraInputComponent::updatePlayerCamera(CameraEntity& camera)
 {
-    auto& cameraRect = camera.getCameraRect();
+    auto& cameraRect = camera.cameraRect;
     auto player = GameSystems::playerEntity;
     auto playerSize = player->GetSpriteDimensions();
 
@@ -46,7 +46,7 @@ void CameraInputComponent::updateDebugCamera(CameraEntity& camera)
 {
     const uint8_t* keyboardState = GameSystems::keyboardState;
     SDL_Keycode actionEvent = GameSystems::actionEvent;
-    auto& cameraRect = camera.getCameraRect();
+    auto& cameraRect = camera.cameraRect;
 
     if ((keyboardState[SDL_SCANCODE_W]) && (cameraRect.y > 0))
     {

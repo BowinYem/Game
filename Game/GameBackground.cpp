@@ -14,6 +14,6 @@ void GameBackground::Update()
     {   
         destRect.w =  GameGlobals::GameLogicalWidth;
         destRect.h =  GameGlobals::GameLogicalHeight;
-        GameSystems::GetRenderer()->GameRendererCopy(bgTexture, GameSystems::camera->getCameraRect(), destRect, 0);
+        GameSystems::GetRenderer()->GameRendererCopy(bgTexture, GameSystems::camera->cameraRect, destRect, 0);
     }
 }

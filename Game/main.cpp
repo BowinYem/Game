@@ -84,8 +84,8 @@ int main(int argc, char* args[])
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
 
-		std::cout << "Cam X: " << GameSystems::camera->getCameraRect().x << "/" << GameGlobals::GameLevelWidth - GameSystems::camera->getCameraRect().w <<
-			" Cam Y: " << GameSystems::camera->getCameraRect().y << "/" << GameGlobals::GameLevelHeight - GameSystems::camera->getCameraRect().h << "\n";
+		std::cout << "Cam X: " << GameSystems::camera->cameraRect.x << "/" << GameGlobals::GameLevelWidth - GameSystems::camera->cameraRect.w <<
+			" Cam Y: " << GameSystems::camera->cameraRect.y << "/" << GameGlobals::GameLevelHeight - GameSystems::camera->cameraRect.h << "\n";
 
 		std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
 		std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 

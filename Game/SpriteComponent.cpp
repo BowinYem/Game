@@ -15,8 +15,8 @@ SpriteComponent::SpriteComponent(const std::string& filePath)
 void SpriteComponent::Update(GameEntity& entity, double alpha)
 {
     interpolate(entity, alpha);
-    destRect.x =  entity.renderPosition.x - GameSystems::camera->getCameraRect().x;
-    destRect.y =  entity.renderPosition.y - GameSystems::camera->getCameraRect().y; 
+    destRect.x =  entity.renderPosition.x - GameSystems::camera->cameraRect.x;
+    destRect.y =  entity.renderPosition.y - GameSystems::camera->cameraRect.y; 
     destRect.w =  srcRect.w;
     destRect.h =  srcRect.h;
     GameSystems::GetRenderer()->GameRendererCopy(*spriteSheet, srcRect, destRect, entity.renderRotation);
