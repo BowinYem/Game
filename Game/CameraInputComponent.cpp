@@ -7,11 +7,11 @@ void CameraInputComponent::Update(GameEntity& entity)
     switch(camera->cameraType)
     {
         case CameraMoveEnum::PlayerCamera:
-            updatePlayerCamera(*camera);
+            UpdatePlayerCamera(*camera);
             break;
         
         case CameraMoveEnum::DebugCamera:
-            updateDebugCamera(*camera);
+            UpdateDebugCamera(*camera);
             break;
 
         case CameraMoveEnum::StaticCamera:
@@ -20,7 +20,7 @@ void CameraInputComponent::Update(GameEntity& entity)
     };
 }
 
-void CameraInputComponent::updatePlayerCamera(CameraEntity& camera)
+void CameraInputComponent::UpdatePlayerCamera(CameraEntity& camera)
 {
     auto& cameraRect = camera.cameraRect;
     auto player = GameSystems::playerEntity;
@@ -42,10 +42,9 @@ void CameraInputComponent::updatePlayerCamera(CameraEntity& camera)
         { cameraRect.y = GameGlobals::GameLevelHeight - GameGlobals::GameLogicalHeight; }
 }
 
-void CameraInputComponent::updateDebugCamera(CameraEntity& camera)
+void CameraInputComponent::UpdateDebugCamera(CameraEntity& camera)
 {
     const uint8_t* keyboardState = GameSystems::keyboardState;
-    SDL_Keycode actionEvent = GameSystems::actionEvent;
     auto& cameraRect = camera.cameraRect;
 
     if ((keyboardState[SDL_SCANCODE_W]) && (cameraRect.y > 0))

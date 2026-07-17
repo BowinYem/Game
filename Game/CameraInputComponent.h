@@ -12,7 +12,6 @@ public:
     void Update(GameEntity& camera) override;
 
 private:
-    void updatePlayerCamera(CameraEntity& camera);
-
-    void updateDebugCamera(CameraEntity& camera);
+    void UpdatePlayerCamera(CameraEntity& camera);
+    void UpdateDebugCamera(CameraEntity& camera);
 };
