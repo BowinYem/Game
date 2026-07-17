@@ -7,7 +7,8 @@
 class CollisionEvent : public Event
 {
 public:
-    CollisionEvent(GameEntity& otherEntity, CollisionEnum senderType_, CollisionEnum otherType_);
+    CollisionEvent(GameEntity& collidedEntity_, const CollisionEnum& senderType_, const CollisionEnum& otherType_);
+
     GameEntity& collidedEntity;
     CollisionEnum senderType;
     CollisionEnum otherType;
