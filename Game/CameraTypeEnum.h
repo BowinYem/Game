@@ -1,6 +1,6 @@
 #pragma once
 
-enum class CameraMoveEnum
+enum class CameraTypeEnum
 {
     StaticCamera,
     PlayerCamera,

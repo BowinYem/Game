@@ -1,13 +1,13 @@
 #pragma once
 #include "GameEntity.h"
-#include "CameraMoveEnum.h"
+#include "CameraTypeEnum.h"
 
 class CameraEntity : public GameEntity
 {
 public:
-    CameraEntity(const CameraMoveEnum& cameraType_, const SDL_Rect& cameraRect_);
+    CameraEntity(const CameraTypeEnum& cameraType_, const SDL_Rect& cameraRect_);
     void InterpolateCamPos(double alpha);
 
-    CameraMoveEnum cameraType;
+    CameraTypeEnum cameraType;
     SDL_Rect cameraRect;
 };

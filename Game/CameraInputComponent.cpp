@@ -6,15 +6,15 @@ void CameraInputComponent::Update(GameEntity& entity)
     CameraEntity* camera = static_cast<CameraEntity*>(&entity);
     switch(camera->cameraType)
     {
-        case CameraMoveEnum::PlayerCamera:
+        case CameraTypeEnum::PlayerCamera:
             UpdatePlayerCamera(*camera);
             break;
         
-        case CameraMoveEnum::DebugCamera:
+        case CameraTypeEnum::DebugCamera:
             UpdateDebugCamera(*camera);
             break;
 
-        case CameraMoveEnum::StaticCamera:
+        case CameraTypeEnum::StaticCamera:
             // Do nothing
             break;
     };

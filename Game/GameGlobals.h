@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <string_view>
 #include "SDL.h"
-#include "CameraMoveEnum.h"
+#include "CameraTypeEnum.h"
 
 namespace GameGlobals
 {
@@ -20,6 +20,6 @@ namespace GameGlobals
     inline constexpr uint8_t ProjectilePoolSize = 5; 
 
     inline constexpr std::string_view BGFilePath = "bg.bmp";
-    inline constexpr CameraMoveEnum StartingCameraType = CameraMoveEnum::PlayerCamera; 
+    inline constexpr CameraTypeEnum StartingCameraType = CameraTypeEnum::PlayerCamera; 
     inline constexpr SDL_Rect StartingCameraRect{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
 }

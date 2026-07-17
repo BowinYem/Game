@@ -63,7 +63,7 @@
   <ItemGroup>
     <ClInclude Include="CameraEntity.h" />
     <ClInclude Include="CameraInputComponent.h" />
-    <ClInclude Include="CameraMoveEnum.h" />
+    <ClInclude Include="CameraTypeEnum.h" />
     <ClInclude Include="CollisionComponent.h" />
     <ClInclude Include="CollisionEnum.h" />
     <ClInclude Include="CollisionEvent.h" />

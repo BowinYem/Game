@@ -1,6 +1,6 @@
 #pragma once
 #include "InputComponent.h"
-#include "CameraMoveEnum.h"
+#include "CameraTypeEnum.h"
 #include "CameraEntity.h"
 
 // Forward Declaration

@@ -203,7 +203,7 @@
     <ClInclude Include="CameraInputComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CameraMoveEnum.h">
+    <ClInclude Include="CameraTypeEnum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="LinearPhysicsComponent.h">
