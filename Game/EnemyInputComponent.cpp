@@ -2,9 +2,9 @@
 #include <SDL.h>
 #include "GameEntity.h"
 
-constexpr uint16_t TestInputComp_WaitTime = 1000;
+inline constexpr uint16_t TestInputComp_WaitTime = 1000;
 
-EnemyInputComponent::EnemyInputComponent() : prevTime(SDL_GetTicks()){ }
+EnemyInputComponent::EnemyInputComponent() : prevTime(SDL_GetTicks()) { /*...*/ }
 
 void EnemyInputComponent::Update(GameEntity& entity)
 {
