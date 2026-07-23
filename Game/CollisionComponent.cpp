@@ -31,7 +31,7 @@ void CollisionComponent::Notify(GameEntity& entity, const std::shared_ptr<Event>
 {
     for(auto& sys : systemList)
     {
-        sys->onNotify(entity, event);
+        sys->OnNotify(entity, event);
     }
 }
 
