@@ -22,4 +22,8 @@ namespace GameGlobals
     inline constexpr std::string_view BGFilePath = "bg.bmp";
     inline constexpr CameraTypeEnum StartingCameraType = CameraTypeEnum::PlayerCamera; 
     inline constexpr SDL_Rect StartingCameraRect{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
+
+    // Temporary variables - will be deleted with future update 
+    inline constexpr SDL_Rect enemyCollisionBox{0, 0, 50, 50};
+    inline constexpr std::string_view enemySpriteFile = "star.bmp";
 }
