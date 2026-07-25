@@ -15,6 +15,7 @@ namespace GameGlobals
 
     inline constexpr SDL_Color FinalRenderDrawColor{ 0x00, 0x00, 0x00, 0x00 };
     inline constexpr SDL_Color TestColor { 0x00, 0x00, 0x00, 0x00 };
+    inline constexpr SDL_Color SpriteChromaColor { 0x00, 0xFF, 0xFF, 0x00 };
 
     inline constexpr uint16_t GameLevelWidth = 1200; 
     inline constexpr uint16_t GameLevelHeight = 1200;
