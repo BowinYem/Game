@@ -3,19 +3,19 @@
 class GameVector
 {
     friend GameVector operator+(const GameVector& v1, const GameVector& v2);
+
     friend GameVector operator-(const GameVector& v1, const GameVector& v2);
+
     friend GameVector operator-(const GameVector& v);
 
-public:
-    GameVector();
-    GameVector(double x_, double y_);
-    void Normalize();
-    void Rotate(float angleDegree);
-
     template <typename T>
-    GameVector operator* (const T scalar) { return GameVector(this->x * scalar, this->y * scalar); }
+    friend GameVector operator* (const GameVector& v, const T scalar) { return GameVector(v.x * scalar, v.y * scalar); }
 
 public:
+    GameVector(const double x_, const double y_);
+    void Normalize();
+    void Rotate(const float angleDegree);
+
     double x;
     double y;
 };

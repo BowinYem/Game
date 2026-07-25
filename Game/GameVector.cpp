@@ -2,14 +2,9 @@
 #include "GameMath.h"
 #include <math.h>
 
-GameVector::GameVector()
+GameVector::GameVector(const double x_, const double y_) : x{x_}, y{y_} 
 {
-
-}
-
-GameVector::GameVector(double x_, double y_) : x{x_}, y{y_} 
-{
-    // Constructor body...
+    //...
 }
 
 void GameVector::Normalize()
@@ -19,7 +14,7 @@ void GameVector::Normalize()
     y = (y / magnitude);
 }
 
-void GameVector::Rotate(float angleDegree)
+void GameVector::Rotate(const float angleDegree)
 {
     float angleRadians = GameMath::DegreesToRadians(angleDegree);
     float cosVal = cos(angleRadians);
