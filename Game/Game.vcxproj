@@ -72,6 +72,7 @@
     <ClInclude Include="EnemyEntity.h" />
     <ClInclude Include="EntityPool.h" />
     <ClInclude Include="Event.h" />
+    <ClInclude Include="EventTypeEnum.h" />
     <ClInclude Include="GameEntity.h" />
     <ClInclude Include="GameBackground.h" />
     <ClInclude Include="GameGlobals.h" />

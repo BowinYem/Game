@@ -212,5 +212,11 @@
     <ClInclude Include="TestInputComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GameGlobals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventTypeEnum.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

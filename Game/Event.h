@@ -1,10 +1,5 @@
 #pragma once
-
-enum class EventType
-{
-    CollisionEvent,
-    AudioEvent  
-};
+#include "EventTypeEnum.h"
 
 class Event
 {
