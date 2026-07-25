@@ -1,19 +1,14 @@
 #include "GameBackground.h"
 #include "GameSystems.h"
-#include "SDL_rect.h"
 
-GameBackground::GameBackground(const std::string& filePath) : bgTexture{filePath}
+GameBackground::GameBackground(const std::string& filePath) : bgTexture{filePath}, 
+    destRect{0, 0, GameGlobals::GameLogicalWidth, GameGlobals::GameLogicalHeight}
 {
-    destRect.x = 0;
-    destRect.y = 0;
+   //...
 }
 
 void GameBackground::Update()
 {
     if(GameSystems::camera)
-    {   
-        destRect.w =  GameGlobals::GameLogicalWidth;
-        destRect.h =  GameGlobals::GameLogicalHeight;
-        GameSystems::GetRenderer()->GameRendererCopy(bgTexture, GameSystems::camera->cameraRect, destRect, 0);
-    }
+        { GameSystems::GetRenderer()->GameRendererCopy(bgTexture, GameSystems::camera->cameraRect, destRect, 0); }
 }
