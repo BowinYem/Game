@@ -41,7 +41,7 @@ void GameEntity::UpdateSprite(const double alpha)
         collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->cameraRect.x;
         collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->cameraRect.y; 
 
-        GameSystems::GetRenderer()->GameRendererDrawRect(collisionRect, GameSystems::testColor);
+        GameSystems::GetRenderer()->GameRendererDrawRect(collisionRect, GameGlobals::TestColor);
     }
     #endif // COLLISION_DEBUG_MODE
 }

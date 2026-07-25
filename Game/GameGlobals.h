@@ -14,12 +14,14 @@ namespace GameGlobals
     inline constexpr uint16_t CreateWindowFlags = 0;
 
     inline constexpr SDL_Color FinalRenderDrawColor{ 0x00, 0x00, 0x00, 0x00 };
+    inline constexpr SDL_Color TestColor { 0x00, 0x00, 0x00, 0x00 };
 
     inline constexpr uint16_t GameLevelWidth = 1200; 
     inline constexpr uint16_t GameLevelHeight = 1200;
 
     inline constexpr uint16_t PlayerSpawnX = 100;
     inline constexpr uint16_t PlayerSpawnY = 100;
+    inline constexpr std::string_view PlayerSpriteFile = "star.bmp";
 
     inline constexpr uint8_t EnemyPoolSize = 5;
     inline constexpr uint8_t ProjectilePoolSize = 5; 

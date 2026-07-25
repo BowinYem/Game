@@ -1,29 +1,14 @@
 #include "GameSystems.h"
-#include "GameRenderer.h"
-#include "GameWindow.h"
-
-#include "GameEntity.h"
-#include "GameBackground.h"
-#include "EnemyEntity.h"
-#include "CameraEntity.h"
-#include "EntityPool.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
 #include "TestInputComponent.h"
 #include "RotatePhysicsComponent.h"
 #include "PlayerCollisionComponent.h"
 
-#include "CollisionSystem.h"
-
-#include <iostream> // TODO: DELETE 
-
 bool GameSystems::quit = false;
+
 const uint8_t* GameSystems::keyboardState = nullptr;
 SDL_Keycode GameSystems::actionEvent;
-const SDL_Color GameSystems::testColor = {0, 0, 0, 0xFF}; // Black
-
-std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
-std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
 std::shared_ptr<GameBackground> GameSystems::gameBG{nullptr};
 
@@ -34,6 +19,8 @@ std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullpt
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
 
+std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
+std::shared_ptr<GameWindow> GameSystems::window{nullptr};
 
 void GameSystems::ReadInput()
 {
@@ -65,6 +52,7 @@ bool GameSystems::GameSystems_Init()
     renderer = std::make_shared<GameRenderer>();
     if(!renderer) { InitSuccess = false; }    
 
+    // Initialize Systems
     collisionSys = std::make_shared<CollisionSystem>();
     if(!collisionSys) { InitSuccess = false; }
 
@@ -83,7 +71,7 @@ bool GameSystems::GameSystems_Init()
 	CollisionBoxSize.w = 50;
 	playerEntity = std::make_shared<GameEntity>
 	(
-		std::make_shared<SpriteComponent>("star.bmp"),
+		std::make_shared<SpriteComponent>(std::string(GameGlobals::PlayerSpriteFile)),
 		std::make_shared<PlayerInputComponent>(),
 		std::make_shared<RotatePhysicsComponent>(),
         std::make_shared<PlayerCollisionComponent>(CollisionBoxSize),
@@ -103,5 +91,6 @@ bool GameSystems::GameSystems_Init()
 
 bool GameSystems::GameSystems_Close()
 {
+    SDL_Quit();
     return 1;
 }
