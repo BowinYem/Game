@@ -1,13 +1,14 @@
 #include "GameRenderer.h"
-#include "GameTexture.h"
 #include "GameSystems.h"
 #include "GameWindow.h"
-#include "GameVector.h"
 
 GameRenderer::GameRenderer()
 {
     rendererSDLPtr = SDL_CreateRenderer(GameSystems::GetWindow()->windowSDLPtr, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
-    SDL_SetRenderDrawColor(rendererSDLPtr, 0xFF, 0xFF, 0xFF, 0xFF);
+    
+    SDL_SetRenderDrawColor(rendererSDLPtr, GameGlobals::FinalRenderDrawColor.r, GameGlobals::FinalRenderDrawColor.g, 
+        GameGlobals::FinalRenderDrawColor.b, GameGlobals::FinalRenderDrawColor.a);
+
     SDL_RenderSetLogicalSize(rendererSDLPtr, GameGlobals::GameLogicalWidth, GameGlobals::GameLogicalHeight);
 }
 
@@ -23,8 +24,7 @@ bool GameRenderer::GameRendererClear()
 
  bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_FRect& destRect, const double rotation)
  {
-    SDL_FRect destFRect = {destRect.x, destRect.y, destRect.w, destRect.h};
-    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destFRect, rotation, nullptr, SDL_FLIP_NONE));
+    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destRect, rotation, nullptr, SDL_FLIP_NONE));
  }
 
 bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const SDL_Rect& srcRect, const double rotation)
@@ -34,7 +34,9 @@ bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const SDL_Rec
 
 void GameRenderer::GameRendererPresent()
 {
-    SDL_SetRenderDrawColor(rendererSDLPtr, 0x00, 0x00, 0x00, 0x00);
+    SDL_SetRenderDrawColor(rendererSDLPtr, GameGlobals::FinalRenderDrawColor.r, GameGlobals::FinalRenderDrawColor.g, 
+        GameGlobals::FinalRenderDrawColor.b, GameGlobals::FinalRenderDrawColor.a);
+
     SDL_RenderPresent(rendererSDLPtr);
 }
 

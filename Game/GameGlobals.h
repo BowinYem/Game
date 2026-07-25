@@ -13,6 +13,8 @@ namespace GameGlobals
     inline constexpr uint16_t GameWindowHeight = 720;
     inline constexpr uint16_t CreateWindowFlags = 0;
 
+    inline constexpr SDL_Color FinalRenderDrawColor{ 0x00, 0x00, 0x00, 0x00 };
+
     inline constexpr uint16_t GameLevelWidth = 1200; 
     inline constexpr uint16_t GameLevelHeight = 1200;
 

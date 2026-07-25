@@ -3,7 +3,9 @@
 #pragma once
 #include <SDL.h>
 #include "GameVector.h"
+#include "GameTexture.h"
 
+// Forward Declarations
 class GameTexture;
 
 class GameRenderer
@@ -12,6 +14,12 @@ class GameRenderer
 friend class GameTexture;
 
 public:
+    GameRenderer(const GameRenderer&) = delete;
+    GameRenderer(GameRenderer&&) = delete;
+
+    GameRenderer& operator= (const GameRenderer&) = delete;
+    GameRenderer& operator= (GameRenderer&&) = delete;
+
     GameRenderer();
     ~GameRenderer();
 
