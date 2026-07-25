@@ -86,7 +86,8 @@ bool GameSystems::GameSystems_Init()
 		std::make_shared<SpriteComponent>("star.bmp"),
 		std::make_shared<PlayerInputComponent>(),
 		std::make_shared<RotatePhysicsComponent>(),
-        std::make_shared<PlayerCollisionComponent>(CollisionBoxSize)
+        std::make_shared<PlayerCollisionComponent>(CollisionBoxSize),
+        GameVector{GameGlobals::PlayerSpawnX, GameGlobals::PlayerSpawnY}
 	);
     if(!playerEntity) { InitSuccess = false; }
 

@@ -16,6 +16,9 @@ namespace GameGlobals
     inline constexpr uint16_t GameLevelWidth = 1200; 
     inline constexpr uint16_t GameLevelHeight = 1200;
 
+    inline constexpr uint16_t PlayerSpawnX = 100;
+    inline constexpr uint16_t PlayerSpawnY = 100;
+
     inline constexpr uint8_t EnemyPoolSize = 5;
     inline constexpr uint8_t ProjectilePoolSize = 5; 
 

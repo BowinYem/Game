@@ -1,21 +1,22 @@
 #include "GameEntity.h"
-#include "SpriteComponent.h"
-#include "InputComponent.h"
-#include "PhysicsComponent.h"
-#include "CollisionComponent.h"
 #include "GameMath.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
-#include <iostream>
 
 
-GameEntity::GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, std::shared_ptr<CollisionComponent> collisionComp_, GameVector spawnLocation) 
-    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, collisionComp{collisionComp_}, renderPosition{spawnLocation}, physicsState{renderPosition}
+GameEntity::GameEntity(const std::shared_ptr<SpriteComponent> spriteComp_, 
+                       const std::shared_ptr<InputComponent> inputComp_, 
+                       const std::shared_ptr<PhysicsComponent> physicsComp_, 
+                       const std::shared_ptr<CollisionComponent> collisionComp_, 
+                       const GameVector& spawnLocation) 
+
+    : spriteComp{spriteComp_}, inputComp{inputComp_}, physicsComp{physicsComp_}, collisionComp{collisionComp_}, 
+      renderPosition{spawnLocation}, physicsState{renderPosition}
 {
     //...
 }
 
-void GameEntity::UpdatePhysics(double extrapolateVal)
+void GameEntity::UpdatePhysics(const double extrapolateVal)
 {
     if(physicsComp)
         { physicsComp->Update(*this, extrapolateVal); }
@@ -27,27 +28,33 @@ void GameEntity::UpdateInput()
         { inputComp->Update(*this); }
 }
 
-void GameEntity::UpdateSprite(double alpha)
+void GameEntity::UpdateSprite(const double alpha)
 {
     if(spriteComp)
         { spriteComp->Update(*this, alpha); } 
 
+    
     #ifdef COLLISION_DEBUG_MODE
-    SDL_Rect collisionRect = collisionComp->collisionBox;
-    collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->cameraRect.x;
-    collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->cameraRect.y; 
+    if(collisionComp)
+    {
+        SDL_Rect collisionRect = collisionComp->collisionBox;
+        collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->cameraRect.x;
+        collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->cameraRect.y; 
 
-    GameSystems::GetRenderer()->GameRendererDrawRect(collisionRect, GameSystems::testColor);
+        GameSystems::GetRenderer()->GameRendererDrawRect(collisionRect, GameSystems::testColor);
+    }
     #endif // COLLISION_DEBUG_MODE
 }
 
 void GameEntity::UpdateCollision()
 {
     if(collisionComp)
-        { collisionComp->Update(*this); }
+    { 
+        collisionComp->Update(*this); 
+    }
 }
 
-GameVector GameEntity::GetForwardDirection()
+GameVector GameEntity::GetForwardDirection() const
 {
     /*
         This function returns a directional vector representing the forward direction of this entity. 
@@ -75,27 +82,25 @@ GameVector GameEntity::GetForwardDirection()
     return destPos - renderPosition;
 }
 
-void GameEntity::SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_)
+inline void GameEntity::SetSpriteComponent(const std::shared_ptr<SpriteComponent> spriteComp_)
 {
     spriteComp = spriteComp_;
 }
 
-void GameEntity::SetInputComponent(std::shared_ptr<InputComponent> inputComp_)
+inline void GameEntity::SetInputComponent(const std::shared_ptr<InputComponent> inputComp_)
 {
     inputComp = inputComp_;
 }
 
-void GameEntity::SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsComp_)
+inline void GameEntity::SetPhysicsComponent(const std::shared_ptr<PhysicsComponent> physicsComp_)
 {
     physicsComp = physicsComp_;
 }
  
-void GameEntity::SetCollisionComponent(std::shared_ptr<CollisionComponent> collisionComp_)
+inline void GameEntity::SetCollisionComponent(const std::shared_ptr<CollisionComponent> collisionComp_)
 {
     collisionComp = collisionComp_;
 }
-
-
 
 const SDL_Rect& GameEntity::GetCollisionBox()
 {

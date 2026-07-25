@@ -13,42 +13,40 @@
 #include "PhysicsComponent.h"
 #include "CollisionComponent.h"
 
-constexpr double DefaultXPos = 100.f;
-constexpr double DefaultYPos = 100.f;
-
+// Forward declarations
 class CollisionComponent;
 class GameEntity
 {
 public:
 
-    GameEntity() = default;
-
-    GameEntity(std::shared_ptr<SpriteComponent> spriteComp_, std::shared_ptr<InputComponent> inputComp_, std::shared_ptr<PhysicsComponent> physicsComp_, std::shared_ptr<CollisionComponent> collisionComp_, 
-        GameVector spawnLocation = {DefaultXPos, DefaultYPos});
+    GameEntity(const std::shared_ptr<SpriteComponent>    spriteComp_, 
+               const std::shared_ptr<InputComponent>     inputComp_, 
+               const std::shared_ptr<PhysicsComponent>   physicsComp_, 
+               const std::shared_ptr<CollisionComponent> collisionComp_, 
+               const GameVector& spawnLocation = {0, 0});
     
-    virtual void UpdatePhysics(double extrapolateVal);
+    virtual void UpdatePhysics(const double extrapolateVal);
 
     virtual void UpdateInput();
 
-    virtual void UpdateSprite(double alpha);
+    virtual void UpdateSprite(const double alpha);
 
     virtual void UpdateCollision();
 
-    GameVector GetForwardDirection();
+    inline void SetSpriteComponent(const std::shared_ptr<SpriteComponent> spriteComp_);
 
-    void SetSpriteComponent(std::shared_ptr<SpriteComponent> spriteComp_);
+    inline void SetInputComponent(const std::shared_ptr<InputComponent> inputComp_);
 
-    void SetInputComponent(std::shared_ptr<InputComponent> inputComp_);
+    inline void SetPhysicsComponent(const std::shared_ptr<PhysicsComponent> physicsComp_);
 
-    void SetPhysicsComponent(std::shared_ptr<PhysicsComponent> physicsComp_);
+    inline void SetCollisionComponent(const std::shared_ptr<CollisionComponent> collisionComp_);
 
-    void SetCollisionComponent(std::shared_ptr<CollisionComponent> collisionComp_);
+    GameVector GetForwardDirection() const;
 
     const SDL_Rect& GetCollisionBox();
 
     const SDL_Rect& GetSpriteDimensions();
 
-public:
     GameVector renderPosition;
     double renderRotation = 0;
 
