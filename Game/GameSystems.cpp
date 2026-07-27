@@ -73,7 +73,7 @@ bool GameSystems::GameSystems_Init()
 	(
 		std::make_shared<SpriteComponent>(std::string(GameGlobals::PlayerSpriteFile)),
 		std::make_shared<PlayerInputComponent>(),
-		std::make_shared<RotatePhysicsComponent>(),
+		std::make_shared<RotatePhysicsComponent>(GameGlobals::PlayerVelocity, GameGlobals::PlayerVelocity, GameGlobals::PlayerRotateVelocity),
         std::make_shared<PlayerCollisionComponent>(CollisionBoxSize),
         GameVector{GameGlobals::PlayerSpawnX, GameGlobals::PlayerSpawnY}
 	);

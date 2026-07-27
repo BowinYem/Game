@@ -23,15 +23,24 @@ namespace GameGlobals
     inline constexpr uint16_t PlayerSpawnX = 100;
     inline constexpr uint16_t PlayerSpawnY = 100;
     inline constexpr std::string_view PlayerSpriteFile = "star.bmp";
+    inline constexpr double PlayerVelocity = 100.0f;
+    inline constexpr double PlayerRotateVelocity = 100.0f;
 
-    inline constexpr uint8_t EnemyPoolSize = 5;
+    // Temporary variables - will be deleted with future update
     inline constexpr uint8_t ProjectilePoolSize = 5; 
+    inline constexpr double  ProjectileVelocity = 300.0f;
+    inline constexpr double  ProjectileRotateVelocity = 100.0f;
+    inline constexpr SDL_Rect ProjectileCollisionBox{0, 0, 50, 50};
+    inline constexpr std::string_view ProjectileSpriteFile = "star.bmp";
+
+    // Temporary variables - will be deleted with future update
+    inline constexpr uint8_t EnemyPoolSize = 5;
+    inline constexpr double  EnemyVelocity = 100.0f;
+    inline constexpr double  EnemyRotateVelocity = 100.0f;  
+    inline constexpr SDL_Rect enemyCollisionBox{0, 0, 50, 50};
+    inline constexpr std::string_view enemySpriteFile = "star.bmp";
 
     inline constexpr std::string_view BGFilePath = "bg.bmp";
     inline constexpr CameraTypeEnum StartingCameraType = CameraTypeEnum::PlayerCamera; 
     inline constexpr SDL_Rect StartingCameraRect{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
-
-    // Temporary variables - will be deleted with future update 
-    inline constexpr SDL_Rect enemyCollisionBox{0, 0, 50, 50};
-    inline constexpr std::string_view enemySpriteFile = "star.bmp";
 }

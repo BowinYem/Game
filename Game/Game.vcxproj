@@ -44,6 +44,7 @@
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="LinearPhysicsComponent.cpp" />
+    <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsState.cpp" />
     <ClCompile Include="PlayerCollisionComponent.cpp" />
     <ClCompile Include="PlayerInputComponent.cpp" />

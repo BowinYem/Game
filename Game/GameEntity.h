@@ -15,6 +15,7 @@
 
 // Forward declarations
 class InputComponent;
+class PhysicsComponent;
 class CollisionComponent;
 class GameEntity
 {

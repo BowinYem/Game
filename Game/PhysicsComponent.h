@@ -1,20 +1,16 @@
 #pragma once
-#include "GameVector.h"
-#include "SDL.h"
-
-constexpr double defaultXVelocity = 100;
-constexpr double defaultYVelocity = 100;
-constexpr double defaultRotateVelocity = 100; 
+#include "GameEntity.h"
 
 class GameEntity;
 
 class PhysicsComponent
 {
  public:
-    virtual void Update(GameEntity& entity, double extrapolateVal) = 0;
+    PhysicsComponent(const double xVelocity_ = 0, const double yVelocity_ = 0, const double rotationVelocity_ = 0);
 
-public:
-    double xVelocity = defaultXVelocity;
-    double yVelocity = defaultYVelocity;
-    double rotationVelocity = defaultRotateVelocity; 
+    virtual void Update(GameEntity& entity, const double alpha) = 0;
+
+    double xVelocity; 
+    double yVelocity;
+    double rotationVelocity;
 };
