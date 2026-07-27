@@ -1,5 +1,6 @@
 #pragma once
 #include "InputComponent.h"
+#include "GameEntity.h"
 
 class ProjectileInputComponent : public InputComponent
 {

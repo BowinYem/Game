@@ -1,5 +1,4 @@
 #include "ProjectileInputComponent.h"
-#include "GameEntity.h"
 
 void ProjectileInputComponent::Update(GameEntity& entity)
 {
