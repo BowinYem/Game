@@ -1,18 +1,16 @@
 #include "SpriteComponent.h"
-#include "GameEntity.h"
-#include "GameTexture.h"
 #include "GameSystems.h"
 #include "GameRenderer.h"
 #include <cmath>
 
 SpriteComponent::SpriteComponent(const std::string& filePath) 
 {
-    spriteSheet = std::make_unique<GameTexture>(filePath);
+    spriteSheet = std::make_shared<GameTexture>(filePath);
     srcRect = {0, 0, spriteSheet->width, spriteSheet->height};
 }
 
 // Every tick, copy the sprite onto the buffer
-void SpriteComponent::Update(GameEntity& entity, double alpha)
+void SpriteComponent::Update(GameEntity& entity, const double alpha)
 {
     interpolate(entity, alpha);
     destRect.x =  entity.renderPosition.x - GameSystems::camera->cameraRect.x;
@@ -22,19 +20,7 @@ void SpriteComponent::Update(GameEntity& entity, double alpha)
     GameSystems::GetRenderer()->GameRendererCopy(*spriteSheet, srcRect, destRect, entity.renderRotation);
 }
 
-SpriteComponent& SpriteComponent::operator= (SpriteComponent& otherComp)
-{
-    this->srcRect = otherComp.srcRect;
-    this->spriteSheet = otherComp.spriteSheet;
-    return *this;
-}
-
-const SDL_Rect& SpriteComponent::GetSpriteDimenisions()
-{
-    return srcRect;
-}
-
-void SpriteComponent::interpolate(GameEntity& entity, double alpha)
+void SpriteComponent::interpolate(GameEntity& entity, const double alpha)
 {
         // Naive LERP
 		entity.renderPosition  = (entity.physicsState.currPosition * alpha) + (entity.physicsState.prevPosition * (1.0 - alpha));

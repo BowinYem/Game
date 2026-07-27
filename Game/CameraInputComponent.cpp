@@ -24,7 +24,7 @@ void CameraInputComponent::UpdatePlayerCamera(CameraEntity& camera)
 {
     auto& cameraRect = camera.cameraRect;
     auto player = GameSystems::playerEntity;
-    auto playerSize = player->GetSpriteDimensions();
+    auto playerSize = player->GetSpriteDest();
 
     cameraRect.x = (player->renderPosition.x + (playerSize.w / 2)) - (GameGlobals::GameLogicalWidth / 2);
     cameraRect.y = (player->renderPosition.y + (playerSize.h / 2)) - (GameGlobals::GameLogicalHeight / 2);

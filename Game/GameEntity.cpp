@@ -108,8 +108,8 @@ const SDL_Rect& GameEntity::GetCollisionBox()
         { return collisionComp->collisionBox; }
 }
 
-const SDL_Rect& GameEntity::GetSpriteDimensions()
+const SDL_FRect& GameEntity::GetSpriteDest()
 {
     if(spriteComp)
-        { return spriteComp->GetSpriteDimenisions(); }
+        { return spriteComp->destRect; }
 }

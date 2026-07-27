@@ -14,9 +14,11 @@
 #include "CollisionComponent.h"
 
 // Forward declarations
+class SpriteComponent;
 class InputComponent;
 class PhysicsComponent;
 class CollisionComponent;
+
 class GameEntity
 {
 public:
@@ -47,7 +49,7 @@ public:
 
     const SDL_Rect& GetCollisionBox();
 
-    const SDL_Rect& GetSpriteDimensions();
+    const SDL_FRect& GetSpriteDest();
 
     GameVector renderPosition;
     double renderRotation = 0;
