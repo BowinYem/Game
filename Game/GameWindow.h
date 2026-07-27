@@ -13,7 +13,7 @@ public:
 	GameWindow& operator=(const GameWindow&) = delete;
 	GameWindow& operator=(GameWindow&&) = delete;
 	
-	GameWindow(uint16_t window_w, uint16_t window_h);
+	GameWindow(const uint16_t window_w, const uint16_t window_h);
 	~GameWindow();
 
 	uint16_t windowWidth;
