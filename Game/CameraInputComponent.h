@@ -1,7 +1,7 @@
 #pragma once
 #include "InputComponent.h"
-#include "CameraTypeEnum.h"
 #include "CameraEntity.h"
+#include "GameEntity.h"
 
 // Forward Declaration
 class CameraEntity;

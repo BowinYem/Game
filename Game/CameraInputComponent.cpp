@@ -1,5 +1,6 @@
 #include "CameraInputComponent.h"
 #include "GameSystems.h"
+#include "CameraTypeEnum.h"
 
 void CameraInputComponent::Update(GameEntity& entity)
 {
