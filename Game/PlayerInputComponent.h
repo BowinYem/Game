@@ -1,6 +1,6 @@
 #pragma once
 #include "InputComponent.h"
-#include <cstdint>
+#include "GameEntity.h"
 
 // Forward declarations
 class GameEntity;
@@ -8,6 +8,5 @@ class GameEntity;
 class PlayerInputComponent : public InputComponent
 {
 public:
-	virtual void Update(GameEntity& entity) override; 
+	void Update(GameEntity& entity) override; 
 };
-

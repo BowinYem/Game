@@ -1,6 +1,6 @@
 #include "PlayerInputComponent.h"
 #include "GameSystems.h"
-#include "GameEntity.h"
+#include <stdint.h>
 
 void PlayerInputComponent::Update(GameEntity& entity)
 {
