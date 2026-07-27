@@ -27,7 +27,6 @@ void PlayerCollisionComponent::DetectCollisions(GameEntity& entity)
     if((collisionBox.x < 0) || (collisionBox.x > (GameGlobals::GameLevelWidth - collisionBox.w)) ||
         (collisionBox.y < 0) || (collisionBox.y > (GameGlobals::GameLevelHeight - collisionBox.h)))
     {
-        auto& dummy = GameSystems::enemyPool->GetEntity(0);
-        Notify(entity, std::make_shared<CollisionEvent>(dummy, collisionType, CollisionEnum::collisionBoundary)); 
+        Notify(entity, std::make_shared<CollisionEvent>(entity, collisionType, CollisionEnum::collisionBoundary)); 
     }
 }
