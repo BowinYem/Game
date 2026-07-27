@@ -14,6 +14,7 @@
 #include "CollisionComponent.h"
 
 // Forward declarations
+class InputComponent;
 class CollisionComponent;
 class GameEntity
 {
