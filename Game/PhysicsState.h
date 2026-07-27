@@ -4,8 +4,7 @@
 class PhysicsState
 {
 public:
-    PhysicsState() = default;
-    PhysicsState(GameVector initPosition, double initRotation = 0.0); 
+    PhysicsState(const GameVector& initPosition, const double initRotation = 0.0); 
 
     GameVector currPosition;
     GameVector prevPosition;
