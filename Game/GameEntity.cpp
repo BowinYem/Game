@@ -37,7 +37,7 @@ void GameEntity::UpdateSprite(const double alpha)
     #ifdef COLLISION_DEBUG_MODE
     if(collisionComp)
     {
-        SDL_Rect collisionRect = collisionComp->collisionBox;
+        GameRect collisionRect = collisionComp->collisionBox;
         collisionRect.x =  collisionComp->collisionBox.x - GameSystems::camera->cameraRect.x;
         collisionRect.y =  collisionComp->collisionBox.y - GameSystems::camera->cameraRect.y; 
 
@@ -102,13 +102,13 @@ inline void GameEntity::SetCollisionComponent(const std::shared_ptr<CollisionCom
     collisionComp = collisionComp_;
 }
 
-const SDL_Rect& GameEntity::GetCollisionBox()
+const GameRect& GameEntity::GetCollisionBox()
 {
     if(physicsComp)
         { return collisionComp->collisionBox; }
 }
 
-const SDL_FRect& GameEntity::GetSpriteDest()
+const GameRect& GameEntity::GetSpriteDest()
 {
     if(spriteComp)
         { return spriteComp->destRect; }

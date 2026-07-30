@@ -22,14 +22,17 @@ bool GameRenderer::GameRendererClear()
     return !(SDL_RenderClear(rendererSDLPtr));
 }
 
- bool GameRenderer::GameRendererCopy(const GameTexture& texture, const SDL_Rect& srcRect, const SDL_FRect& destRect, const double rotation)
+ bool GameRenderer::GameRendererCopy(const GameTexture& texture, const GameRect& srcRect, const GameRect& destRect, const double rotation)
  {
-    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, &destRect, rotation, nullptr, SDL_FLIP_NONE));
+    SDL_Rect renderSrcRect = srcRect.GetIRect();
+    SDL_FRect renderDestRect = destRect.GetFRect();
+    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &renderSrcRect, &renderDestRect, rotation, nullptr, SDL_FLIP_NONE));
  }
 
-bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const SDL_Rect& srcRect, const double rotation)
+bool GameRenderer::GameRendererCopyAll(const GameTexture& texture, const GameRect& srcRect, const double rotation)
 {
-    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &srcRect, nullptr, rotation, nullptr, SDL_FLIP_NONE));
+    SDL_Rect renderSrcRect = srcRect.GetIRect();
+    return !(SDL_RenderCopyExF(rendererSDLPtr, texture.textureSDLPtr, &renderSrcRect, nullptr, rotation, nullptr, SDL_FLIP_NONE));
 }
 
 void GameRenderer::GameRendererPresent()
@@ -46,8 +49,9 @@ bool GameRenderer::GameRendererDrawLine(const GameVector& originPoint, const Gam
     return SDL_RenderDrawLineF(rendererSDLPtr, originPoint.x, originPoint.y, destPoint.x, destPoint.y);
 }
 
-bool GameRenderer::GameRendererDrawRect(const SDL_Rect& rect, const SDL_Color& color)
+bool GameRenderer::GameRendererDrawRect(const GameRect& rect, const SDL_Color& color)
 {
+    SDL_Rect renderRect = rect.GetIRect();
     SDL_SetRenderDrawColor(rendererSDLPtr, color.r, color.g, color.b, color.a);
-    return SDL_RenderDrawRect(rendererSDLPtr, &rect);
+    return SDL_RenderDrawRect(rendererSDLPtr, &renderRect);
 }

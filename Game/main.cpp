@@ -16,6 +16,7 @@
 #include "EntityPool.h"
 
 #include <iostream>
+#include "GameRect.h"
 
 static const char SPRITE_WIDTH = 30;
 static const char SPRITE_HEIGHT = 31;
@@ -84,20 +85,24 @@ int main(int argc, char* args[])
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
 
-		std::cout << "Cam X: " << GameSystems::camera->cameraRect.x << "/" << GameGlobals::GameLevelWidth - GameSystems::camera->cameraRect.w <<
+		if(debugCount == 1000)
+		{			
+			std::cout << "Cam X: " << GameSystems::camera->cameraRect.x << "/" << GameGlobals::GameLevelWidth - GameSystems::camera->cameraRect.w <<
 			" Cam Y: " << GameSystems::camera->cameraRect.y << "/" << GameGlobals::GameLevelHeight - GameSystems::camera->cameraRect.h << "\n";
 
-		std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
-		std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 
+			std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
+			std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 
 
-		SDL_Rect cBox = GameSystems::playerEntity->GetCollisionBox();
-		std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
-	
-		if(debugCount == 1000)
-		{
+			GameRect cBox = GameSystems::playerEntity->GetCollisionBox();
+			std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
+
 			debugCount = 0;
 		}
 		else debugCount++;
+
+		// GameRect testRect{-1.25, -2.523, -3.75, -4.0};
+		// std::cout << testRect.GetFRect().x << " " << testRect.GetFRect().y << " " <<  testRect.GetFRect().w << " " << testRect.GetFRect().h << "\n"; 
+		// std::cout << testRect.GetIRect().x << " " << testRect.GetIRect().y << " " <<  testRect.GetIRect().w << " " << testRect.GetIRect().h << "\n"; 
 
 		GameSystems::GetRenderer()->GameRendererPresent();
 	}

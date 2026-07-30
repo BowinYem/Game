@@ -1,12 +1,12 @@
 #pragma once
 #include "CollisionComponent.h"
 #include "GameEntity.h"
-#include "SDL.h"
+#include "GameRect.h"
 
 class EnemyCollisionComponent : public CollisionComponent
 {
 public:
-    EnemyCollisionComponent(const SDL_Rect& collisionBox_);
+    EnemyCollisionComponent(const GameRect& collisionBox_);
     void DetectCollisions(GameEntity& testEntity) override;
 
 };

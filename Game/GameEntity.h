@@ -5,6 +5,7 @@
 #include <string> 
 
 #include "GameVector.h"
+#include "GameRect.h"
 #include "PhysicsState.h"
 #include "DirectionEnum.h"
 
@@ -47,9 +48,9 @@ public:
 
     GameVector GetForwardDirection() const;
 
-    const SDL_Rect& GetCollisionBox();
+    const GameRect& GetCollisionBox();
 
-    const SDL_FRect& GetSpriteDest();
+    const GameRect& GetSpriteDest();
 
     GameVector renderPosition;
     double renderRotation = 0;

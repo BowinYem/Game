@@ -6,7 +6,7 @@
 SpriteComponent::SpriteComponent(const std::string& filePath) 
 {
     spriteSheet = std::make_shared<GameTexture>(filePath);
-    srcRect = {0, 0, spriteSheet->width, spriteSheet->height};
+    srcRect = {0, 0, static_cast<float>(spriteSheet->width), static_cast<float>(spriteSheet->height)};
 }
 
 // Every tick, copy the sprite onto the buffer

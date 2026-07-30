@@ -3,12 +3,12 @@
 #include "LinearPhysicsComponent.h"
 #include "GameSystems.h"
 
-CameraEntity::CameraEntity(const CameraTypeEnum& cameraType_, const SDL_Rect& cameraRect_) : 
+CameraEntity::CameraEntity(const CameraTypeEnum& cameraType_, const GameRect& cameraRect_): 
     GameEntity{ nullptr, // No sprite component
                 std::make_shared<CameraInputComponent>(), 
                 std::make_shared<LinearPhysicsComponent>(), 
                 nullptr, // No collision component 
-                GameVector{static_cast<double>(cameraRect_.x), static_cast<double>(cameraRect_.y)}}, 
+                GameVector{cameraRect_.x, cameraRect_.y}}, 
     cameraType{cameraType_}, cameraRect{cameraRect_} 
 { 
     //...

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <SDL.h>
 #include <string>
 #include <memory>
 
+#include "GameRect.h"
 #include "GameEntity.h"
 #include "GameTexture.h"
 
@@ -18,8 +18,8 @@ public:
 	
 	virtual void Update(GameEntity& entity, const double alpha);
 
-	SDL_Rect srcRect;
-	SDL_FRect destRect;
+	GameRect srcRect;
+	GameRect destRect;
 
 private:
 	void interpolate(GameEntity& entity, const double alpha);

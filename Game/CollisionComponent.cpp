@@ -1,7 +1,8 @@
 #include "CollisionComponent.h"
 #include "GameSystems.h"
 
-CollisionComponent::CollisionComponent(const SDL_Rect& collisionBox_, const CollisionEnum& collisionType_) : collisionBox{collisionBox_}, collisionType{collisionType_} 
+CollisionComponent::CollisionComponent(const GameRect& collisionBox_, const CollisionEnum& collisionType_) 
+    : collisionBox{collisionBox_}, collisionType{collisionType_} 
 { 
     AddSystem(GameSystems::collisionSys);
 }
@@ -27,7 +28,7 @@ void CollisionComponent::UpdateCollisionBox(const GameEntity& entity)
     collisionBox.y = entity.physicsState.currPosition.y;
 }
 
-void CollisionComponent::Notify(GameEntity& entity, const std::shared_ptr<Event> const event)
+void CollisionComponent::Notify(GameEntity& entity, const std::shared_ptr<const Event> event)
 {
     for(auto& sys : systemList)
     {

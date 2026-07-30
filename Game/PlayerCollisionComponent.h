@@ -1,9 +1,10 @@
 #pragma once
 #include "CollisionComponent.h"
+#include "GameRect.h"
 
 class PlayerCollisionComponent : public CollisionComponent
 {
  public:
-    PlayerCollisionComponent(const SDL_Rect& collisionBox_);
+    PlayerCollisionComponent(const GameRect& collisionBox_);
     void DetectCollisions(GameEntity& entity) override;
 };

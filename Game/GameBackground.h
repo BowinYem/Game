@@ -1,7 +1,7 @@
 #pragma once
 #include "GameTexture.h"
 #include "string.h" 
-#include "SDL_rect.h"
+#include "GameRect.h"
 
 class GameBackground
 {
@@ -10,6 +10,6 @@ public:
     void Update();
 
 private:
-    SDL_FRect destRect;     
+    GameRect destRect;     
     GameTexture bgTexture;
 };

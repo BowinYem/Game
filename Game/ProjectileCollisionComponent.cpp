@@ -1,7 +1,7 @@
 #include "ProjectileCollisionComponent.h"
 #include "GameSystems.h"
 
-ProjectileCollisionComponent::ProjectileCollisionComponent(const SDL_Rect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionProjectile}
+ProjectileCollisionComponent::ProjectileCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionProjectile}
 {  
     //...
 }
@@ -13,7 +13,7 @@ void ProjectileCollisionComponent::DetectCollisions(GameEntity& entity)
         if(GameSystems::enemyPool->IsEntityInUse(i))
         {
             auto& enemy = GameSystems::enemyPool->GetEntity(i);
-            bool collisionDetected = SDL_HasIntersection(&collisionBox, &enemy.GetCollisionBox());
+            bool collisionDetected = GameRect::HasIntersection(collisionBox, enemy.GetCollisionBox());
             if(collisionDetected) 
             { 
                 Notify(entity, std::make_shared<CollisionEvent>(enemy, collisionType, CollisionEnum::collisionEnemy)); 

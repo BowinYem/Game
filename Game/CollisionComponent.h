@@ -5,6 +5,7 @@
 #include "CollisionEvent.h"
 #include "CollisionEnum.h"
 #include "GameEntity.h"
+#include "GameRect.h"
 #include <vector>
 #include <memory>
 
@@ -15,15 +16,15 @@ class System;
 class CollisionComponent
 {
 public:
-   CollisionComponent(const SDL_Rect& collisionBox_, const CollisionEnum& collisionType_ = CollisionEnum::collisionNone);
+   CollisionComponent(const GameRect& collisionBox_, const CollisionEnum& collisionType_ = CollisionEnum::collisionNone);
    virtual void Update(GameEntity& entity);
    inline void AddSystem(const std::shared_ptr<System> sys) { systemList.push_back(sys); };
    void RemoveSystem(const std::shared_ptr<System> sys);
 
-   SDL_Rect collisionBox;
+   GameRect collisionBox;
 
 protected:
-   void Notify(GameEntity& entity, const std::shared_ptr<Event> const event);
+   void Notify(GameEntity& entity, const std::shared_ptr<const Event> event);
 
    CollisionEnum collisionType;
 

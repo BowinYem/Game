@@ -1,4 +1,5 @@
 #include "GameSystems.h"
+#include "GameRect.h"
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
 #include "TestInputComponent.h"
@@ -56,7 +57,6 @@ bool GameSystems::GameSystems_Init()
     collisionSys = std::make_shared<CollisionSystem>();
     if(!collisionSys) { InitSuccess = false; }
 
-
     // Initialize Background
     gameBG = std::make_shared<GameBackground>(std::string(GameGlobals::BGFilePath));
     if(!gameBG) { InitSuccess = false; }
@@ -66,15 +66,12 @@ bool GameSystems::GameSystems_Init()
     if(!camera) { InitSuccess = false; }
 
     // Create player entity
-   	SDL_Rect CollisionBoxSize;
-	CollisionBoxSize.h = 50;
-	CollisionBoxSize.w = 50;
 	playerEntity = std::make_shared<GameEntity>
 	(
 		std::make_shared<SpriteComponent>(std::string(GameGlobals::PlayerSpriteFile)),
 		std::make_shared<PlayerInputComponent>(),
 		std::make_shared<RotatePhysicsComponent>(GameGlobals::PlayerVelocity, GameGlobals::PlayerVelocity, GameGlobals::PlayerRotateVelocity),
-        std::make_shared<PlayerCollisionComponent>(CollisionBoxSize),
+        std::make_shared<PlayerCollisionComponent>(GameGlobals::PlayerCollisionBox),
         GameVector{GameGlobals::PlayerSpawnX, GameGlobals::PlayerSpawnY}
 	);
     if(!playerEntity) { InitSuccess = false; }
