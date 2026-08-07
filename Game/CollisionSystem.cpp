@@ -34,7 +34,7 @@ void CollisionSystem::HandlePlayerCollision(GameEntity& playerEntity, const std:
             break;
 
         case CollisionEnum::collisionBoundary:
-            const SDL_Rect& collisionBox = playerEntity.GetCollisionBox();
+            const GameRect& collisionBox = playerEntity.GetCollisionBox();
 
             if(collisionBox.x < 0)
                 { playerEntity.physicsState.currPosition.x = 0; }
