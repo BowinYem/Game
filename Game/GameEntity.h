@@ -30,7 +30,7 @@ public:
                const std::shared_ptr<CollisionComponent> collisionComp_, 
                const GameVector& spawnLocation = {0, 0});
     
-    virtual void UpdatePhysics(const double extrapolateVal);
+    virtual void UpdatePhysics(const double dt);
 
     virtual void UpdateInput();
 

@@ -8,16 +8,16 @@ RotatePhysicsComponent::RotatePhysicsComponent(const double xVelocity_, const do
 }
 
 
-void RotatePhysicsComponent::Update(GameEntity& entity, const double alpha)
+void RotatePhysicsComponent::Update(GameEntity& entity, const double dt)
 {
     auto& entPhyState = entity.physicsState;
     
     const GameVector forwardDirection = entity.GetForwardDirection();
     entPhyState.prevPosition = entPhyState.currPosition;
-    entPhyState.currPosition.x += (((+entity.moveDirX) * xVelocity) * alpha) * forwardDirection.x;
-    entPhyState.currPosition.y += (((+entity.moveDirY) * yVelocity) * alpha) * forwardDirection.y;
+    entPhyState.currPosition.x += (((+entity.moveDirX) * xVelocity) * dt) * forwardDirection.x;
+    entPhyState.currPosition.y += (((+entity.moveDirY) * yVelocity) * dt) * forwardDirection.y;
 
     entPhyState.prevRotation = entPhyState.currRotation;
-    entPhyState.currRotation += (((+entity.rotateDir) * rotationVelocity) * alpha);
+    entPhyState.currRotation += (((+entity.rotateDir) * rotationVelocity) * dt);
     entPhyState.currRotation = std::fmod(entPhyState.currRotation, 360.0f); // Wrap around so the rotation value doesn't go beyond 360 degrees
 }

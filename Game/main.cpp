@@ -76,7 +76,7 @@ int main(int argc, char* args[])
 		GameSystems::playerEntity->UpdateCollision();
 
 
-		double alpha = accumulator / MS_PER_UPDATE;
+		const double alpha = accumulator / MS_PER_UPDATE;
 
 		GameSystems::gameBG->Update();
 		GameSystems::camera->InterpolateCamPos(alpha);

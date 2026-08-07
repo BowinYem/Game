@@ -16,10 +16,10 @@ GameEntity::GameEntity(const std::shared_ptr<SpriteComponent> spriteComp_,
     //...
 }
 
-void GameEntity::UpdatePhysics(const double extrapolateVal)
+void GameEntity::UpdatePhysics(const double dt)
 {
     if(physicsComp)
-        { physicsComp->Update(*this, extrapolateVal); }
+        { physicsComp->Update(*this, dt); }
 }
 
 void GameEntity::UpdateInput()

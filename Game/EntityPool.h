@@ -77,11 +77,11 @@ public:
         }       
     }
 
-    void UpdatePhysics(const double extrapolateVal)
+    void UpdatePhysics(const double dt)
     {
         for(uint8_t i = 0; i < entities.size(); ++i)
         {       
-            if(entitiesInUse[i]) { entities[i].UpdatePhysics(extrapolateVal); }
+            if(entitiesInUse[i]) { entities[i].UpdatePhysics(dt); }
         }
     }
 
