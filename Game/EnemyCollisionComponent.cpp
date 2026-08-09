@@ -1,7 +1,7 @@
 #include "EnemyCollisionComponent.h"
 #include "GameSystems.h"
 
-EnemyCollisionComponent::EnemyCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionEnemy} 
+EnemyCollisionComponent::EnemyCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{CollisionEnum::collisionEnemy, collisionBox_} 
 {  
     //...
 }

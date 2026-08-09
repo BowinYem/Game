@@ -1,7 +1,7 @@
 #include "ProjectileCollisionComponent.h"
 #include "GameSystems.h"
 
-ProjectileCollisionComponent::ProjectileCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionProjectile}
+ProjectileCollisionComponent::ProjectileCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{CollisionEnum::collisionProjectile, collisionBox_}
 {  
     //...
 }

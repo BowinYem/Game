@@ -16,7 +16,7 @@ class System;
 class CollisionComponent
 {
 public:
-   CollisionComponent(const GameRect& collisionBox_, const CollisionEnum& collisionType_ = CollisionEnum::collisionNone);
+   CollisionComponent(const CollisionEnum& collisionType_ = CollisionEnum::collisionNone, const GameRect& collisionBox_ = {0.0f, 0.0f, 0.0f, 0.0f});
    virtual void Update(GameEntity& entity);
    inline void AddSystem(const std::shared_ptr<System> sys) { systemList.push_back(sys); };
    void RemoveSystem(const std::shared_ptr<System> sys);

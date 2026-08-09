@@ -1,8 +1,8 @@
 #include "CollisionComponent.h"
 #include "GameSystems.h"
 
-CollisionComponent::CollisionComponent(const GameRect& collisionBox_, const CollisionEnum& collisionType_) 
-    : collisionBox{collisionBox_}, collisionType{collisionType_} 
+CollisionComponent::CollisionComponent(const CollisionEnum& collisionType_, const GameRect& collisionBox_) 
+    : collisionType{collisionType_}, collisionBox{collisionBox_}
 { 
     AddSystem(GameSystems::collisionSys);
 }

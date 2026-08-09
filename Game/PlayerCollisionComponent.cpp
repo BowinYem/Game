@@ -4,7 +4,7 @@
 #include "EnemyEntity.h"
 #include "CollisionEvent.h"
 
-PlayerCollisionComponent::PlayerCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{collisionBox_, CollisionEnum::collisionPlayer}
+PlayerCollisionComponent::PlayerCollisionComponent(const GameRect& collisionBox_) : CollisionComponent{CollisionEnum::collisionPlayer, collisionBox_}
 {  
     //...
 }
