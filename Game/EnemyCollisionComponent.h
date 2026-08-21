@@ -7,6 +7,6 @@ class EnemyCollisionComponent : public CollisionComponent
 {
 public:
     EnemyCollisionComponent(const GameRect& collisionBox_);
-    void DetectCollisions(GameEntity& testEntity) override;
+    void DetectCollisions(GameEntity& entity) override;
 
 };

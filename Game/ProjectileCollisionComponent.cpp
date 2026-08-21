@@ -8,6 +8,8 @@ ProjectileCollisionComponent::ProjectileCollisionComponent(const GameRect& colli
 
 void ProjectileCollisionComponent::DetectCollisions(GameEntity& entity)
 {
+    CollisionComponent::DetectCollisions(entity);
+
     for(size_t i = 0; i < GameSystems::enemyPool->GetPoolSize(); ++i)
     {
         if(GameSystems::enemyPool->IsEntityInUse(i))

@@ -25,11 +25,11 @@ public:
 
 protected:
    void Notify(GameEntity& entity, const std::shared_ptr<const Event> event);
+   virtual void DetectCollisions(GameEntity& entity);
 
    CollisionEnum collisionType;
 
 private:
-   virtual void DetectCollisions(GameEntity& entity) = 0;
    virtual void UpdateCollisionBox(const GameEntity& entity);
 
    std::vector<std::shared_ptr<System>> systemList;

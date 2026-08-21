@@ -5,4 +5,5 @@ void TestInputComponent::Update(GameEntity& entity)
 {
     entity.moveDirX = MovementDirection::movementForward;
     entity.moveDirY = MovementDirection::movementForward;
+    entity.rotateDir = RotateDirection::rotateLeft;
 }

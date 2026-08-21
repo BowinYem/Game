@@ -13,5 +13,5 @@ private:
     void HandlePlayerCollision(GameEntity& playerEntity, const std::shared_ptr<const CollisionEvent> e);
     void HandleProjectileCollision(GameEntity& projectileEntity, const std::shared_ptr<const CollisionEvent> e);
     void HandleEnemyCollision(GameEntity& enemyEntity, const std::shared_ptr<const CollisionEvent> e);
-
+    void BoundaryBlock(GameEntity& entity);
 };

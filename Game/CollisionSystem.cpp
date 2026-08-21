@@ -20,8 +20,7 @@ void CollisionSystem::OnNotify(GameEntity& entity, const std::shared_ptr<const E
             case CollisionEnum::collisionEnemy:
                 HandleEnemyCollision(entity, collisionEvent);
                 break;
-        }
-        
+        }        
     }
 }
 
@@ -30,24 +29,11 @@ void CollisionSystem::HandlePlayerCollision(GameEntity& playerEntity, const std:
     switch(e->otherType)
     {
         case CollisionEnum::collisionEnemy:
-            // std::cout << "Player has collided with an enemy\n";
+            std::cout << "Player has collided with an enemy\n";
             break;
 
         case CollisionEnum::collisionBoundary:
-            const GameRect& collisionBox = playerEntity.GetCollisionBox();
-
-            if(collisionBox.x < 0)
-                { playerEntity.physicsState.currPosition.x = 0; }
-
-            if(collisionBox.x > (GameGlobals::GameLevelWidth - collisionBox.w))
-                { playerEntity.physicsState.currPosition.x = (GameGlobals::GameLevelWidth - collisionBox.w); }
-            
-            if (collisionBox.y < 0)
-                { playerEntity.physicsState.currPosition.y = 0; }
-
-            if (collisionBox.y > (GameGlobals::GameLevelHeight - collisionBox.h))    
-                { playerEntity.physicsState.currPosition.y = (GameGlobals::GameLevelHeight - collisionBox.h); }
-                
+            BoundaryBlock(playerEntity);
             break;
     }
 }
@@ -57,7 +43,12 @@ void CollisionSystem::HandleProjectileCollision(GameEntity& projectileEntity, co
     switch(e->otherType)
     {
         case CollisionEnum::collisionEnemy:
-            // std::cout << "Projectile has collided with an enemy\n";
+            std::cout << "Projectile has collided with an enemy\n";
+            break;
+
+        case CollisionEnum::collisionBoundary:
+            // Temporary - will replace with despawn code 
+            BoundaryBlock(projectileEntity);
             break;
     }
 }
@@ -67,10 +58,32 @@ void CollisionSystem::HandleEnemyCollision(GameEntity& enemyEntity, const std::s
     switch(e->otherType)
     {
         case CollisionEnum::collisionPlayer:
-            // std::cout << "Enemy has collided with the player\n";
+            std::cout << "Enemy has collided with the player\n";
+            break;
+
+        case CollisionEnum::collisionBoundary:
+            BoundaryBlock(enemyEntity);
             break;
     }
 }
+
+void CollisionSystem::BoundaryBlock(GameEntity& entity)
+{
+    const GameRect& otherCollisionBox = entity.GetCollisionBox();
+
+    if(otherCollisionBox.x < 0)
+        { entity.physicsState.currPosition.x = 0; }
+
+    if(otherCollisionBox.x > (GameGlobals::GameLevelWidth - otherCollisionBox.w))
+        { entity.physicsState.currPosition.x = (GameGlobals::GameLevelWidth - otherCollisionBox.w); }
+    
+    if (otherCollisionBox.y < 0)
+        { entity.physicsState.currPosition.y = 0; }
+
+    if (otherCollisionBox.y > (GameGlobals::GameLevelHeight - otherCollisionBox.h))    
+        { entity.physicsState.currPosition.y = (GameGlobals::GameLevelHeight - otherCollisionBox.h); }
+}
+
 
 
 

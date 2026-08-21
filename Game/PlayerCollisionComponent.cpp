@@ -11,6 +11,8 @@ PlayerCollisionComponent::PlayerCollisionComponent(const GameRect& collisionBox_
 
 void PlayerCollisionComponent::DetectCollisions(GameEntity& entity)
 {
+    CollisionComponent::DetectCollisions(entity);
+
     for(size_t i = 0; i < GameSystems::enemyPool->GetPoolSize(); ++i)
     {
         if(GameSystems::enemyPool->IsEntityInUse(i))
@@ -22,11 +24,5 @@ void PlayerCollisionComponent::DetectCollisions(GameEntity& entity)
                 Notify(entity, std::make_shared<CollisionEvent>(enemy, collisionType, CollisionEnum::collisionEnemy)); 
             }
         }
-    }
-
-    if((collisionBox.x < 0) || (collisionBox.x > (GameGlobals::GameLevelWidth - collisionBox.w)) ||
-        (collisionBox.y < 0) || (collisionBox.y > (GameGlobals::GameLevelHeight - collisionBox.h)))
-    {
-        Notify(entity, std::make_shared<CollisionEvent>(entity, collisionType, CollisionEnum::collisionBoundary)); 
     }
 }
