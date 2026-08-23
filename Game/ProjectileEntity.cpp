@@ -13,3 +13,19 @@ ProjectileEntity::ProjectileEntity() : GameEntity(
 {
     //...
 }
+
+bool ProjectileEntity::ProjectileDespawnCheck()
+{
+    const GameRect& collisionBox = GetCollisionBox();
+
+    if((collisionBox.x < (0 - GameGlobals::ProjectileDespawnThreshold)) ||
+       (collisionBox.y < (0 - GameGlobals::ProjectileDespawnThreshold)) ||
+       (collisionBox.x > ((GameGlobals::GameLevelWidth - collisionBox.w) + GameGlobals::ProjectileDespawnThreshold)) ||
+       (collisionBox.y > ((GameGlobals::GameLevelHeight - collisionBox.h) + GameGlobals::ProjectileDespawnThreshold)))
+       {
+            GameSystems::projectilePool->Destroy(*this);
+            return true;
+       }
+    
+       return false;
+}

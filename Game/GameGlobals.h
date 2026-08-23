@@ -27,13 +27,13 @@ namespace GameGlobals
     inline constexpr double PlayerRotateVelocity = 100.0f;
     const GameRect PlayerCollisionBox{0, 0, 50, 50};
 
-
     // Temporary variables - will be deleted with future update
     inline constexpr uint8_t ProjectilePoolSize = 5; 
-    inline constexpr double  ProjectileVelocity = 300.0f;
+    inline constexpr double  ProjectileVelocity = 250.0f;
     inline constexpr double  ProjectileRotateVelocity = 100.0f;
     const GameRect ProjectileCollisionBox{0, 0, 50, 50};
     inline constexpr std::string_view ProjectileSpriteFile = "star.bmp";
+    inline constexpr double  ProjectileDespawnThreshold = 100;
 
     // Temporary variables - will be deleted with future update
     inline constexpr uint8_t EnemyPoolSize = 5;

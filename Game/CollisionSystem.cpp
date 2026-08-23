@@ -29,7 +29,7 @@ void CollisionSystem::HandlePlayerCollision(GameEntity& playerEntity, const std:
     switch(e->otherType)
     {
         case CollisionEnum::collisionEnemy:
-            std::cout << "Player has collided with an enemy\n";
+            //std::cout << "Player has collided with an enemy\n";
             break;
 
         case CollisionEnum::collisionBoundary:
@@ -43,12 +43,11 @@ void CollisionSystem::HandleProjectileCollision(GameEntity& projectileEntity, co
     switch(e->otherType)
     {
         case CollisionEnum::collisionEnemy:
-            std::cout << "Projectile has collided with an enemy\n";
+            //std::cout << "Projectile has collided with an enemy\n";
             break;
 
         case CollisionEnum::collisionBoundary:
-            // Temporary - will replace with despawn code 
-            BoundaryBlock(projectileEntity);
+            static_cast<ProjectileEntity&>(projectileEntity).ProjectileDespawnCheck();
             break;
     }
 }
@@ -58,7 +57,7 @@ void CollisionSystem::HandleEnemyCollision(GameEntity& enemyEntity, const std::s
     switch(e->otherType)
     {
         case CollisionEnum::collisionPlayer:
-            std::cout << "Enemy has collided with the player\n";
+            //std::cout << "Enemy has collided with the player\n";
             break;
 
         case CollisionEnum::collisionBoundary:
