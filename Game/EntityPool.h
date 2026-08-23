@@ -25,7 +25,7 @@ public:
     {
         bool entityCreated = false;
 
-        for(uint16_t i = 0; i < entities.size(); ++i)
+        for(size_t i = 0; i < entities.size(); ++i)
         {
             if(!entitiesInUse[i])
             {
@@ -51,7 +51,7 @@ public:
         return entityCreated;
     }
 
-    bool Destroy(const uint8_t index)
+    bool Destroy(const size_t index)
     {
         if((entitiesInUse[index]) && (activeEntities > 0))
         {
@@ -77,9 +77,20 @@ public:
         }       
     }
 
+    bool Destroy(const EntityType& entity)
+    {
+        for(size_t i = 0; i < entities.size(); ++i)
+        {
+            if(&entity == &GetEntity(i))
+                { return Destroy(i); }
+        }
+
+        return false; // entity not found in pool
+    }
+
     void UpdatePhysics(const double dt)
     {
-        for(uint8_t i = 0; i < entities.size(); ++i)
+        for(size_t i = 0; i < entities.size(); ++i)
         {       
             if(entitiesInUse[i]) { entities[i].UpdatePhysics(dt); }
         }
@@ -87,7 +98,7 @@ public:
 
     void UpdateInput()
     {
-        for(uint8_t i = 0; i < entities.size(); ++i)
+        for(size_t i = 0; i < entities.size(); ++i)
         {       
             if(entitiesInUse[i]) { entities[i].UpdateInput(); }
         }       
@@ -95,7 +106,7 @@ public:
 
     void UpdateSprite(const double alpha)
     {
-        for(uint8_t i = 0; i < entities.size(); ++i)
+        for(size_t i = 0; i < entities.size(); ++i)
         {       
             if(entitiesInUse[i]) { entities[i].UpdateSprite(alpha); }
         }       
@@ -103,7 +114,7 @@ public:
 
     void UpdateCollision()
     {
-        for(uint8_t i = 0; i < entities.size(); ++i)
+        for(size_t i = 0; i < entities.size(); ++i)
         {       
             if(entitiesInUse[i]) { entities[i].UpdateCollision(); }
         }
@@ -113,12 +124,12 @@ public:
 
     inline EntityType& GetEntity(const uint8_t index) { return entities[index]; }
 
-    inline uint8_t GetTotalActiveEntities() const { return activeEntities; }; 
+    inline size_t GetTotalActiveEntities() const { return activeEntities; }; 
 
-    inline uint16_t GetPoolSize() const { return entities.size(); } 
+    inline size_t GetPoolSize() const { return entities.size(); } 
 
 private:
-    uint8_t activeEntities = 0;
+    size_t activeEntities = 0;
     std::vector<EntityType> entities;
     std::vector<bool> entitiesInUse; 
 };
