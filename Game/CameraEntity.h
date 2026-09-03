@@ -10,5 +10,5 @@ public:
     void InterpolateCamPos(const double alpha);
 
     CameraTypeEnum cameraType;
-    GameRect cameraRect;
+    GameRect& cameraRect;
 };

@@ -102,7 +102,7 @@ inline void GameEntity::SetCollisionComponent(const std::shared_ptr<CollisionCom
     collisionComp = collisionComp_;
 }
 
-const GameRect& GameEntity::GetCollisionBox()
+GameRect& GameEntity::GetCollisionBox()
 {
     if(physicsComp)
         { return collisionComp->collisionBox; }

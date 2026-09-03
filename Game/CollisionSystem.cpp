@@ -20,6 +20,10 @@ void CollisionSystem::OnNotify(GameEntity& entity, const std::shared_ptr<const E
             case CollisionEnum::collisionEnemy:
                 HandleEnemyCollision(entity, collisionEvent);
                 break;
+
+            case CollisionEnum::collisionCamera:
+                HandleCameraCollision(entity, collisionEvent);
+                break;
         }        
     }
 }
@@ -62,6 +66,16 @@ void CollisionSystem::HandleEnemyCollision(GameEntity& enemyEntity, const std::s
 
         case CollisionEnum::collisionBoundary:
             BoundaryBlock(enemyEntity);
+            break;
+    }
+}
+
+void CollisionSystem::HandleCameraCollision(GameEntity& cameraEntity, const std::shared_ptr<const CollisionEvent> e)
+{
+    switch(e->otherType)
+    {
+        case CollisionEnum::collisionBoundary:
+            BoundaryBlock(cameraEntity);
             break;
     }
 }

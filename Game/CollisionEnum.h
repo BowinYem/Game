@@ -6,5 +6,6 @@ enum class CollisionEnum
     collisionPlayer,
     collisionEnemy,
     collisionProjectile,
+    collisionCamera, 
     collisionBoundary
 };

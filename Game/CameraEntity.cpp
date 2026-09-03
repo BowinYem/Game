@@ -1,4 +1,5 @@
 #include "CameraEntity.h"
+#include "CollisionComponent.h"
 #include "CameraInputComponent.h"
 #include "LinearPhysicsComponent.h"
 #include "GameSystems.h"
@@ -6,10 +7,10 @@
 CameraEntity::CameraEntity(const CameraTypeEnum& cameraType_, const GameRect& cameraRect_): 
     GameEntity{ nullptr, // No sprite component
                 std::make_shared<CameraInputComponent>(), 
-                std::make_shared<LinearPhysicsComponent>(), 
-                nullptr, // No collision component 
+                std::make_shared<LinearPhysicsComponent>(GameGlobals::CameraVelocity, GameGlobals::CameraVelocity), 
+                std::make_shared<CollisionComponent>(CollisionEnum::collisionCamera, cameraRect_), 
                 GameVector{cameraRect_.x, cameraRect_.y}}, 
-    cameraType{cameraType_}, cameraRect{cameraRect_} 
+    cameraType{cameraType_}, cameraRect{GetCollisionBox()} 
 { 
     //...
 }

@@ -48,7 +48,7 @@ public:
 
     GameVector GetForwardDirection() const;
 
-    const GameRect& GetCollisionBox();
+    GameRect& GetCollisionBox();
 
     const GameRect& GetSpriteDest();
 

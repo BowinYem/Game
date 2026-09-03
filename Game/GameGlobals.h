@@ -43,6 +43,8 @@ namespace GameGlobals
     inline constexpr std::string_view enemySpriteFile = "star.bmp";
 
     inline constexpr std::string_view BGFilePath = "bg.bmp";
+
     inline constexpr CameraTypeEnum StartingCameraType = CameraTypeEnum::PlayerCamera; 
-    const GameRect StartingCameraRect{0, 0, GameGlobals::GameLogicalWidth, GameLogicalHeight}; 
+    const GameRect StartingCameraRect{0, 0, GameLogicalWidth, GameLogicalHeight}; 
+    inline constexpr double  CameraVelocity = 250.0f;
 }

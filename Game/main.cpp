@@ -85,20 +85,24 @@ int main(int argc, char* args[])
 		enemyPool->UpdateSprite(alpha);
 		projPool->UpdateSprite(alpha);
 
-		if(debugCount == 1000)
+		
+
+		//if(debugCount == 50)
 		{			
 			std::cout << "Cam X: " << GameSystems::camera->cameraRect.x << "/" << GameGlobals::GameLevelWidth - GameSystems::camera->cameraRect.w <<
 			" Cam Y: " << GameSystems::camera->cameraRect.y << "/" << GameGlobals::GameLevelHeight - GameSystems::camera->cameraRect.h << "\n";
 
-			std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
-			std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 
+			// std::cout << "Player Render X: " << GameSystems::playerEntity->renderPosition.x << " Player Render Y: " << GameSystems::playerEntity->renderPosition.y << "\n"; 
+			// std::cout << "Player Physics X: " << GameSystems::playerEntity->physicsState.currPosition.x << " Player Physics Y: " << GameSystems::playerEntity->physicsState.currPosition.y << "\n"; 
 
-			GameRect cBox = GameSystems::playerEntity->GetCollisionBox();
-			std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
+			// GameRect cBox = GameSystems::playerEntity->GetCollisionBox();
+			// std::cout << "Player Collision X: " << cBox.x << " Player Collision Y: " << cBox.y << "\n\n"; 
+
+			// std::cout <<  GameSystems::projectilePool->GetTotalActiveEntities() << " active projectiles out of: " << GameSystems::projectilePool->GetPoolSize() << "\n";
 
 			debugCount = 0;
 		}
-		else debugCount++;
+		//else debugCount++;
 
 		// GameRect testRect{-1.25, -2.523, -3.75, -4.0};
 		// std::cout << testRect.GetFRect().x << " " << testRect.GetFRect().y << " " <<  testRect.GetFRect().w << " " << testRect.GetFRect().h << "\n"; 
