@@ -6,6 +6,6 @@
 class CameraCollisionComponent: public CollisionComponent
 {
 public:
-    CameraCollisionComponent(const GameRect& cameraRect_ = {0.0f, 0.0f, 0.0f, 0.0f});
-    void Update(GameEntity& entity) override;
+    CameraCollisionComponent(const GameRect& cameraRect_);
+    void Update(GameEntity& entity) override; 
 };
