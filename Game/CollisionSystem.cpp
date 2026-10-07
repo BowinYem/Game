@@ -75,28 +75,33 @@ void CollisionSystem::HandleCameraCollision(GameEntity& cameraEntity, const std:
     switch(e->otherType)
     {
         case CollisionEnum::collisionBoundary:
-            BoundaryBlock(cameraEntity);
-            break;
+            switch(GameGlobals::StartingCameraType)
+            {
+                case CameraTypeEnum::DebugCamera:
+                case CameraTypeEnum::PlayerCamera:
+                    BoundaryBlock(cameraEntity);
+                    break;
+            }
     }
 }
 
 void CollisionSystem::BoundaryBlock(GameEntity& entity)
 {
-    const GameRect& otherCollisionBox = entity.GetCollisionBox();
+    GameRect& collisionBox = entity.GetCollisionBox();
+    GameVector& currPosition = entity.physicsState.currPosition;
 
-    if(otherCollisionBox.x < 0)
-        { entity.physicsState.currPosition.x = 0; }
+    if(collisionBox.x < 0)
+        { currPosition.x = collisionBox.x =  0; }
 
-    if(otherCollisionBox.x > (GameGlobals::GameLevelWidth - otherCollisionBox.w))
-        { entity.physicsState.currPosition.x = (GameGlobals::GameLevelWidth - otherCollisionBox.w); }
+    if (collisionBox.y < 0)
+        { currPosition.y = collisionBox.y = 0; }
+
+    if(collisionBox.x > (GameGlobals::GameLevelWidth - collisionBox.w))
+        { currPosition.x = collisionBox.x = (GameGlobals::GameLevelWidth - collisionBox.w); }
     
-    if (otherCollisionBox.y < 0)
-        { entity.physicsState.currPosition.y = 0; }
-
-    if (otherCollisionBox.y > (GameGlobals::GameLevelHeight - otherCollisionBox.h))    
-        { entity.physicsState.currPosition.y = (GameGlobals::GameLevelHeight - otherCollisionBox.h); }
+    if (collisionBox.y > (GameGlobals::GameLevelHeight - collisionBox.h))    
+        { currPosition.y = collisionBox.y = (GameGlobals::GameLevelHeight - collisionBox.h); }
 }
-
 
 
 
