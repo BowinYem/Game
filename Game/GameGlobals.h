@@ -4,6 +4,8 @@
 #include "SDL.h"
 #include "CameraTypeEnum.h"
 #include "GameRect.h"
+#include "EnumOperators.h"
+
 namespace GameGlobals
 {
     inline constexpr uint16_t GameLogicalWidth = 1000;

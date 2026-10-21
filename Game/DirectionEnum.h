@@ -1,6 +1,6 @@
 #pragma once
 #include <stdint.h>
-#include <type_traits>
+#include "EnumOperators.h"
 
 enum class MovementDirection : int8_t
 {
@@ -16,8 +16,3 @@ enum class RotateDirection : int8_t
     rotateRight
 };
 
-template <typename T>
-constexpr auto operator+ (T a) noexcept
-{
-    return static_cast<std::underlying_type_t<T>>(a);
-}
