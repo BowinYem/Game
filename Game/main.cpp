@@ -18,8 +18,6 @@
 #include <iostream>
 #include "GameRect.h"
 
-static const char SPRITE_WIDTH = 30;
-static const char SPRITE_HEIGHT = 31;
 static const float MS_PER_UPDATE = .01;
 static const float FRAME_TIME_LIMIT = .25;
 
