@@ -49,4 +49,18 @@ namespace GameGlobals
     inline constexpr CameraTypeEnum StartingCameraType = CameraTypeEnum::PlayerCamera; 
     const GameRect StartingCameraRect{0, 0, GameLogicalWidth, GameLogicalHeight}; 
     inline constexpr double  CameraVelocity = 250.0f;
+
+    enum class ActionEnumType
+    {
+        ActionMoveForward,
+        ActionMoveBack,
+        ActionRotateLeft,
+        ActionRotateRight,
+        ActionShoot,
+        ActionDebugCamUp,
+        ActionDebugCamDown,
+        ActionDebugCamLeft,
+        ActionDebugCamRight,
+        TotalActions
+    };
 }

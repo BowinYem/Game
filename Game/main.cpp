@@ -51,7 +51,8 @@ int main(int argc, char* args[])
 		previousTime = currentTime;
 		accumulator += frameTime;
 
-		GameSystems::ReadInput();
+		GameSystems::inputSys->ReadInput();
+		GameSystems::inputSys->Update();
 	    GameSystems::playerEntity->UpdateInput();
 		enemyPool->UpdateInput();
 		projPool->UpdateInput();
@@ -74,7 +75,7 @@ int main(int argc, char* args[])
 		}
 					
 		GameSystems::playerEntity->UpdateCollision();
-
+		
 
 		const double alpha = accumulator / MS_PER_UPDATE;
 

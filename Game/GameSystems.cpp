@@ -8,9 +8,6 @@
 
 bool GameSystems::quit = false;
 
-const uint8_t* GameSystems::keyboardState = nullptr;
-SDL_Keycode GameSystems::actionEvent;
-
 std::shared_ptr<GameBackground> GameSystems::gameBG{nullptr};
 
 std::shared_ptr<GameEntity> GameSystems::playerEntity{nullptr};
@@ -19,29 +16,10 @@ std::shared_ptr<EntityPool<EnemyEntity>> GameSystems::enemyPool{nullptr};
 std::shared_ptr<EntityPool<ProjectileEntity>> GameSystems::projectilePool{nullptr};
 
 std::shared_ptr<CollisionSystem> GameSystems::collisionSys{nullptr};
+std::shared_ptr<InputSystem> GameSystems::inputSys{nullptr};
 
 std::shared_ptr<GameRenderer> GameSystems::renderer{nullptr};
 std::shared_ptr<GameWindow> GameSystems::window{nullptr};
-
-void GameSystems::ReadInput()
-{
-    actionEvent = SDLK_UNKNOWN;
-    SDL_Event event;
-
-    while(SDL_PollEvent(&event))
-    { 
-        if (event.type == SDL_QUIT)
-        {
-            quit = true;
-        }
-        else if(event.type == SDL_KEYUP)
-        {
-            actionEvent = event.key.keysym.sym;
-        }
-    }
-
-    keyboardState = SDL_GetKeyboardState(nullptr);
-}
 
 bool GameSystems::GameSystems_Init()
 {
@@ -57,6 +35,10 @@ bool GameSystems::GameSystems_Init()
     collisionSys = std::make_shared<CollisionSystem>();
     if(!collisionSys) { InitSuccess = false; }
 
+    InputSystem::InitSystem();
+    inputSys = InputSystem::GetInstance();
+    if(!inputSys) { InitSuccess = false; }
+    
     // Initialize Background
     gameBG = std::make_shared<GameBackground>(std::string(GameGlobals::BGFilePath));
     if(!gameBG) { InitSuccess = false; }
@@ -91,3 +73,5 @@ bool GameSystems::GameSystems_Close()
     SDL_Quit();
     return 1;
 }
+
+

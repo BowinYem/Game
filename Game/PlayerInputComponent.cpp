@@ -1,19 +1,17 @@
 #include "PlayerInputComponent.h"
 #include "GameSystems.h"
-#include <stdint.h>
+#include "InputSystem.h"
 
 void PlayerInputComponent::Update(GameEntity& entity)
 {
-    // Do basic input handling here for now
-    const uint8_t* keyboardState = GameSystems::keyboardState;
-    SDL_Keycode actionEvent = GameSystems::actionEvent;
+    auto inputSys = GameSystems::inputSys->GetInstance();
 
     // Rotation
-    if (keyboardState[SDL_SCANCODE_LEFT])
+    if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionRotateLeft))
     {
         entity.rotateDir = RotateDirection::rotateLeft;
     }
-    else if (keyboardState[SDL_SCANCODE_RIGHT])
+    else if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionRotateRight))
     {
        entity.rotateDir = RotateDirection::rotateRight;
     }
@@ -23,12 +21,12 @@ void PlayerInputComponent::Update(GameEntity& entity)
     }
 
     // Forward Movement
-    if (keyboardState[SDL_SCANCODE_UP])
+    if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionMoveForward))
     {
         entity.moveDirX = MovementDirection::movementForward;
         entity.moveDirY = MovementDirection::movementForward;
     }
-    else if (keyboardState[SDL_SCANCODE_DOWN])
+    else if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionMoveBack))
     {
         entity.moveDirX = MovementDirection::movementBackwards;
         entity.moveDirY = MovementDirection::movementBackwards;
@@ -39,8 +37,8 @@ void PlayerInputComponent::Update(GameEntity& entity)
         entity.moveDirY = MovementDirection::movementNone;
     }
 
-    // Actions
-    if(actionEvent == SDLK_SPACE)
+    // // Actions
+    if(inputSys->GetActionState(GameGlobals::ActionEnumType::ActionShoot))
     {
         GameSystems::projectilePool->Create(entity.renderPosition, entity.renderRotation);
     }

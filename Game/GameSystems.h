@@ -10,6 +10,7 @@
 #include "CameraEntity.h"
 #include "GameBackground.h"
 #include "CollisionSystem.h"
+#include "InputSystem.h"
 #include "GameGlobals.h"
 
 // Forward declarations
@@ -19,6 +20,7 @@ class GameEntity;
 class CameraEntity;
 class GameBackground;
 class CollisionSystem;
+class InputSystem;
 
 class GameSystems
 {
@@ -33,14 +35,10 @@ public:
 
 	static inline std::shared_ptr<GameRenderer> GetRenderer() { return renderer;  }
 	static inline std::shared_ptr<GameWindow> GetWindow() { return window;  }
-	static void ReadInput();
 	static bool GameSystems_Init();
 	static bool GameSystems_Close();
 
 	static bool quit;
-
-	static const uint8_t* keyboardState;
-	static SDL_Keycode actionEvent;
 
 	static std::shared_ptr<GameBackground> gameBG;
 
@@ -50,6 +48,7 @@ public:
 	static std::shared_ptr<EntityPool<ProjectileEntity>> projectilePool;
 
 	static std::shared_ptr<CollisionSystem> collisionSys;
+	static std::shared_ptr<InputSystem> inputSys;
 
 private:
 	static std::shared_ptr<GameRenderer> renderer;

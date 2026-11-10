@@ -27,11 +27,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ActionCommand.cpp" />
     <ClCompile Include="CameraEntity.cpp" />
     <ClCompile Include="CameraInputComponent.cpp" />
     <ClCompile Include="CollisionComponent.cpp" />
     <ClCompile Include="CollisionEvent.cpp" />
     <ClCompile Include="CollisionSystem.cpp" />
+    <ClCompile Include="Command.cpp" />
     <ClCompile Include="EnemyEntity.cpp" />
     <ClCompile Include="Event.cpp" />
     <ClCompile Include="GameEntity.cpp" />
@@ -43,6 +45,9 @@
     <ClCompile Include="GameTexture.cpp" />
     <ClCompile Include="GameVector.cpp" />
     <ClCompile Include="GameWindow.cpp" />
+    <ClCompile Include="HoldCommand.cpp" />
+    <ClCompile Include="InputFunctions.cpp" />
+    <ClCompile Include="InputSystem.cpp" />
     <ClCompile Include="LinearPhysicsComponent.cpp" />
     <ClCompile Include="PhysicsComponent.cpp" />
     <ClCompile Include="PhysicsState.cpp" />
@@ -62,6 +67,7 @@
     <None Include="Overview.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ActionCommand.h" />
     <ClInclude Include="CameraEntity.h" />
     <ClInclude Include="CameraInputComponent.h" />
     <ClInclude Include="CameraTypeEnum.h" />
@@ -69,6 +75,7 @@
     <ClInclude Include="CollisionEnum.h" />
     <ClInclude Include="CollisionEvent.h" />
     <ClInclude Include="CollisionSystem.h" />
+    <ClInclude Include="Command.h" />
     <ClInclude Include="DirectionEnum.h" />
     <ClInclude Include="EnemyEntity.h" />
     <ClInclude Include="EntityPool.h" />
@@ -85,7 +92,10 @@
     <ClInclude Include="GameTexture.h" />
     <ClInclude Include="GameVector.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="HoldCommand.h" />
     <ClInclude Include="InputComponent.h" />
+    <ClInclude Include="InputFunctions.h" />
+    <ClInclude Include="InputSystem.h" />
     <ClInclude Include="LinearPhysicsComponent.h" />
     <ClInclude Include="ProjectileCollisionComponent.h" />
     <ClInclude Include="ProjectileEntity.h" />

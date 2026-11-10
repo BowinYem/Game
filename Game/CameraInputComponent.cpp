@@ -1,6 +1,7 @@
 #include "CameraInputComponent.h"
 #include "GameSystems.h"
 #include "CameraTypeEnum.h"
+#include "InputSystem.h"
 
 void CameraInputComponent::Update(GameEntity& entity)
 {
@@ -33,14 +34,13 @@ void CameraInputComponent::UpdatePlayerCamera(CameraEntity& camera)
 
 void CameraInputComponent::UpdateDebugCamera(CameraEntity& camera)
 {
-    const uint8_t* keyboardState = GameSystems::keyboardState;
-    auto& cameraRect = camera.cameraRect;
+    auto inputSys = GameSystems::inputSys->GetInstance();
 
-    if ((keyboardState[SDL_SCANCODE_W]))
+    if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionDebugCamUp))
     {
         camera.moveDirY = MovementDirection::movementBackwards;
     }
-    else if ((keyboardState[SDL_SCANCODE_S]))  
+    else if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionDebugCamDown))  
     {
         camera.moveDirY = MovementDirection::movementForward;
     }
@@ -49,11 +49,11 @@ void CameraInputComponent::UpdateDebugCamera(CameraEntity& camera)
         camera.moveDirY = MovementDirection::movementNone;
     }
 
-    if ((keyboardState[SDL_SCANCODE_D])) 
+    if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionDebugCamRight)) 
     {
         camera.moveDirX = MovementDirection::movementForward;
     }
-    else if ((keyboardState[SDL_SCANCODE_A]))
+    else if (inputSys->GetActionState(GameGlobals::ActionEnumType::ActionDebugCamLeft))
     {
         camera.moveDirX = MovementDirection::movementBackwards;
     }
